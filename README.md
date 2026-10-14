@@ -15,7 +15,9 @@ npm start        # server produksi (Express) menyajikan dist/, port dari $PORT a
 | Bagian | File |
 |---|---|
 | **Semua isi website** (teks, jadwal, alamat, tautan) | `src/data/konten.js` ← ganti di sini, cari tanda `GANTI` |
-| Komponen halaman | `src/components/` (Hero, Nav, SiapaKami, Langkah, Jadwal, Khotbah, Jemaat, Persembahan, Kunjungi, Footer) |
+| **Video sambutan di beranda** | `src/data/konten.js` → `sambutan.video`: tempel link YouTube (`youtube.com/watch?v=…`, `youtu.be/…`, atau `shorts/…`) |
+| Daftar halaman (`/` beranda, `/siapa-kami`) | `src/App.jsx` (`RUTE`); isi tiap halaman di `src/halaman/` |
+| Komponen bagian | `src/components/` (Hero, Nav, Sambutan, VideoYouTube, Langkah, Jadwal, Khotbah, Jemaat, Persembahan, Kunjungi, KepalaHalaman, SiapaKami, Nilai, Pengurus, Ajakan, Footer) |
 | Token brand Tailwind (warna, font, radius) & @font-face | `src/index.css` (blok `@theme`) |
 | Gambar, font, favicon, logo | `public/` (ganti gambar di `public/img/` dengan foto asli, nama & rasio sama) |
 | Server produksi | `server.js` |

@@ -3,9 +3,10 @@ import Monogram from './Monogram.jsx';
 import Reveal from './Reveal.jsx';
 import { Tautan, Teks } from './Dasar.jsx';
 
+// Halaman Siapa Kami: asal nama Alfa Omega (kartu ayat + teks + foto)
 export default function SiapaKami() {
   return (
-    <section className="bagian" id="siapa">
+    <section className="bagian" id="tentang">
       <div className="isi grid gap-5 md:grid-cols-[1fr_1.9fr]">
         {/* kartu ayat (padanan kartu "angka" di referensi) */}
         <Reveal className="relative flex min-h-[360px] flex-col justify-between overflow-hidden rounded-kartu bg-[linear-gradient(145deg,#B7955A_0%,#8E6F38_55%,#6E5428_100%)] p-7 text-gading">

@@ -2,6 +2,8 @@
 // SEMUA ISI WEBSITE ADA DI FILE INI.
 // Ganti teks, jam, alamat, dan tautan di sini; tampilan akan mengikuti.
 // Yang ditandai "GANTI" masih berupa contoh.
+//
+// Tautan: '/siapa-kami' = halaman Siapa Kami, '/#jadwal' = bagian Jadwal di beranda.
 // ==========================================================
 
 export const gereja = {
@@ -13,12 +15,14 @@ export const gereja = {
 };
 
 export const menu = [
-  { label: 'Siapa Kami', href: '#siapa' },
-  { label: 'Bertumbuh', href: '#langkah' },
-  { label: 'Jadwal', href: '#jadwal' },
-  { label: 'Khotbah', href: '#khotbah' },
-  { label: 'Jemaat', href: '#jemaat' },
+  { label: 'Siapa Kami', href: '/siapa-kami' },
+  { label: 'Bertumbuh', href: '/#langkah' },
+  { label: 'Jadwal', href: '/#jadwal' },
+  { label: 'Khotbah', href: '/#khotbah' },
+  { label: 'Jemaat', href: '/#jemaat' },
 ];
+
+// ---------- BERANDA (urut dari atas ke bawah) ----------
 
 export const hero = {
   label: 'Wahyu 22:13 · Yang Awal dan Yang Akhir',
@@ -32,14 +36,19 @@ export const hero = {
   gambarPonsel: '/img/hero-ibadah-ponsel.jpg',  // tegak 2:3, min. 1080×1600
 };
 
-export const siapaKami = {
-  judul: 'Siapa <em>Kami</em>',
-  paragraf: [
-    'Nama kami diambil dari Wahyu 22:13. Kami percaya Kristus adalah awal dan akhir dari segala sesuatu, termasuk hidup setiap orang yang datang ke rumah ini.',
-    'Di Alfa Omega kami beribadah dengan sukacita, belajar firman dengan sungguh, dan saling menopang dalam komunitas kecil, supaya setiap orang bertumbuh dan menjadi berkat bagi kota ini.',
-  ],
-  tautan: { label: 'Lihat langkah bertumbuh', href: '#langkah' },
-  gambar: '/img/siapa-kami.jpg', // GANTI: foto jemaat (4:3)
+// Bagian tepat di bawah hero: video sambutan dari pimpinan gereja
+export const sambutan = {
+  label: 'Sambutan',
+  judul: 'Selamat Datang di <em>Alfa Omega</em>',
+  teks: 'Dengarkan sambutan dari gembala kami: siapa kami, apa yang kami percayai, dan bagaimana Anda dapat bertumbuh bersama keluarga Alfa Omega.',
+  nama: 'Nama Gembala Sidang',                 // GANTI
+  jabatan: 'Gembala Sidang Gereja Alfa Omega', // GANTI
+  // GANTI: tempel link video YouTube di sini, mis. 'https://www.youtube.com/watch?v=XXXXXXXXXXX'
+  // atau 'https://youtu.be/XXXXXXXXXXX'. Selama kosong, tampil keterangan "Video sambutan segera hadir".
+  video: '',
+  // Opsional: gambar sampul sendiri (16:9, mis. '/img/sambutan.jpg'). Kosong = memakai sampul dari YouTube.
+  poster: '',
+  tautan: { label: 'Kenali kami lebih dekat', href: '/siapa-kami' },
 };
 
 export const langkah = {
@@ -112,14 +121,65 @@ export const kunjungi = {
   keteranganGambar: 'Lokasi gedung gereja',
 };
 
+// ---------- HALAMAN SIAPA KAMI (/siapa-kami) ----------
+
+export const halamanSiapaKami = {
+  judul: 'Siapa <em>Kami</em>',
+  teks: 'Mengenal keluarga Gereja Alfa Omega: arti nama kami, hal-hal yang kami hidupi, dan mereka yang melayani jemaat.',
+};
+
+export const siapaKami = {
+  judul: 'Mengapa <em>Alfa Omega</em>',
+  paragraf: [
+    'Nama kami diambil dari Wahyu 22:13. Kami percaya Kristus adalah awal dan akhir dari segala sesuatu, termasuk hidup setiap orang yang datang ke rumah ini.',
+    'Di Alfa Omega kami beribadah dengan sukacita, belajar firman dengan sungguh, dan saling menopang dalam komunitas kecil, supaya setiap orang bertumbuh dan menjadi berkat bagi kota ini.',
+  ],
+  tautan: { label: 'Lihat langkah bertumbuh', href: '/#langkah' },
+  gambar: '/img/siapa-kami.jpg', // GANTI: foto jemaat (4:3)
+};
+
+// Kosongkan `daftar: []` untuk menyembunyikan bagian ini
+export const nilai = {
+  judul: 'Yang Kami <em>Hidupi</em>',
+  teks: 'Empat hal yang membentuk kehidupan bergereja kami setiap minggu.',
+  daftar: [
+    { judul: 'Ibadah', teks: 'Kami datang ke hadirat Tuhan dengan sukacita dan hati yang tulus, sebagai satu keluarga.', ikon: 'pujian' },
+    { judul: 'Firman', teks: 'Kami belajar Alkitab dengan sungguh-sungguh dan membiarkannya membentuk cara kami hidup.', ikon: 'alkitab' },
+    { judul: 'Komunitas', teks: 'Kami saling mengenal, menopang, dan mendoakan dalam kelompok-kelompok kecil.', ikon: 'komsel' },
+    { judul: 'Menjadi Berkat', teks: 'Kami melayani sesuai karunia masing-masing dan rindu menjadi berkat bagi kota ini.', ikon: 'persembahan' },
+  ],
+};
+
+// GANTI: nama, jabatan, dan foto (tegak 4:5, min. 800×1000, mis. '/img/pengurus-1.jpg').
+// Foto kosong = tampil monogram. Kosongkan `daftar: []` untuk menyembunyikan bagian ini.
+export const pengurus = {
+  judul: 'Gembala & <em>Pengurus</em>',
+  teks: 'Mereka yang dipercaya menggembalakan dan melayani jemaat Alfa Omega.',
+  daftar: [
+    { nama: 'Nama Gembala Sidang', jabatan: 'Gembala Sidang', foto: '' },
+    { nama: 'Nama Pendamping', jabatan: 'Wakil Gembala', foto: '' },
+    { nama: 'Nama Pengurus', jabatan: 'Ketua Majelis', foto: '' },
+  ],
+};
+
+export const ajakan = {
+  judul: 'Mari Beribadah <em>Bersama</em>',
+  teks: 'Kami menantikan Anda di ibadah hari Minggu. Datang apa adanya; tim penyambut kami siap menyapa Anda.',
+  tombolUtama: { label: 'Jadwal Ibadah', href: '/#jadwal' },
+  tombolKedua: { label: 'Petunjuk Arah', href: '/#kunjungi' },
+};
+
+// ---------- FOOTER (semua halaman) ----------
+
 export const footer = {
   halaman: [
-    { label: 'Siapa Kami', href: '#siapa' },
-    { label: 'Langkah Bertumbuh', href: '#langkah' },
-    { label: 'Jadwal Ibadah', href: '#jadwal' },
-    { label: 'Khotbah', href: '#khotbah' },
-    { label: 'Kehidupan Jemaat', href: '#jemaat' },
-    { label: 'Persembahan', href: '#persembahan' },
+    { label: 'Beranda', href: '/' },
+    { label: 'Siapa Kami', href: '/siapa-kami' },
+    { label: 'Langkah Bertumbuh', href: '/#langkah' },
+    { label: 'Jadwal Ibadah', href: '/#jadwal' },
+    { label: 'Khotbah', href: '/#khotbah' },
+    { label: 'Kehidupan Jemaat', href: '/#jemaat' },
+    { label: 'Persembahan', href: '/#persembahan' },
   ],
   // GANTI: tautan media sosial
   sosial: [

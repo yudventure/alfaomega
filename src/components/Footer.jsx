@@ -22,7 +22,7 @@ export default function Footer() {
         <div className="grid content-start gap-2">
           <h4 className={judulKolom}>Ibadah Minggu</h4>
           <p className="text-[.95rem] text-gading/80">{jadwal.ringkas}<br />{footer.tempat}</p>
-          <Tautan href="#kunjungi" terang className="mt-1 justify-self-start">Petunjuk arah</Tautan>
+          <Tautan href="/#kunjungi" terang className="mt-1 justify-self-start">Petunjuk arah</Tautan>
         </div>
       </div>
       <div className="isi mt-12 flex flex-wrap justify-between gap-2 border-t border-garis-gelap pt-6 text-[.85rem] text-batu">
