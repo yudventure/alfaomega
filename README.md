@@ -1,7 +1,7 @@
 # Gereja Alfa Omega: Identitas Brand
 
 Paket identitas visual Gereja Alfa Omega: logo, warna, font, aset media sosial, aset website, mockup merchandise,
-dan 10 referensi website gereja untuk menentukan arah desain website.
+10 referensi website gereja, dan **website satu halaman siap unggah** di folder [`site/`](site/).
 
 **Mulai dari sini:** buka [`brand/panduan-brand-alfa-omega.pdf`](brand/panduan-brand-alfa-omega.pdf) (24 halaman, A4 lanskap) untuk dibagikan atau dicetak,
 atau [`brand/panduan-brand.html`](brand/panduan-brand.html) di browser untuk versi interaktif.
@@ -32,6 +32,7 @@ brand/
 │                        gambar share per halaman, latar hero, pola, placeholder, loader, font WOFF2, CSS
 └── mockup/              kaos hitam, kaos putih, jaket bomber, bendera, umbul-umbul
 referensi-website/       10 referensi website gereja + 3 arah desain + fitur wajib
+site/                    website satu halaman siap unggah (lihat site/README.md)
 tools/                   skrip untuk membuat ulang semua aset
 ```
 
@@ -63,6 +64,7 @@ node tools/render.mjs         # semua PNG/JPG (logo, web, media sosial, mockup)
 python3 tools/build_web.py    # kit website: SVG, ikon, font WOFF2, WebP, contoh.html
 python3 tools/build_panduan.py # halaman HTML
 node tools/build_pdf.mjs       # PDF A4 lanskap
+node tools/render.mjs "site/img" && python3 tools/build_site.py   # website
 ```
 
 `node tools/render.mjs "youtube"` hanya merender aset yang path-nya cocok dengan pola tersebut.
