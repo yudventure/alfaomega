@@ -1,4 +1,4 @@
-import { halamanSiapaKami } from '../data/konten.js';
+import { halamanSiapaKami } from '../data/isi.js';
 import KepalaHalaman from '../components/KepalaHalaman.jsx';
 import TentangNama from '../components/SiapaKami.jsx';
 import Nilai from '../components/Nilai.jsx';

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { gereja, menu } from '../data/konten.js';
+import { gereja, menu } from '../data/isi.js';
 import Ikon from './Ikon.jsx';
 import { useJalur } from '../rute.js';
 

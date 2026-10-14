@@ -1,4 +1,4 @@
-import { ajakan } from '../data/konten.js';
+import { ajakan } from '../data/isi.js';
 import Monogram from './Monogram.jsx';
 import Reveal from './Reveal.jsx';
 import { Teks, Tombol } from './Dasar.jsx';

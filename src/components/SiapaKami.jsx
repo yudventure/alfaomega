@@ -1,4 +1,4 @@
-import { gereja, siapaKami } from '../data/konten.js';
+import { gereja, siapaKami } from '../data/isi.js';
 import Monogram from './Monogram.jsx';
 import Reveal from './Reveal.jsx';
 import { Tautan, Teks } from './Dasar.jsx';

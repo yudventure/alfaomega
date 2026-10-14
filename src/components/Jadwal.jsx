@@ -1,4 +1,4 @@
-import { jadwal } from '../data/konten.js';
+import { jadwal } from '../data/isi.js';
 import Ikon from './Ikon.jsx';
 import Reveal from './Reveal.jsx';
 import { Kepala, Tautan } from './Dasar.jsx';

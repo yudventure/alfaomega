@@ -55,6 +55,8 @@
   /* kata beraksen emas di judul: <em> */
   h1 em, h2 em, h3 em { @apply not-italic font-judul italic font-medium text-emas-tua; }
   :focus-visible { @apply outline-2 outline-emas outline-offset-[3px]; }
+  /* panel CMS memakai lebar layar penuh */
+  body.cms { padding-left: 0; padding-right: 0; }
 }
 
 @layer components {
@@ -94,10 +96,4 @@
   /* foto setengah lingkaran di kartu Siapa Kami */
   .foto-setengah { border-radius: 240px 20px 20px 240px / 50% 20px 20px 50%; }
   @media (max-width: 860px) { .foto-setengah { border-radius: 20px 20px 160px 160px / 20px 20px 50% 50%; } }
-  /* garis "peta" di atas gambar lokasi */
-  .peta-grid {
-    background:
-      repeating-linear-gradient(0deg, transparent 0 38px, rgba(154,118,51,.35) 38px 39px),
-      repeating-linear-gradient(90deg, transparent 0 38px, rgba(154,118,51,.35) 38px 39px);
-  }
 }

@@ -1,6 +1,7 @@
 // ==========================================================
-// SEMUA ISI WEBSITE ADA DI FILE INI.
-// Ganti teks, jam, alamat, dan tautan di sini; tampilan akan mengikuti.
+// ISI BAWAAN WEBSITE.
+// Sehari-hari isi diubah lewat panel CMS di /admin; perubahan dari CMS ditimpakan di atas isi ini.
+// File ini menjadi isi awal (dan cadangan bila suatu bagian belum pernah diubah di CMS).
 // Yang ditandai "GANTI" masih berupa contoh.
 //
 // Tautan: '/siapa-kami' = halaman Siapa Kami, '/#jadwal' = bagian Jadwal di beranda.
@@ -104,6 +105,9 @@ export const persembahan = {
   rujukan: '2 Korintus 9:7',
   tombol: { label: 'Persembahan Online', href: '#' }, // GANTI: halaman persembahan / QRIS
   catatan: 'Transfer bank, virtual account, atau QRIS. Informasi rekening tersedia di halaman persembahan dan di sekretariat gereja.',
+  // GANTI: rekening gereja, mis. { bank: 'BCA', nomor: '1234567890', atasNama: 'Gereja Alfa Omega' }. Kosong = tidak ditampilkan.
+  rekening: [],
+  qris: '', // gambar QRIS, mis. '/img/qris.png'. Kosong = tidak ditampilkan.
 };
 
 // GANTI: alamat & kontak

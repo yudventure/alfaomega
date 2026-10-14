@@ -1,4 +1,4 @@
-import { nilai } from '../data/konten.js';
+import { nilai } from '../data/isi.js';
 import Ikon from './Ikon.jsx';
 import Reveal from './Reveal.jsx';
 import { Kepala } from './Dasar.jsx';

@@ -1,4 +1,4 @@
-import { hero } from '../data/konten.js';
+import { hero } from '../data/isi.js';
 import Nav from './Nav.jsx';
 import { Teks, Tombol } from './Dasar.jsx';
 

@@ -1,13 +1,6 @@
 import { useState } from 'react';
 import Monogram from './Monogram.jsx';
-
-// Ambil ID video dari link YouTube apa pun (watch?v=, youtu.be/, shorts/, live/, embed/) atau ID langsung.
-export function idYouTube(sumber = '') {
-  const s = sumber.trim();
-  if (/^[\w-]{11}$/.test(s)) return s;
-  const m = s.match(/(?:youtu\.be\/|youtube(?:-nocookie)?\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/|live\/|v\/))([\w-]{11})/);
-  return m ? m[1] : '';
-}
+import { idYouTube } from '../cms/youtube.js';
 
 function TombolPutar({ className = '' }) {
   return (

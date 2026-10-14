@@ -1,4 +1,4 @@
-import { sambutan } from '../data/konten.js';
+import { sambutan } from '../data/isi.js';
 import Monogram from './Monogram.jsx';
 import Reveal from './Reveal.jsx';
 import VideoYouTube from './VideoYouTube.jsx';

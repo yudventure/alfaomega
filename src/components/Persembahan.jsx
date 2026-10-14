@@ -1,8 +1,23 @@
-import { persembahan } from '../data/konten.js';
+import { useState } from 'react';
+import { persembahan } from '../data/isi.js';
 import Reveal from './Reveal.jsx';
 import { Teks, Tombol } from './Dasar.jsx';
 
+function SalinNomor({ nomor }) {
+  const [disalin, setDisalin] = useState(false);
+  return (
+    <button
+      type="button"
+      className="shrink-0 rounded-full border border-white/20 px-3.5 py-1.5 text-[.75rem] font-semibold uppercase tracking-[.08em] text-gading hover:bg-white/10"
+      onClick={() => navigator.clipboard?.writeText(nomor.replace(/\s/g, '')).then(() => { setDisalin(true); setTimeout(() => setDisalin(false), 2000); })}
+    >
+      {disalin ? 'Disalin' : 'Salin'}
+    </button>
+  );
+}
+
 export default function Persembahan() {
+  const rekening = (persembahan.rekening ?? []).filter((r) => r.nomor);
   return (
     <section className="bagian" id="persembahan">
       <div className="isi">
@@ -15,8 +30,24 @@ export default function Persembahan() {
             <p className="label text-[.68rem] tracking-[.28em] text-batu">{persembahan.rujukan}</p>
           </div>
           <div className="relative grid justify-items-start gap-4">
-            <Tombol varian="emas" href={persembahan.tombol.href} ikon="persembahan">{persembahan.tombol.label}</Tombol>
+            {persembahan.tombol?.label && <Tombol varian="emas" href={persembahan.tombol.href} ikon="persembahan">{persembahan.tombol.label}</Tombol>}
             <p className="max-w-[36ch] text-[.9rem] text-batu">{persembahan.catatan}</p>
+            {rekening.map((r) => (
+              <div key={r.bank + r.nomor} className="flex w-full max-w-[420px] items-center justify-between gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                <div className="min-w-0">
+                  <p className="label text-[.65rem] text-emas">{r.bank}</p>
+                  <p className="font-logo text-[1.15rem] font-semibold tracking-[.06em] text-white">{r.nomor}</p>
+                  {r.atasNama && <p className="text-[.8rem] text-batu">a.n. {r.atasNama}</p>}
+                </div>
+                <SalinNomor nomor={r.nomor} />
+              </div>
+            ))}
+            {persembahan.qris && (
+              <figure className="flex w-full max-w-[420px] items-center gap-4 rounded-2xl bg-white p-3 text-hitam">
+                <img src={persembahan.qris} alt="QRIS persembahan Gereja Alfa Omega" className="h-28 w-28 shrink-0 object-contain" loading="lazy" />
+                <figcaption className="text-[.85rem] leading-snug">Pindai QRIS dengan aplikasi bank atau dompet digital Anda.</figcaption>
+              </figure>
+            )}
           </div>
         </Reveal>
       </div>

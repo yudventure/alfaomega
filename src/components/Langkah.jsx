@@ -1,4 +1,4 @@
-import { langkah } from '../data/konten.js';
+import { langkah } from '../data/isi.js';
 import Reveal from './Reveal.jsx';
 import { Teks } from './Dasar.jsx';
 

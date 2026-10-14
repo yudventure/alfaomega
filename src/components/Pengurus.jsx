@@ -1,4 +1,4 @@
-import { pengurus } from '../data/konten.js';
+import { pengurus } from '../data/isi.js';
 import Monogram from './Monogram.jsx';
 import Reveal from './Reveal.jsx';
 import { Kepala } from './Dasar.jsx';

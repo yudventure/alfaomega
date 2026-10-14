@@ -1,4 +1,4 @@
-import { footer, gereja, jadwal } from '../data/konten.js';
+import { footer, gereja, jadwal } from '../data/isi.js';
 import { Tautan } from './Dasar.jsx';
 
 const judulKolom = 'mb-1.5 font-teks text-[.7rem] font-semibold uppercase leading-[1.6] tracking-[.3em] text-emas';

@@ -8,5 +8,9 @@ export default defineConfig({
     outDir: 'dist',
     sourcemap: false,
   },
-  server: { port: 5173 },
+  // `npm run dev` + `npm start` bersamaan: API & media CMS diteruskan ke server Express (port 3000)
+  server: {
+    port: 5173,
+    proxy: { '/api': 'http://localhost:3000', '/media': 'http://localhost:3000' },
+  },
 });

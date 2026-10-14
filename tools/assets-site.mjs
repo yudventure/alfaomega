@@ -2,7 +2,8 @@
 // sampai foto gereja asli tersedia. Dirender lewat render.mjs ("site/").
 import { C, page, markSvg, chevrons } from './lib.mjs';
 
-const DIR = '../public/img';
+// Latar abstrak lama. public/img kini berisi foto, jadi hasilnya ditaruh di .cache agar foto tidak tertimpa.
+const DIR = '.cache/latar-abstrak';
 
 // Lingkaran cahaya lembut (bokeh). c = [x%, y%, ukuran px, warna, opasitas, blur px]
 const orb = ([x, y, s, col, op, bl]) =>

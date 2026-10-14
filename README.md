@@ -1,6 +1,6 @@
 # Gereja Alfa Omega
 
-Website Gereja Alfa Omega (**React + Vite + Tailwind CSS v4**, disajikan oleh Express) sekaligus paket identitas brandnya:
+Website Gereja Alfa Omega (**React + Vite + Tailwind CSS v4**, disajikan oleh Express) dengan **CMS berbasis peran** di `/admin`, sekaligus paket identitas brandnya:
 logo, warna, font, aset media sosial, mockup merchandise, dan 10 referensi website gereja.
 
 ## Website (aplikasi di root repo)
@@ -14,12 +14,15 @@ npm start        # server produksi (Express) menyajikan dist/, port dari $PORT a
 
 | Bagian | File |
 |---|---|
-| **Semua isi website** (teks, jadwal, alamat, tautan) | `src/data/konten.js` ← ganti di sini, cari tanda `GANTI` |
-| **Video sambutan di beranda** | `src/data/konten.js` → `sambutan.video`: tempel link YouTube (`youtube.com/watch?v=…`, `youtu.be/…`, atau `shorts/…`) |
+| **Isi website sehari-hari** (teks, jadwal, foto, video sambutan, rekening) | panel **CMS di `/admin`** (lihat bagian CMS di bawah) |
+| Isi bawaan (isi awal sebelum diubah di CMS) | `src/data/konten.js` |
+| Kategori CMS, peran, dan hak aksesnya | `src/cms/skema.js` |
+| Panel CMS / API CMS | `src/admin/` / `server/` |
 | Daftar halaman (`/` beranda, `/siapa-kami`) | `src/App.jsx` (`RUTE`); isi tiap halaman di `src/halaman/` |
 | Komponen bagian | `src/components/` (Hero, Nav, Sambutan, VideoYouTube, Langkah, Jadwal, Khotbah, Jemaat, Persembahan, Kunjungi, KepalaHalaman, SiapaKami, Nilai, Pengurus, Ajakan, Footer) |
+| Foto bawaan (dibuat dengan AI, ganti dengan foto jemaat sendiri lewat CMS) | `public/img/` |
 | Token brand Tailwind (warna, font, radius) & @font-face | `src/index.css` (blok `@theme`) |
-| Gambar, font, favicon, logo | `public/` (ganti gambar di `public/img/` dengan foto asli, nama & rasio sama) |
+| Font, favicon, logo | `public/` |
 | Server produksi | `server.js` |
 | Meta tag & og:image (ganti `DOMAIN-GEREJA`) | `index.html` |
 
@@ -31,10 +34,48 @@ npm start        # server produksi (Express) menyajikan dist/, port dari $PORT a
    - **Build command**: `npm run build`
    - **Output directory**: `dist`
    - **Entry file / start command**: `server.js` (`npm start`)
-   - Variabel lingkungan: tidak ada yang wajib. Server membaca `PORT` bila disediakan Hostinger, kalau tidak memakai 3000.
+   - **Variabel lingkungan** (Environment variables), disarankan:
+     - `CMS_KODE_SETUP` = kode bebas pilihan Anda, dipakai sekali untuk membuat akun CMS pertama
+     - `DATA_DIR` = folder data CMS **di luar** folder aplikasi, mis. `/home/uXXXXXXX/alfaomega-data` (lihat File Manager untuk path home Anda)
+     - `SESSION_SECRET` (opsional) = teks acak panjang; bila kosong dibuat otomatis di folder data
+     - `PORT` disediakan Hostinger; bila tidak ada, server memakai 3000
 3. Deploy. Setiap `git push` ke branch tersebut akan men-deploy ulang.
 
 `server.js` juga menjalankan `npm run build` sendiri bila `dist/` belum ada, jadi aman kalau hosting hanya menjalankan `npm install` lalu `npm start`.
+
+### CMS (`/admin`)
+
+Panel untuk mengubah isi website tanpa menyentuh kode. Setiap pengguna hanya bisa mengubah bagian sesuai perannya
+dalam struktur pelayanan gereja; **Ketua/Gembala Sidang** dan **Developer** dapat mengakses semua peran.
+
+**Mulai pertama kali**
+1. Buka `https://domain-anda/admin`.
+2. Masukkan **kode setup** (`CMS_KODE_SETUP`; bila tidak diatur, kode dibuat otomatis di `DATA_DIR/kode-setup.txt` dan dicetak di log server), lalu buat akun developer.
+3. Di **Pengguna & Peran**, tambahkan akun untuk ketua, sekretariat, bendahara, multimedia, dan komisi.
+
+| Peran | Kategori yang dapat diubah |
+|---|---|
+| **Developer** | Semua isi + menu & navigasi, pengguna, cadangan & sistem |
+| **Ketua / Gembala Sidang** | Semua isi + kelola pengguna (tidak dapat memberi peran Developer) |
+| Sekretariat | Halaman depan, jadwal ibadah, profil gereja (Siapa Kami), gembala & pengurus, kontak & lokasi, foto kehidupan jemaat |
+| Bendahara | Persembahan: tombol online, **rekening** (dengan tombol salin) dan **QRIS** |
+| Multimedia | Sambutan gembala (video YouTube), halaman depan, khotbah, foto kehidupan jemaat, media sosial |
+| Pembinaan & Pengajaran | Langkah bertumbuh |
+| Komisi Sekolah Minggu / Pemuda / Koordinator Komsel / Pelayanan Doa / Misi & Diakonia | Kartu masing-masing di bagian Kehidupan Jemaat |
+
+Fitur: formulir per kategori (judul dengan `*kata*` untuk warna emas), unggah foto (otomatis diperkecil maks. 2400 px),
+pustaka media, peringatan bila meninggalkan perubahan yang belum disimpan, deteksi bentrok bila dua orang menyimpan kategori yang sama,
+riwayat aktivitas, **60 versi otomatis** yang bisa dipulihkan (ketua & developer), serta unduh/pulihkan cadangan (developer).
+
+**Penyimpanan.** Tidak perlu database: isi, pengguna, log, versi, dan foto unggahan disimpan sebagai berkas di `DATA_DIR`
+(bawaan `~/alfaomega-data`). Atur `DATA_DIR` ke folder di luar folder aplikasi agar tidak ikut terhapus saat deploy ulang,
+dan unduh cadangan secara berkala dari menu **Sistem & Cadangan**.
+
+**Keamanan.** Kata sandi di-hash dengan scrypt; sesi berupa cookie HttpOnly bertanda tangan (12 jam, otomatis tidak berlaku saat sandi diganti);
+5 kali salah masuk mengunci 15 menit; setiap permintaan API wajib header khusus (pelindung CSRF); semua isi dibersihkan di server
+(judul hanya boleh `<em>`/`<br>`, tautan `javascript:` ditolak, unggahan dicek benar-benar JPG/PNG/WebP); hak akses dicek ulang di server untuk setiap perubahan.
+
+**Pengembangan lokal:** jalankan `npm start` (server + API di port 3000) dan `npm run dev` bersamaan; Vite meneruskan `/api` dan `/media` ke port 3000.
 
 ### Keamanan dependensi
 
@@ -64,7 +105,7 @@ atau [`brand/panduan-brand.html`](brand/panduan-brand.html) di browser untuk ver
 ### Isi folder
 
 ```
-src/, public/, index.html, server.js   aplikasi website (lihat di atas)
+src/, public/, server/, index.html, server.js   aplikasi website + CMS (lihat di atas)
 brand/
 ├── panduan-brand-alfa-omega.pdf   panduan brand untuk dibagikan / dicetak
 ├── panduan-brand.html   panduan brand interaktif (buka di browser)
@@ -109,7 +150,6 @@ node tools/render.mjs         # semua PNG/JPG (logo, web, media sosial, mockup)
 python3 tools/build_web.py    # kit website: SVG, ikon, font WOFF2, WebP, contoh.html
 python3 tools/build_panduan.py # halaman HTML
 node tools/build_pdf.mjs       # PDF A4 lanskap
-node tools/render.mjs "public/img"   # visual latar website
 python3 tools/build_react_assets.py  # ikon & monogram untuk komponen React
 ```
 
