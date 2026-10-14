@@ -25,16 +25,6 @@ function scene(w, h, { base, orbs, pattern = {}, vignette = 0.55, grain = true, 
 const GOLD = '#E6C27A', AMBER = '#C8863E', CREAM = '#F3E3B5', WINE = '#8E2A3A', WARM = '#5A3F1C';
 
 const SCENES = {
-  // hero: gelap, cahaya emas dari kanan atas, ruang teks di kiri bawah
-  'hero-cahaya': [2400, 1350, {
-    base: 'linear-gradient(115deg, #0C0B0A 0%, #1A1612 45%, #2B2216 100%)',
-    orbs: [[78, 28, 1100, AMBER, .55, 90], [86, 22, 420, GOLD, .9, 30], [62, 70, 700, WARM, .6, 80], [30, 85, 900, '#1E1710', .9, 100], [92, 60, 260, CREAM, .5, 24], [70, 40, 90, CREAM, .9, 6], [58, 25, 60, GOLD, .8, 5]],
-    pattern: { cx: 1750, count: 16, step: 96, apex: 60, op: .14 }, vignette: .5 }],
-  // ponsel
-  'hero-cahaya-ponsel': [1080, 1600, {
-    base: 'linear-gradient(160deg, #0C0B0A 0%, #1A1612 50%, #2B2216 100%)',
-    orbs: [[70, 24, 700, AMBER, .55, 80], [80, 18, 300, GOLD, .9, 28], [40, 50, 500, WARM, .6, 70], [50, 95, 900, '#161210', .95, 100], [88, 48, 180, CREAM, .5, 20]],
-    pattern: { cx: 540, count: 16, step: 110, apex: 160, op: .14 }, vignette: .5 }],
   // siapa kami: lebih terang & hangat
   'siapa-kami': [1200, 900, {
     base: 'linear-gradient(135deg, #3A2B17 0%, #6B4E26 55%, #A5803F 100%)',

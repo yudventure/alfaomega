@@ -27,8 +27,9 @@ export const hero = {
   teks: 'Gereja Alfa Omega adalah keluarga orang percaya yang bertumbuh dalam firman, doa, dan pelayanan. Siapa pun Anda, dari mana pun Anda datang, kami menantikan Anda hari Minggu ini.',
   tombolUtama: { label: 'Kunjungi Kami Minggu Ini', href: '#jadwal', ikon: 'lokasi' },
   tombolKedua: { label: 'Tonton Ibadah', href: '#khotbah', ikon: 'live' },
-  gambar: '/img/hero-cahaya.jpg',          // GANTI: foto suasana ibadah (16:9)
-  gambarPonsel: '/img/hero-cahaya-ponsel.jpg', // GANTI: versi tegak (2:3)
+  // Foto saat ini dibuat dengan AI. GANTI dengan foto ibadah jemaat sendiri bila sudah ada.
+  gambar: '/img/hero-ibadah.jpg',               // 16:9, min. 2400×1350
+  gambarPonsel: '/img/hero-ibadah-ponsel.jpg',  // tegak 2:3, min. 1080×1600
 };
 
 export const siapaKami = {

@@ -85,6 +85,12 @@
       linear-gradient(180deg, rgba(18,18,18,.15) 0%, rgba(18,18,18,0) 30%, rgba(18,18,18,.55) 70%, rgba(18,18,18,.85) 100%),
       linear-gradient(90deg, rgba(18,18,18,.45) 0%, rgba(18,18,18,0) 55%);
   }
+  /* di ponsel teks hero menutupi bagian foto yang terang, jadi lapisannya lebih gelap */
+  @media (max-width: 700px) {
+    .hero-lapisan {
+      background: linear-gradient(180deg, rgba(18,18,18,.2) 0%, rgba(18,18,18,.1) 16%, rgba(18,18,18,.62) 36%, rgba(18,18,18,.85) 58%, rgba(18,18,18,.92) 100%);
+    }
+  }
   /* foto setengah lingkaran di kartu Siapa Kami */
   .foto-setengah { border-radius: 240px 20px 20px 240px / 50% 20px 20px 50%; }
   @media (max-width: 860px) { .foto-setengah { border-radius: 20px 20px 160px 160px / 20px 20px 50% 50%; } }
