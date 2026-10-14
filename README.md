@@ -25,7 +25,7 @@ npm start        # server produksi (Express) menyajikan dist/, port dari $PORT a
 
 1. hPanel → **Websites → Add website → Node.js** (butuh paket Business/Cloud), pilih **Deploy from GitHub**, lalu pilih repo `yudventure/alfaomega` dan branch yang dipakai.
 2. Pengaturan build:
-   - **Node version**: 20 (atau 22)
+   - **Node version**: 20 atau 22 (jangan 18: Tailwind v4 butuh Node 20+)
    - **Build command**: `npm run build`
    - **Output directory**: `dist`
    - **Entry file / start command**: `server.js` (`npm start`)

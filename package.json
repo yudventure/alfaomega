@@ -5,7 +5,7 @@
   "description": "Website Gereja Alfa Omega (React + Tailwind CSS), siap deploy di Hostinger Node.js",
   "type": "module",
   "engines": {
-    "node": ">=18.17"
+    "node": ">=20"
   },
   "scripts": {
     "dev": "vite",
