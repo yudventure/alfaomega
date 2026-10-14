@@ -1,0 +1,15 @@
+# Cek pembaruan paket npm setiap minggu dan buka pull request otomatis,
+# supaya kerentanan dependensi (seperti peringatan di Hostinger) tertambal sebelum menumpuk.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      timezone: Asia/Jakarta
+    open-pull-requests-limit: 5
+    groups:
+      dependensi:
+        patterns: ["*"]
+        update-types: ["minor", "patch"]

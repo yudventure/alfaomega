@@ -25,7 +25,7 @@ npm start        # server produksi (Express) menyajikan dist/, port dari $PORT a
 
 1. hPanel → **Websites → Add website → Node.js** (butuh paket Business/Cloud), pilih **Deploy from GitHub**, lalu pilih repo `yudventure/alfaomega` dan branch yang dipakai.
 2. Pengaturan build:
-   - **Node version**: 20 atau 22 (jangan 18: Tailwind v4 butuh Node 20+)
+   - **Node version**: **22.x** (disarankan). Vite 8 butuh Node 20.19+ atau 22.12+; jangan pakai 18.x
    - **Build command**: `npm run build`
    - **Output directory**: `dist`
    - **Entry file / start command**: `server.js` (`npm start`)
@@ -33,6 +33,14 @@ npm start        # server produksi (Express) menyajikan dist/, port dari $PORT a
 3. Deploy. Setiap `git push` ke branch tersebut akan men-deploy ulang.
 
 `server.js` juga menjalankan `npm run build` sendiri bila `dist/` belum ada, jadi aman kalau hosting hanya menjalankan `npm install` lalu `npm start`.
+
+### Keamanan dependensi
+
+- Build memakai **Vite 8** (Rolldown), jadi tidak ada lagi `esbuild` di pohon dependensi. `package.json` juga memuat
+  `"overrides": { "esbuild": "^0.28.1" }` sebagai pengaman bila suatu paket menariknya kembali.
+- `.github/dependabot.yml` memeriksa pembaruan npm setiap Senin dan membuka pull request otomatis.
+  Aktifkan juga **Settings → Code security → Dependabot alerts & security updates** di GitHub supaya tambalan keamanan dibuat seketika.
+- Cek manual kapan saja: `npm audit`.
 
 Dokumen Hostinger: [How to add a Node.js web app](https://www.hostinger.com/support/how-to-deploy-a-nodejs-website-in-hostinger/).
 
