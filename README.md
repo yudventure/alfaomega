@@ -3,7 +3,8 @@
 Paket identitas visual Gereja Alfa Omega: logo, warna, font, aset media sosial, aset website, mockup merchandise,
 dan 10 referensi website gereja untuk menentukan arah desain website.
 
-**Mulai dari sini:** buka [`brand/panduan-brand.html`](brand/panduan-brand.html) di browser. Halaman ini memuat seluruh panduan beserta pratinjau semua aset.
+**Mulai dari sini:** buka [`brand/panduan-brand-alfa-omega.pdf`](brand/panduan-brand-alfa-omega.pdf) (24 halaman, A4 lanskap) untuk dibagikan atau dicetak,
+atau [`brand/panduan-brand.html`](brand/panduan-brand.html) di browser untuk versi interaktif.
 
 ## Ringkasan brand
 
@@ -19,7 +20,8 @@ dan 10 referensi website gereja untuk menentukan arah desain website.
 
 ```
 brand/
-├── panduan-brand.html   panduan brand lengkap (buka di browser)
+├── panduan-brand-alfa-omega.pdf   panduan brand untuk dibagikan / dicetak
+├── panduan-brand.html   panduan brand interaktif (buka di browser)
 ├── logo/svg/            23 logo vektor: monogram, horizontal, horizontal-ringkas, bertumpuk,
 │                        bertumpuk-tagline, wordmark × hitam / emas / emas-gading / putih
 ├── logo/png/            versi PNG transparan
@@ -57,7 +59,8 @@ npm install playwright        # memakai Chromium
 python3 tools/build_mark.py   # monogram -> tools/mark.json
 python3 tools/build_logos.py  # logo SVG
 node tools/render.mjs         # semua PNG/JPG (logo, web, media sosial, mockup)
-python3 tools/build_panduan.py
+python3 tools/build_panduan.py # halaman HTML
+node tools/build_pdf.mjs       # PDF A4 lanskap
 ```
 
 `node tools/render.mjs "youtube"` hanya merender aset yang path-nya cocok dengan pola tersebut.

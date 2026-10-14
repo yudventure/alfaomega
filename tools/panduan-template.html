@@ -477,7 +477,8 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 56px; display: f
 │   └── alternatif/   profil versi terang
 ├── web/              favicon, ikon aplikasi, logo header, og-image, brand-tokens.css
 ├── mockup/           kaos hitam, kaos putih, jaket bomber, bendera, umbul-umbul
-└── panduan-brand.html  halaman ini
+├── panduan-brand.html  halaman ini
+└── panduan-brand-alfa-omega.pdf  versi PDF untuk dibagikan / dicetak
 referensi-website/README.md   10 referensi lengkap + sumber</pre></div>
   </section>
 </main>
@@ -485,16 +486,7 @@ referensi-website/README.md   10 referensi lengkap + sumber</pre></div>
 <footer class="wrap"><span>Gereja Alfa Omega · Panduan Brand v1.0</span><span>Oktober 2026</span></footer>
 
 <script>
-const COLORS = [
-  { name: 'Hitam Kekal', role: 'Warna utama: logo, teks, latar gelap', hex: '#121212', rgb: '18 18 18', cmyk: '0 0 0 93', ink: '#F6F1E7', tag: 'Inti' },
-  { name: 'Emas Mulia', role: 'Aksen: monogram, tombol, garis', hex: '#C8A25A', rgb: '200 162 90', cmyk: '0 19 55 22', ink: '#121212', tag: 'Inti' },
-  { name: 'Putih Gading', role: 'Latar terang, teks di latar gelap', hex: '#F6F1E7', rgb: '246 241 231', cmyk: '0 2 6 4', ink: '#121212', tag: 'Inti' },
-  { name: 'Emas Tua', role: 'Emas untuk judul besar di latar terang', hex: '#9A7633', rgb: '154 118 51', cmyk: '0 23 67 40', ink: '#F6F1E7', tag: 'Pendukung' },
-  { name: 'Emas Muda', role: 'Kutipan ayat di latar gelap', hex: '#E6CF95', rgb: '230 207 149', cmyk: '0 10 35 10', ink: '#121212', tag: 'Pendukung' },
-  { name: 'Arang', role: 'Kartu dan permukaan di mode gelap', hex: '#2A2826', rgb: '42 40 38', cmyk: '0 5 10 84', ink: '#F6F1E7', tag: 'Pendukung' },
-  { name: 'Abu Batu', role: 'Keterangan, teks sekunder di latar gelap', hex: '#8A8378', rgb: '138 131 120', cmyk: '0 5 13 46', ink: '#121212', tag: 'Pendukung' },
-  { name: 'Merah Anggur', role: 'Aksen liturgis: Perjamuan Kudus, Jumat Agung', hex: '#6E1E2A', rgb: '110 30 42', cmyk: '0 73 62 57', ink: '#F6F1E7', tag: 'Pendukung' },
-];
+const COLORS = {{COLORS_JSON}};
 const sw = document.getElementById('swatches');
 sw.innerHTML = COLORS.map(c => `<div class="sw">
   <div class="chip" style="background:${c.hex};color:${c.ink}">${c.tag}</div>
