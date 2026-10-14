@@ -2,7 +2,7 @@
 // sampai foto gereja asli tersedia. Dirender lewat render.mjs ("site/").
 import { C, page, markSvg, chevrons } from './lib.mjs';
 
-const DIR = '../site/img';
+const DIR = '../public/img';
 
 // Lingkaran cahaya lembut (bokeh). c = [x%, y%, ukuran px, warna, opasitas, blur px]
 const orb = ([x, y, s, col, op, bl]) =>
