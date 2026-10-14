@@ -24,7 +24,8 @@ const RASTER = [
   ...['ibadah', 'renungan', 'acara', 'pemuda', 'doa', 'komsel', 'info'].map(n => `media-sosial/instagram/highlight-${n}.png`),
   'media-sosial/instagram/post-ayat-1080x1350.png', 'media-sosial/instagram/post-selamat-datang-1080x1350.png',
   'media-sosial/instagram/story-ibadah-1080x1920.png', 'media-sosial/tiktok/cover-video-1080x1920.png',
-  'web/og-image-1200x630.png',
+  ...['beranda', 'ibadah', 'kunjungi', 'renungan', 'khotbah', 'acara', 'komsel', 'persembahan', 'tentang', 'kontak'].map(n => `web/og/og-${n}.jpg`),
+  'web/hero/hero-gelap-2560x1440.jpg', 'web/hero/hero-terang-2560x1440.jpg', 'web/placeholder/placeholder-gelap-16x9.jpg',
   'mockup/kaos-hitam.jpg', 'mockup/kaos-putih.jpg', 'mockup/jaket-bomber.jpg', 'mockup/bendera.jpg', 'mockup/umbul-umbul.jpg',
 ];
 execFileSync('python3', [path.join(TOOLS, 'pdf_images.py'), ...RASTER], { stdio: 'inherit' });
@@ -35,9 +36,10 @@ const asset = (rel) => 'file://' + path.join(BRAND, rel);
 const head = (eyebrow, title, lede = '') => `<div class="head"><div class="eyebrow">${eyebrow}</div><h2>${title}</h2>${lede ? `<p class="lede">${lede}</p>` : ''}</div>`;
 const fig = (inner, cap) => `<figure>${inner}${cap ? `<figcaption>${cap}</figcaption>` : ''}</figure>`;
 const shot = (rel, alt = '', style = '') => `<img class="shot" src="${img(rel)}" alt="${alt}" style="${style}">`;
-const pattern = (w, h, opts) => `<svg class="pattern" viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid slice">
-  <defs><radialGradient id="glow${w}${h}" cx="${opts.gx || '50%'}" cy="${opts.gy || '50%'}" r="60%"><stop offset="0" stop-color="#2E2619"/><stop offset=".6" stop-color="#181512"/><stop offset="1" stop-color="#121212"/></radialGradient></defs>
-  <rect width="${w}" height="${h}" fill="url(#glow${w}${h})"/>${chevrons({ cx: opts.cx ?? w / 2, cy: 0, count: opts.count || 14, step: -(opts.step || 60), opacity: opts.op || 0.2, width: 1, start: -(opts.apex || 80) })}</svg>`;
+let patternId = 0;
+const pattern = (w, h, opts) => { const id = `glow${patternId++}`; return `<svg class="pattern" viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid slice">
+  <defs><radialGradient id="${id}" cx="${opts.gx || '50%'}" cy="${opts.gy || '50%'}" r="60%"><stop offset="0" stop-color="#2E2619"/><stop offset=".6" stop-color="#181512"/><stop offset="1" stop-color="#121212"/></radialGradient></defs>
+  <rect width="${w}" height="${h}" fill="url(#${id})"/>${chevrons({ cx: opts.cx ?? w / 2, cy: 0, count: opts.count || 14, step: -(opts.step || 60), opacity: opts.op || 0.2, width: 1, start: -(opts.apex || 80) })}</svg>`; };
 
 // ---------- halaman ----------
 // tiap halaman: { sec (nama bab untuk daftar isi & footer), dark, body, bare (tanpa footer) }
@@ -73,7 +75,7 @@ add('Logo', `${head('Logo', 'Makna & konstruksi', 'Logo asli dibangun ulang seba
   </div>`);
 
 // 4. Susunan logo
-add('Logo', `${head('Logo', 'Empat susunan')}
+add('Logo', `${head('Logo', 'Enam susunan logo')}
   <div class="cols c3 tight">
     ${fig(`<div class="tile i h52"><img src="${asset('logo/svg/alfaomega-horizontal-hitam.svg')}" style="width:68mm"></div>`, '<b>Horizontal (utama).</b> Header website, kop surat, banner lebar.')}
     ${fig(`<div class="tile i h52"><img src="${asset('logo/svg/alfaomega-horizontal-ringkas-hitam.svg')}" style="width:62mm"></div>`, '<b>Horizontal ringkas.</b> Ruang sempit: header ponsel, tanda tangan email.')}
@@ -88,7 +90,7 @@ const V = [
   ['hitam', 'i', 'Hitam', 'di latar terang'], ['emas', 'k', 'Emas', 'di latar hitam'],
   ['emas-gading', 'k', 'Emas-gading', 'monogram emas, teks gading'], ['putih', 'w', 'Putih', 'di foto atau warna gelap'],
 ];
-add('Logo', `${head('Logo', 'Empat varian warna', 'Setiap susunan tersedia dalam empat varian ini, sebagai SVG (vektor) dan PNG transparan. Jangan membuat varian warna lain.')}
+add('Logo', `${head('Logo', 'Empat varian warna', 'Setiap susunan tersedia dalam keempat varian ini (monogram cukup tiga: hitam, emas, putih), sebagai SVG (vektor) dan PNG transparan. Jangan membuat varian warna lain.')}
   <div class="cols c4 tight">
     ${V.map(([v, bg, n, d]) => fig(`<div class="tile ${bg} h52">${v === 'emas-gading' ? markSvg({ h: 120, fill: C.emas }) : `<img src="${asset(`logo/svg/alfaomega-monogram-${v}.svg`)}" style="height:32mm">`}</div>
       <div class="tile ${bg} h28" style="margin-top:3mm"><img src="${asset(`logo/svg/alfaomega-horizontal-ringkas-${v}.svg`)}" style="width:52mm"></div>`, `<b>${n}</b>, ${d}`)).join('')}
@@ -123,7 +125,7 @@ add('Logo', `${head('Logo', 'Ruang aman & ukuran minimum')}
   </div>`);
 
 // 7. Warna
-add('Warna', `${head('Warna', 'Hitam, emas, gading', 'Hitam untuk keteguhan Allah yang kekal, emas untuk kemuliaan-Nya, gading untuk terang dan kesucian. Empat warna pendukung dipakai secukupnya.')}
+add('Warna', `${head('Warna', 'Hitam, emas, gading', 'Hitam untuk keteguhan Allah yang kekal, emas untuk kemuliaan-Nya, gading untuk terang dan kesucian. Lima warna pendukung dipakai secukupnya.')}
   <div class="cols c4 sw-grid">
     ${KONTEN.warna.map(c => `<div class="sw"><div class="chip" style="background:${c.hex};color:${c.ink}">${c.tag}</div>
       <div class="info"><div class="name">${c.name}</div><div class="role">${c.role}</div>
@@ -154,7 +156,7 @@ add('Tipografi', `${head('Tipografi & elemen', 'Hierarki dan pola Gema Alfa')}
       <div class="row"><span>Teks · Jakarta 400</span><div style="font-size:9pt">Gereja Alfa Omega adalah keluarga orang percaya yang bertumbuh bersama dalam firman, doa, dan pelayanan.</div></div>
     </div>
     <div>
-      ${fig(shot('web/og-image-1200x630.png'), '<b>Pola Gema Alfa.</b> Chevron tipis bersudut sama dengan kaki huruf A (64°), bertumpuk dan memudar. Opasitas 15–25%, jangan menimpa teks kecil.')}
+      ${fig(shot('web/og/og-beranda.jpg'), '<b>Pola Gema Alfa.</b> Chevron tipis bersudut sama dengan kaki huruf A (64°), bertumpuk dan memudar. Opasitas 15–25%, jangan menimpa teks kecil.')}
       <div class="cols c2 tight" style="margin-top:4mm">
         ${fig(`<div class="tile h30" style="background:linear-gradient(135deg,#EBD9A6 0%,#C8A25A 38%,#A9843F 70%,#D8BC7A 100%);border:0">${markSvg({ h: 70, fill: C.hitam })}</div>`, '<b>Gradien emas</b>, layar saja.')}
         ${fig(`<div class="tile h30" style="background:#C8A25A;border:0">${markSvg({ h: 70, fill: C.hitam })}</div>`, '<b>Emas rata / foil</b>, untuk cetak.')}
@@ -164,11 +166,11 @@ add('Tipografi', `${head('Tipografi & elemen', 'Hierarki dan pola Gema Alfa')}
 
 // 10. Media sosial: profil + YouTube banner
 add('Media sosial', `${head('Media sosial', 'Foto profil & banner YouTube', 'Foto profil dibuat sama di keempat platform supaya jemaat langsung mengenali akun resmi.')}
-  <div class="cols" style="grid-template-columns:52mm 70mm minmax(0,1fr)">
+  <div class="cols" style="grid-template-columns:48mm 84mm minmax(0,1fr)">
     ${fig(shot('media-sosial/instagram/profil-instagram-1080x1080.png', '', 'border-radius:50%'), '<b>Profil utama</b>')}
-    <div><table><thead><tr><th>Platform</th><th>File</th><th>Tampil</th></tr></thead><tbody>
-      <tr><td>Instagram</td><td>1080²</td><td>110–320 px</td></tr><tr><td>Facebook</td><td>1080²</td><td>176–196 px</td></tr>
-      <tr><td>YouTube</td><td>800²</td><td>98 px</td></tr><tr><td>TikTok</td><td>1080²</td><td>200 px</td></tr></tbody></table>
+    <div><table class="nw"><thead><tr><th>Platform</th><th>File</th><th>Keterangan</th></tr></thead><tbody>
+      <tr><td>Instagram</td><td>1080 × 1080</td><td>tampil ±110 px di ponsel</td></tr><tr><td>Facebook</td><td>1080 × 1080</td><td>tampil 176 px (komputer), 196 px (ponsel)</td></tr>
+      <tr><td>YouTube</td><td>800 × 800</td><td>ukuran anjuran YouTube, tampil 98 px</td></tr><tr><td>TikTok</td><td>1080 × 1080</td><td>minimal 200 × 200 px</td></tr></tbody></table>
       <p class="small" style="margin-top:3mm">Semua dipotong lingkaran oleh platform. Versi terang ada di folder <b>alternatif</b>.</p></div>
     ${fig(shot('media-sosial/youtube/banner-youtube-2560x1440.png'), '<b>Banner YouTube</b> · 2560 × 1440. Logo berada di area aman 1546 × 423 di tengah, jadi tidak terpotong di ponsel, laptop, maupun TV.')}
   </div>`);
@@ -181,7 +183,7 @@ add('Media sosial', `${head('Media sosial', 'YouTube & Facebook')}
   </div>
   <div class="cols" style="grid-template-columns:40mm minmax(0,1fr);margin-top:6mm;align-items:center">
     <div class="tile k h34"><img src="${asset('media-sosial/youtube/watermark-150x150.png')}" style="height:20mm"></div>
-    <p class="body"><b>Watermark video</b> · 150 × 150 PNG putih transparan. Pasang di YouTube Studio → Kustomisasi → Branding, supaya monogram muncul di pojok setiap video.</p>
+    <p class="body"><b>Watermark video</b> · 150 × 150 PNG putih transparan. Pasang di YouTube Studio → Penyesuaian (Customization) → Branding → Watermark video, supaya monogram muncul di pojok setiap video.</p>
   </div>`);
 
 // 12. Instagram
@@ -201,30 +203,53 @@ add('Media sosial', `${head('Media sosial', 'TikTok', 'TikTok juga tidak punya b
     ${fig(shot('media-sosial/tiktok/cover-video-1080x1920.png', '', 'height:118mm;width:auto'), '<b>Sampul video</b> · 1080 × 1920')}
     ${fig(shot('media-sosial/instagram/profil-instagram-1080x1080.png', '', 'border-radius:50%'), '<b>Profil TikTok</b> · 1080 × 1080')}
     <div class="notes">
-      <div class="note"><b>Area aman</b><span>Judul di tengah layar. Hindari 150 px teratas, ±420 px terbawah, dan ±140 px di kanan karena tertutup tombol aplikasi.</span></div>
+      <div class="note"><b>Area aman</b><span>Judul di tengah layar. Hindari ±150 px teratas, ±420 px terbawah, dan ±140 px di kanan karena tertutup tombol aplikasi.</span></div>
       <div class="note"><b>Grid profil</b><span>TikTok memotong sampul jadi 3:4 di tengah. Judul seri tetap terbaca di grid.</span></div>
       <div class="note"><b>Seri konten</b><span>Ganti label (RENUNGAN, KESAKSIAN, PUJIAN) dan judul; pertahankan latar, logo, dan susunannya.</span></div>
     </div>
   </div>`);
 
-// 14. Website
-add('Website', `${head('Website', 'Siap dipasang di website', 'Logo header untuk latar terang dan gelap, favicon, ikon aplikasi, gambar pratinjau link, dan brand-tokens.css berisi warna dan font.')}
-  <div class="cols c2">
-    <div class="stack">
-      <div class="cols c2 tight">
-        ${fig(`<div class="tile i h30"><img src="${asset('web/logo-header-terang.svg')}" style="width:48mm"></div>`, '<b>logo-header-terang.svg</b>')}
-        ${fig(`<div class="tile k h30"><img src="${asset('web/logo-header-gelap.svg')}" style="width:48mm"></div>`, '<b>logo-header-gelap.svg</b>')}
+// 14–15. Website
+const IKON = ['ibadah', 'alkitab', 'renungan', 'khotbah', 'pujian', 'doa', 'baptisan', 'persembahan', 'komsel', 'pemuda', 'anak', 'acara', 'jam', 'lokasi', 'live',
+  'galeri', 'telepon', 'email', 'pesan', 'info', 'pengguna', 'cari', 'menu', 'tutup', 'panah-kanan', 'panah-bawah', 'unduh', 'bagikan', 'tautan-luar'];
+add('Website', `${head('Website', 'Kit website: logo & ikon', 'Folder brand/web siap disalin ke folder publik website. Panduan lengkap tiap file ada di brand/web/README.md, dan contoh pemakaiannya di brand/web/contoh.html.')}
+  <div class="cols c4 tight">
+    ${fig(`<div class="tile i h28"><img src="${asset('web/logo/logo-header-terang.svg')}" style="width:44mm"></div>`, '<b>logo-header-terang</b> · SVG, PNG 48 px & @2x')}
+    ${fig(`<div class="tile k h28"><img src="${asset('web/logo/logo-header-gelap.svg')}" style="width:44mm"></div>`, '<b>logo-header-gelap</b> · SVG, PNG 48 px & @2x')}
+    ${fig(`<div class="tile k h28"><img src="${asset('web/logo/logo-footer-gelap.svg')}" style="height:20mm"></div>`, '<b>logo-footer</b> terang/gelap · logo bertumpuk + tagline')}
+    ${fig(`<div class="tile i h28" style="grid-auto-flow:column;gap:6mm"><img src="${asset('web/icon-512.png')}" style="height:16mm"><img src="${asset('web/favicon-48.png')}" style="height:9mm"><img src="${asset('web/favicon-32.png')}" style="height:6mm"><img src="${asset('web/favicon-16.png')}" style="height:3.5mm"></div>`, '<b>Favicon & ikon aplikasi</b> · .ico, .svg, 16–512 px, maskable')}
+  </div>
+  <div class="eyebrow" style="margin:6mm 0 3mm">${IKON.length} ikon garis · folder ikon/ + ikon-sprite.svg</div>
+  <div class="ikon-grid">${IKON.map(n => `<div><img src="${asset(`web/ikon/${n}.svg`)}"><span>${n}</span></div>`).join('')}</div>
+  <p class="small" style="margin-top:4mm">Ikon berukuran 24 × 24 dengan garis 1,75 px dan warna mengikuti teks (currentColor), jadi bisa dibuat hitam, emas, atau gading lewat CSS.
+  Untuk ikon media sosial (Instagram, Facebook, YouTube, TikTok, WhatsApp) pakai logo resmi masing-masing platform, misalnya dari Simple Icons.</p>`);
+
+const OGS = ['beranda', 'ibadah', 'kunjungi', 'renungan', 'khotbah', 'acara', 'komsel', 'persembahan', 'tentang', 'kontak'];
+add('Website', `${head('Website', 'Kit website: gambar, pola & kode')}
+  <div class="cols" style="grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:8mm">
+    <div>
+      <div class="eyebrow" style="margin-bottom:2.5mm">Gambar share per halaman · og/ · 1200 × 630</div>
+      <div class="cols c5" style="gap:2.5mm">${OGS.map(n => `<figure><img class="shot" src="${img(`web/og/og-${n}.jpg`)}"><figcaption style="margin-top:1mm">${n}</figcaption></figure>`).join('')}</div>
+      <div class="eyebrow" style="margin:5mm 0 2.5mm">Latar hero · pola · placeholder · loader</div>
+      <div class="cols c5" style="gap:2.5mm">
+        ${fig(shot('web/hero/hero-gelap-2560x1440.jpg'), 'hero gelap')}
+        ${fig(shot('web/hero/hero-terang-2560x1440.jpg'), 'hero terang')}
+        ${fig(`<div class="tile i" style="aspect-ratio:16/9;background:#F6F1E7 url('${asset('web/pola/pola-ubin-emas.svg')}') 0 0 / 7mm auto repeat"></div>`, 'pola ubin')}
+        ${fig(shot('web/placeholder/placeholder-gelap-16x9.jpg'), 'placeholder')}
+        ${fig(`<div class="tile k" style="aspect-ratio:16/9"><img src="${asset('web/loader/loader-emas.svg')}" style="height:9mm"></div>`, 'loader (animasi)')}
       </div>
-      ${fig(`<div class="tile i h34" style="grid-auto-flow:column;gap:8mm"><img src="${asset('web/icon-512.png')}" style="height:22mm"><img src="${asset('web/favicon-48.png')}" style="height:12mm"><img src="${asset('web/favicon-32.png')}" style="height:8mm"><img src="${asset('web/favicon-16.png')}" style="height:4mm"></div>`, '<b>Favicon & ikon aplikasi</b> · 16, 32, 48, 180, 192, 512 px, favicon.ico, favicon.svg, site.webmanifest')}
-      <pre>&lt;link rel="icon" href="/favicon.ico" sizes="any"&gt;
+    </div>
+    <div class="stack">
+      <pre>&lt;link rel="icon" href="/favicon.ico" sizes="48x48"&gt;
 &lt;link rel="icon" href="/favicon.svg" type="image/svg+xml"&gt;
 &lt;link rel="apple-touch-icon" href="/apple-touch-icon.png"&gt;
 &lt;link rel="manifest" href="/site.webmanifest"&gt;
 &lt;meta name="theme-color" content="#121212"&gt;
-&lt;meta property="og:image" content="/og-image-1200x630.png"&gt;
-&lt;link rel="stylesheet" href="/brand-tokens.css"&gt;</pre>
+&lt;link rel="stylesheet" href="/css/brand-tokens.css"&gt;
+&lt;meta property="og:image"
+  content="https://DOMAIN-GEREJA/og/og-beranda.jpg"&gt;</pre>
+      <p class="small">Kode lengkap ada di <b>head-snippet.html</b>. Font dipasang sendiri (WOFF2) lewat <b>css/fonts.css</b>; warna dan font juga tersedia sebagai <b>tokens.json</b> dan <b>tailwind-preset.js</b> untuk developer.</p>
     </div>
-    ${fig(shot('web/og-image-1200x630.png'), '<b>og-image-1200x630.png</b>, muncul saat link website dibagikan di WhatsApp, Facebook, atau Telegram.')}
   </div>`);
 
 // 15–19. Mockup
@@ -275,7 +300,7 @@ add('File', `${head('File', 'Isi paket brand', 'Semua file ada di repositori alf
 ├── logo/asli/       logo asli sebagai arsip
 ├── fonts/           Cinzel, Cormorant Garamond, Plus Jakarta Sans
 ├── media-sosial/    instagram, facebook, youtube, tiktok, alternatif
-├── web/             favicon, ikon, logo header, og-image, tokens CSS
+├── web/             kit website: favicon, logo, ikon, og, hero, font, CSS
 ├── mockup/          kaos, jaket, bendera, umbul-umbul
 ├── panduan-brand.html
 └── panduan-brand-alfa-omega.pdf
@@ -286,7 +311,7 @@ referensi-website/   10 referensi lengkap + sumber</pre>
       <tr><td>Banner YouTube</td><td>media-sosial/youtube/banner-youtube-2560x1440.png</td></tr>
       <tr><td>Sampul Facebook</td><td>media-sosial/facebook/sampul-facebook-1640x624.png</td></tr>
       <tr><td>Sorotan Instagram</td><td>media-sosial/instagram/highlight-*.png</td></tr>
-      <tr><td>Header website</td><td>web/logo-header-terang.svg · -gelap.svg</td></tr>
+      <tr><td>Header website</td><td>web/logo/logo-header-terang.svg · -gelap.svg</td></tr>
       <tr><td>Percetakan / konveksi</td><td>logo/svg/*.svg</td></tr>
       <tr><td>Desain di Canva</td><td>logo/png/*.png + fonts/</td></tr></tbody></table>
   </div>`);
@@ -352,6 +377,7 @@ img.shot { width: 100%; display: block; border-radius: 1.2mm; border: .25mm soli
 .note b { font: 600 13pt/1.1 'Cormorant Garamond' }
 .note span { font-size: 8.2pt; color: var(--muted) }
 table { border-collapse: collapse; width: 100%; font-size: 8pt; margin-top: 4mm }
+table.nw td:nth-child(2) { white-space: nowrap }
 th, td { text-align: left; padding: 2.1mm 3mm 2.1mm 0; border-bottom: .25mm solid var(--line); vertical-align: top }
 th { font: 600 6.5pt/1.3 'Plus Jakarta Sans'; letter-spacing: .16em; text-transform: uppercase; color: var(--muted) }
 pre { margin: 0; background: #121212; color: #E9E2D3; border-radius: 1.2mm; padding: 4mm 5mm; font: 7.2pt/1.6 ui-monospace, Menlo, Consolas, monospace; white-space: pre; overflow: hidden }
@@ -434,6 +460,10 @@ img.mock { position: absolute; left: 0; top: 0; width: 297mm; height: 198mm; obj
 .ref.feat ol { margin: 0; padding-left: 4mm; display: grid; gap: 1.2mm; font-size: 7.2pt; line-height: 1.4 }
 .ref.feat b { font-weight: 600 }
 .tree { font-size: 7.6pt; line-height: 1.75 }
+.ikon-grid { display: grid; grid-template-columns: repeat(15, minmax(0, 1fr)); gap: 2mm }
+.ikon-grid div { display: grid; justify-items: center; gap: 1.2mm; padding: 2.6mm 1mm 2mm; border: .25mm solid var(--line); border-radius: 1.2mm; background: var(--surface) }
+.ikon-grid img { width: 6.5mm; height: 6.5mm }
+.ikon-grid span { font-size: 5.4pt; color: var(--muted); text-align: center; overflow-wrap: anywhere }
 `;
 
 const pages = P.map((p, i) => {

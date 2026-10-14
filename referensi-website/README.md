@@ -10,34 +10,36 @@ dan dipilih supaya **arah desainnya beragam**, jadi tim bisa memilih.
 
 ## Ringkasan
 
-| # | Gereja | Negara | Arah desain |
-|---|---|---|---|
-| 1 | [Elevation Church](https://elevationchurch.org) | Amerika Serikat | Sinematik, video hero |
-| 2 | [Passion City Church](https://passioncitychurch.com) | Amerika Serikat | Minimalis bersih + video latar |
-| 3 | [VOUS Church](https://www.vouschurch.com) | Amerika Serikat | Editorial hitam-putih |
-| 4 | [Transformation Church](https://transformchurch.us) | Amerika Serikat | Gelap & tebal dengan satu aksen hangat |
-| 5 | [Mariners Church](https://www.marinerschurch.org) | Amerika Serikat | Hangat, foto jemaat asli |
-| 6 | [Life.Church](https://www.life.church) | Amerika Serikat | Seperti aplikasi, digital-first |
-| 7 | [Hillsong Church](https://hillsong.com) | Australia | Minimalis gelap, global, multi-bahasa |
-| 8 | [St Paul's Cathedral](https://www.stpauls.co.uk) | Inggris | Klasik, liturgis, elegan |
-| 9 | [City Harvest Church](https://www.chc.org.sg) | Singapura | Megachurch Asia, multi-bahasa |
-| 10 | [JPCC](https://www.jpcc.org) | Indonesia | Acuan lokal, terhubung aplikasi |
+| # | Gereja | Negara | Arah desain | Kelompok |
+|---|---|---|---|---|
+| 1 | [Elevation Church](https://elevationchurch.org) | Amerika Serikat | Sinematik, video hero | Arah A |
+| 2 | [VOUS Church](https://www.vouschurch.com) | Amerika Serikat | Editorial hitam-putih | Arah A |
+| 3 | [Transformation Church](https://transformchurch.us) | Amerika Serikat | Gelap & tebal dengan satu aksen hangat | Arah A |
+| 4 | [Hillsong Church](https://hillsong.com) | Australia | Minimalis gelap, global, multi-bahasa | Arah A |
+| 5 | [Passion City Church](https://passioncitychurch.com) | Amerika Serikat | Minimalis bersih + video latar | Arah B |
+| 6 | [St Paul's Cathedral](https://www.stpauls.co.uk) | Inggris | Klasik, liturgis, elegan | Arah B |
+| 7 | [Mariners Church](https://www.marinerschurch.org) | Amerika Serikat | Hangat, foto jemaat asli | Arah C |
+| 8 | [Life.Church](https://www.life.church) | Amerika Serikat | Seperti aplikasi, digital-first | Arah C |
+| 9 | [City Harvest Church](https://www.chc.org.sg) | Singapura | Megachurch Asia, multi-bahasa | Arah C |
+| 10 | [JPCC](https://www.jpcc.org) | Indonesia | Acuan lokal, terhubung aplikasi | Arah C |
 
 ## Tiga arah yang paling cocok dengan brand Alfa Omega
 
 Brand Alfa Omega memakai hitam, emas, dan huruf serif klasik. Referensi di atas bisa dikelompokkan jadi tiga arah:
 
-- **Arah A, Kemuliaan Gelap.** Latar hitam, video ibadah layar penuh, aksen emas. Lihat #1 Elevation, #4 Transformation, #7 Hillsong.
+- **Arah A, Kemuliaan Gelap.** Latar hitam, video ibadah layar penuh, aksen emas. Lihat #1 Elevation, #2 VOUS, #3 Transformation, #4 Hillsong.
   Paling dramatis dan paling dekat dengan logo emas di atas hitam.
-- **Arah B, Klasik Terang.** Latar gading, banyak ruang kosong, judul serif besar. Lihat #8 St Paul's dan #2 Passion City.
+- **Arah B, Klasik Terang.** Latar gading, banyak ruang kosong, judul serif besar. Lihat #5 Passion City dan #6 St Paul's.
   Terkesan tenang dan berwibawa, paling mudah dibaca jemaat segala usia.
-- **Arah C, Hangat & Komunitas.** Didominasi foto jemaat sendiri, ajakan "Kunjungi Kami" yang jelas. Lihat #5 Mariners, #6 Life.Church, #10 JPCC.
+- **Arah C, Hangat & Komunitas.** Didominasi foto jemaat sendiri, ajakan "Kunjungi Kami" yang jelas. Lihat #7 Mariners, #8 Life.Church, #9 City Harvest, #10 JPCC.
   Paling ramah untuk pengunjung baru.
 
 Rekomendasi: gabungkan **B untuk halaman-halaman isi** (jadwal, renungan, tentang kami) dengan **hero gelap dari A di beranda**.
 Tombol dan garis emas menjadi benang merah keduanya.
 
 ---
+
+## Arah A · Kemuliaan Gelap
 
 ### 1. Elevation Church
 - **URL:** https://elevationchurch.org
@@ -47,14 +49,7 @@ Tombol dan garis emas menjadi benang merah keduanya.
 - **Yang bisa dipinjam:** Hero video dengan lapisan hitam 60–70% dan satu tombol emas ("Tonton Ibadah" / "Ibadah Minggu Ini").
   Halaman "Pertama Kali ke Sini?". Ringkasan khotbah + pertanyaan diskusi untuk Komsel.
 
-### 2. Passion City Church
-- **URL:** https://passioncitychurch.com
-- **Arah:** Minimalis bersih + video latar layar penuh
-- **Kenapa bagus:** Masuk nominasi Awwwards. Video latar layar penuh, ruang kosong lega, tipografi mudah dibaca, dan pengunjung langsung diarahkan ke dua tombol utama.
-  Ada halaman "Start Here" untuk pendatang baru dan portal tonton yang terpisah.
-- **Yang bisa dipinjam:** Kesan premium dari ruang kosong + judul besar, cocok dengan wordmark Cinzel. Satu halaman "Mulai di Sini" sebagai pintu masuk jemaat baru.
-
-### 3. VOUS Church
+### 2. VOUS Church
 - **URL:** https://www.vouschurch.com
 - **Arah:** Editorial modern hitam-putih
 - **Kenapa bagus:** Estetika monokrom yang tegas dan premium. Beranda memutar klip ibadah tanpa suara.
@@ -62,7 +57,7 @@ Tombol dan garis emas menjadi benang merah keduanya.
 - **Yang bisa dipinjam:** Dasar monokrom dengan emas sebagai pengganti putih. Kartu jadwal ibadah dengan video pendek suasana ibadah.
   Halaman kampanye bergaya editorial (Paskah, Natal, minggu doa).
 
-### 4. Transformation Church
+### 3. Transformation Church
 - **URL:** https://transformchurch.us
 - **Arah:** Gelap dan tebal dengan satu aksen hangat
 - **Kenapa bagus:** Masuk daftar "50 Best Church Website Designs" ChurchCreation. Latar hampir hitam dengan aksen oranye-keemasan,
@@ -70,23 +65,7 @@ Tombol dan garis emas menjadi benang merah keduanya.
 - **Yang bisa dipinjam:** Paling dekat dengan identitas hitam-emas Alfa Omega. Grid artwork seri khotbah. Tombol "Persembahan" tetap di header.
   Halaman kampanye doa & puasa. (Jangan tertukar dengan gereja lain bernama sama di domain berbeda.)
 
-### 5. Mariners Church
-- **URL:** https://www.marinerschurch.org
-- **Arah:** Hangat, komunitas, berbasis foto
-- **Kenapa bagus:** Foto baptisan asli di beranda membuat situs terasa hangat. Setiap kampus punya halaman "Plan a Visit" lengkap
-  (jam ibadah, parkir, program anak), plus pendaftaran anak online sebelum datang.
-- **Yang bisa dipinjam:** Foto jemaat Alfa Omega sendiri (bukan foto stok) dengan garis tipis emas. Tombol "Daftar Baptisan".
-  Formulir Sekolah Minggu sebelum kunjungan. Penjelasan "apa yang akan Anda alami".
-
-### 6. Life.Church
-- **URL:** https://www.life.church
-- **Arah:** Multi-kampus, terasa seperti aplikasi
-- **Kenapa bagus:** Beranda hampir kosong dan hanya menyisakan satu langkah berikutnya yang jelas. Hero video lebar dengan jam ibadah tepat di bawahnya,
-  navigasi ringkas (Plan a Visit, Watch, Give, Groups), dan ibadah online yang sangat lengkap.
-- **Yang bisa dipinjam:** Prinsip "satu halaman, satu ajakan utama". Navigasi 4–5 menu. Kartu "Langkah Berikutnya"
-  (Baptis, Komsel, Melayani, Kelas). Navigasi bawah seperti aplikasi di ponsel.
-
-### 7. Hillsong Church
+### 4. Hillsong Church
 - **URL:** https://hillsong.com
 - **Arah:** Minimalis gelap, global, multi-bahasa
 - **Kenapa bagus:** Beranda gelap dan atmosferik dengan sangat sedikit teks. Ada pemilih wilayah/negara,
@@ -94,7 +73,16 @@ Tombol dan garis emas menjadi benang merah keduanya.
 - **Yang bisa dipinjam:** Suasana gelap yang sinematik. Tombol bahasa ID/EN di header. Struktur halaman per cabang bila nanti ada cabang.
   Dipakai sebagai referensi tampilan saja.
 
-### 8. St Paul's Cathedral
+## Arah B · Klasik Terang
+
+### 5. Passion City Church
+- **URL:** https://passioncitychurch.com
+- **Arah:** Minimalis bersih + video latar layar penuh
+- **Kenapa bagus:** Masuk nominasi Awwwards. Video latar layar penuh, ruang kosong lega, tipografi mudah dibaca, dan pengunjung langsung diarahkan ke dua tombol utama.
+  Ada halaman "Start Here" untuk pendatang baru dan portal tonton yang terpisah.
+- **Yang bisa dipinjam:** Kesan premium dari ruang kosong + judul besar, cocok dengan wordmark Cinzel. Satu halaman "Mulai di Sini" sebagai pintu masuk jemaat baru.
+
+### 6. St Paul's Cathedral
 - **URL:** https://www.stpauls.co.uk
 - **Arah:** Klasik, liturgis, elegan
 - **Kenapa bagus:** Identitas barunya (Pentagram, 2026) memakai wordmark yang terinspirasi ukiran batu dan monogram dari huruf wordmark,
@@ -102,6 +90,24 @@ Tombol dan garis emas menjadi benang merah keduanya.
   Identitas baru ini diterapkan bertahap, jadi cek tampilan situsnya saat ini.
 - **Yang bisa dipinjam:** Acuan paling relevan untuk wordmark serif + monogram Alfa Omega. Pasangan serif display + sans bersih
   (sudah kita pakai: Cinzel/Cormorant + Plus Jakarta Sans). Jadwal ibadah dan kalender acara yang rapi.
+
+## Arah C · Hangat & Komunitas
+
+### 7. Mariners Church
+- **URL:** https://www.marinerschurch.org
+- **Arah:** Hangat, komunitas, berbasis foto
+- **Kenapa bagus:** Foto baptisan asli di beranda membuat situs terasa hangat. Setiap kampus punya halaman "Plan a Visit" lengkap
+  (jam ibadah, parkir, program anak), plus pendaftaran anak online sebelum datang.
+- **Yang bisa dipinjam:** Foto jemaat Alfa Omega sendiri (bukan foto stok) dengan garis tipis emas. Tombol "Daftar Baptisan".
+  Formulir Sekolah Minggu sebelum kunjungan. Penjelasan "apa yang akan Anda alami".
+
+### 8. Life.Church
+- **URL:** https://www.life.church
+- **Arah:** Multi-kampus, terasa seperti aplikasi
+- **Kenapa bagus:** Beranda hampir kosong dan hanya menyisakan satu langkah berikutnya yang jelas. Hero video lebar dengan jam ibadah tepat di bawahnya,
+  navigasi ringkas (Plan a Visit, Watch, Give, Groups), dan ibadah online yang sangat lengkap.
+- **Yang bisa dipinjam:** Prinsip "satu halaman, satu ajakan utama". Navigasi 4–5 menu. Kartu "Langkah Berikutnya"
+  (Baptis, Komsel, Melayani, Kelas). Navigasi bawah seperti aplikasi di ponsel.
 
 ### 9. City Harvest Church
 - **URL:** https://www.chc.org.sg

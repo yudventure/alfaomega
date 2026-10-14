@@ -4,6 +4,7 @@
     -> brand/panduan-brand.html        (dokumen HTML lengkap, dibuka langsung dari folder brand/)
     -> tools/.cache/panduan-fragmen.html (versi tanpa <html>/<head> untuk dipublikasikan sebagai Artifact)
 """
+import glob
 import json
 import os
 
@@ -30,7 +31,7 @@ def build():
     hl = "\n        ".join(
         f'<figure><img class="shot" src="media-sosial/instagram/highlight-{n}.png" alt="Sampul sorotan {n}" loading="lazy"><figcaption><b>{n.capitalize()}</b></figcaption></figure>'
         for n in HIGHLIGHTS)
-    t = (t.replace("{{MARK_D}}", MARK["d"]).replace("{{RAYS}}", rays()).replace("{{HIGHLIGHTS}}", hl)
+    t = (t.replace("{{MARK_D}}", MARK["d"]).replace("{{RAYS}}", rays()).replace("{{HIGHLIGHTS}}", hl).replace("{{N_IKON}}", str(len(glob.glob(os.path.join(ROOT, "brand", "web", "ikon", "*.svg"))) - 1))
           .replace("{{REFS_JSON}}", json.dumps(KONTEN["referensi"], ensure_ascii=False))
           .replace("{{COLORS_JSON}}", json.dumps(KONTEN["warna"], ensure_ascii=False)))
     os.makedirs(os.path.join(T, ".cache"), exist_ok=True)

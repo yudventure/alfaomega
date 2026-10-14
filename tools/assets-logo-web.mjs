@@ -41,7 +41,7 @@ function ogImage() {
     <div class="corm" style="font-style:italic;font-weight:500;font-size:34px;color:${C.emasMuda};letter-spacing:.01em">“Aku adalah Alfa dan Omega, Yang Awal dan Yang Akhir.”</div>
     <div class="jak" style="font-weight:600;font-size:15px;letter-spacing:.42em;color:${C.batu}">WAHYU 22:13</div>
   </div>`;
-  return { out: 'web/og-image-1200x630.png', w, h, html: page(w, h, body, { bg: C.hitam }) };
+  return { out: 'web/og/og-beranda.jpg', w, h, html: page(w, h, body, { bg: C.hitam }) };
 }
 
 export default function () {

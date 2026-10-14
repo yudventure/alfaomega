@@ -5,7 +5,7 @@
    "role": "Warna utama: logo, teks, latar gelap",
    "hex": "#121212",
    "rgb": "18 18 18",
-   "cmyk": "0 0 0 93",
+   "cmyk": "C0 M0 Y0 K93",
    "ink": "#F6F1E7",
    "tag": "Inti"
   },
@@ -14,7 +14,7 @@
    "role": "Aksen: monogram, tombol, garis",
    "hex": "#C8A25A",
    "rgb": "200 162 90",
-   "cmyk": "0 19 55 22",
+   "cmyk": "C0 M19 Y55 K22",
    "ink": "#121212",
    "tag": "Inti"
   },
@@ -23,7 +23,7 @@
    "role": "Latar terang, teks di latar gelap",
    "hex": "#F6F1E7",
    "rgb": "246 241 231",
-   "cmyk": "0 2 6 4",
+   "cmyk": "C0 M2 Y6 K4",
    "ink": "#121212",
    "tag": "Inti"
   },
@@ -32,7 +32,7 @@
    "role": "Emas untuk judul besar di latar terang",
    "hex": "#9A7633",
    "rgb": "154 118 51",
-   "cmyk": "0 23 67 40",
+   "cmyk": "C0 M23 Y67 K40",
    "ink": "#F6F1E7",
    "tag": "Pendukung"
   },
@@ -41,7 +41,7 @@
    "role": "Kutipan ayat di latar gelap",
    "hex": "#E6CF95",
    "rgb": "230 207 149",
-   "cmyk": "0 10 35 10",
+   "cmyk": "C0 M10 Y35 K10",
    "ink": "#121212",
    "tag": "Pendukung"
   },
@@ -50,7 +50,7 @@
    "role": "Kartu dan permukaan di mode gelap",
    "hex": "#2A2826",
    "rgb": "42 40 38",
-   "cmyk": "0 5 10 84",
+   "cmyk": "C0 M5 Y10 K84",
    "ink": "#F6F1E7",
    "tag": "Pendukung"
   },
@@ -59,7 +59,7 @@
    "role": "Keterangan, teks sekunder di latar gelap",
    "hex": "#8A8378",
    "rgb": "138 131 120",
-   "cmyk": "0 5 13 46",
+   "cmyk": "C0 M5 Y13 K46",
    "ink": "#121212",
    "tag": "Pendukung"
   },
@@ -68,7 +68,7 @@
    "role": "Aksen liturgis: Perjamuan Kudus, Jumat Agung",
    "hex": "#6E1E2A",
    "rgb": "110 30 42",
-   "cmyk": "0 73 62 57",
+   "cmyk": "C0 M73 Y62 K57",
    "ink": "#F6F1E7",
    "tag": "Pendukung"
   }
@@ -85,7 +85,7 @@
    "take": "Hero video dengan lapisan hitam 60–70% dan satu tombol emas. Halaman “Pertama Kali ke Sini?”. Ringkasan khotbah + pertanyaan diskusi untuk Komsel."
   },
   {
-   "n": 3,
+   "n": 2,
    "dir": "A",
    "name": "VOUS Church",
    "url": "https://www.vouschurch.com",
@@ -95,17 +95,17 @@
    "take": "Dasar monokrom dengan emas sebagai pengganti putih. Kartu jadwal ibadah dengan video pendek suasana ibadah. Halaman kampanye Paskah/Natal bergaya editorial."
   },
   {
-   "n": 4,
+   "n": 3,
    "dir": "A",
    "name": "Transformation Church",
    "url": "https://transformchurch.us",
    "country": "Amerika Serikat",
    "style": "Gelap & tebal, satu aksen hangat",
-   "why": "Masuk daftar “50 Best Church Website Designs” ChurchCreation. Latar hampir hitam dengan aksen oranye-keemasan, grid artwork seri khotbah yang menonjol, tombol persembahan selalu terlihat.",
+   "why": "Masuk daftar “50 Best Church Website Designs” dari ChurchCreation. Latar hampir hitam dengan aksen oranye-keemasan, grid artwork seri khotbah yang menonjol, tombol persembahan selalu terlihat.",
    "take": "Paling dekat dengan identitas hitam-emas Alfa Omega. Grid artwork seri khotbah. Tombol “Persembahan” tetap di header. Halaman kampanye doa & puasa."
   },
   {
-   "n": 7,
+   "n": 4,
    "dir": "A",
    "name": "Hillsong Church",
    "url": "https://hillsong.com",
@@ -115,7 +115,7 @@
    "take": "Suasana gelap yang sinematik. Tombol bahasa ID/EN di header. Struktur halaman per cabang bila nanti ada cabang. Dipakai sebagai referensi tampilan saja."
   },
   {
-   "n": 2,
+   "n": 5,
    "dir": "B",
    "name": "Passion City Church",
    "url": "https://passioncitychurch.com",
@@ -125,7 +125,7 @@
    "take": "Kesan premium dari ruang kosong + judul besar, cocok dengan wordmark Cinzel. Satu halaman “Mulai di Sini” sebagai pintu masuk jemaat baru."
   },
   {
-   "n": 8,
+   "n": 6,
    "dir": "B",
    "name": "St Paul's Cathedral",
    "url": "https://www.stpauls.co.uk",
@@ -135,7 +135,7 @@
    "take": "Acuan paling relevan untuk wordmark serif + monogram. Pasangan serif display + sans bersih (sudah kita pakai). Jadwal ibadah dan kalender acara yang rapi."
   },
   {
-   "n": 5,
+   "n": 7,
    "dir": "C",
    "name": "Mariners Church",
    "url": "https://www.marinerschurch.org",
@@ -145,7 +145,7 @@
    "take": "Foto jemaat sendiri, bukan foto stok, dengan garis tipis emas. Tombol “Daftar Baptisan”. Formulir Sekolah Minggu. Penjelasan “apa yang akan Anda alami”."
   },
   {
-   "n": 6,
+   "n": 8,
    "dir": "C",
    "name": "Life.Church",
    "url": "https://www.life.church",

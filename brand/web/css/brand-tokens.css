@@ -1,0 +1,91 @@
+/* ==========================================================
+   Gereja Alfa Omega: token brand untuk website
+   Pakai: <link rel="stylesheet" href="/css/brand-tokens.css">
+   Font di-host sendiri lewat fonts.css (WOFF2). Kalau lebih suka Google Fonts,
+   hapus @import di bawah dan pakai tautan Google Fonts di head-snippet.html.
+   ========================================================== */
+
+@import url('fonts.css');
+
+:root {
+  /* Warna inti */
+  --ao-hitam: #121212;      /* Hitam Kekal: warna utama, teks, latar gelap */
+  --ao-emas: #C8A25A;       /* Emas Mulia: aksen, tombol, garis */
+  --ao-gading: #F6F1E7;     /* Putih Gading: latar terang */
+
+  /* Warna pendukung */
+  --ao-emas-tua: #9A7633;   /* judul besar emas di latar terang */
+  --ao-emas-teks: #7A5C22;  /* teks kecil berwarna emas di latar terang (kontras AA) */
+  --ao-emas-muda: #E6CF95;  /* kutipan/aksen di latar gelap */
+  --ao-arang: #2A2826;      /* kartu & permukaan di mode gelap */
+  --ao-batu: #8A8378;       /* teks sekunder di latar gelap */
+  --ao-batu-tua: #5E5850;   /* teks sekunder di latar terang */
+  --ao-anggur: #6E1E2A;     /* aksen liturgis (Perjamuan, Jumat Agung). Pakai hemat */
+  --ao-putih: #FFFFFF;
+  --ao-garis-terang: #DDD1B8;
+  --ao-garis-gelap: #3A342A;
+
+  /* Gradien emas metalik (layar saja) */
+  --ao-emas-gradien: linear-gradient(135deg, #EBD9A6 0%, #C8A25A 38%, #A9843F 70%, #D8BC7A 100%);
+
+  /* Tipografi */
+  --ao-font-logo: 'Cinzel', 'Trajan Pro', Georgia, serif;                       /* judul kapital */
+  --ao-font-judul: 'Cormorant Garamond', Garamond, Georgia, serif;              /* headline, kutipan ayat */
+  --ao-font-teks: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif; /* isi & UI */
+
+  --ao-fs-display: clamp(2.75rem, 6vw, 5rem);
+  --ao-fs-h1: clamp(2.25rem, 4.5vw, 3.5rem);
+  --ao-fs-h2: clamp(1.75rem, 3vw, 2.5rem);
+  --ao-fs-h3: 1.375rem;
+  --ao-fs-body: 1.0625rem;
+  --ao-fs-small: 0.875rem;
+  --ao-fs-label: 0.75rem;
+
+  --ao-radius: 6px;
+  --ao-radius-pil: 999px;
+  --ao-lebar-isi: 1160px;
+  --ao-lebar-teks: 68ch;
+}
+
+/* ---------- tipografi ---------- */
+.ao-label { font-family: var(--ao-font-teks); font-weight: 600; font-size: var(--ao-fs-label); letter-spacing: .4em; text-transform: uppercase; color: var(--ao-emas-teks); }
+.ao-gelap .ao-label { color: var(--ao-emas); }
+.ao-display { font-family: var(--ao-font-logo); font-weight: 700; font-size: var(--ao-fs-display); letter-spacing: .04em; line-height: 1.05; }
+.ao-judul { font-family: var(--ao-font-judul); font-weight: 600; font-size: var(--ao-fs-h1); line-height: 1.1; }
+.ao-ayat { font-family: var(--ao-font-judul); font-style: italic; font-weight: 500; font-size: var(--ao-fs-h2); line-height: 1.3; }
+.ao-teks { font-family: var(--ao-font-teks); font-size: var(--ao-fs-body); line-height: 1.65; max-width: var(--ao-lebar-teks); }
+
+/* ---------- permukaan ---------- */
+.ao-terang { background: var(--ao-gading); color: var(--ao-hitam); }
+.ao-gelap { background: var(--ao-hitam); color: var(--ao-gading); }
+
+/* Hero: latar bermotif Gema Alfa. Untuk hero video, taruh .ao-hero-lapisan di atas video. */
+.ao-hero-gelap { background: var(--ao-hitam) url('../hero/hero-gelap-2560x1440.webp') center / cover no-repeat; color: var(--ao-gading); }
+.ao-hero-terang { background: var(--ao-gading) url('../hero/hero-terang-2560x1440.webp') center / cover no-repeat; color: var(--ao-hitam); }
+@media (max-width: 700px) {
+  .ao-hero-gelap { background-image: url('../hero/hero-gelap-ponsel-1080x1920.webp'); }
+  .ao-hero-terang { background-image: url('../hero/hero-terang-ponsel-1080x1920.webp'); }
+}
+.ao-hero-lapisan { background: linear-gradient(180deg, rgba(18,18,18,.55) 0%, rgba(18,18,18,.72) 60%, rgba(18,18,18,.92) 100%); }
+
+/* ---------- tombol ---------- */
+.ao-tombol {
+  display: inline-flex; align-items: center; gap: .6em; padding: .9em 1.8em;
+  font-family: var(--ao-font-teks); font-weight: 700; font-size: .875rem; letter-spacing: .12em; text-transform: uppercase;
+  background: var(--ao-emas); color: var(--ao-hitam); border: 0; border-radius: var(--ao-radius-pil); text-decoration: none; cursor: pointer;
+  transition: background-color .2s ease;
+}
+.ao-tombol:hover { background: #D6B36E; }
+.ao-tombol--garis { background: transparent; color: var(--ao-emas); box-shadow: inset 0 0 0 1.5px var(--ao-emas); }
+.ao-tombol--garis:hover { background: rgba(200, 162, 90, .12); }
+.ao-tombol:focus-visible { outline: 2px solid var(--ao-emas); outline-offset: 3px; }
+
+/* ---------- ikon (ikon/*.svg atau ikon-sprite.svg) ---------- */
+.ao-ikon { width: 1.5em; height: 1.5em; flex: none; vertical-align: middle; }
+
+/* ---------- ornamen pembatas ---------- */
+.ao-pembatas { display: block; width: min(360px, 80%); height: 24px; margin: 3rem auto; background: url('../pola/ornamen-pembatas-emas.svg') center / contain no-repeat; border: 0; }
+
+/* ---------- kartu ---------- */
+.ao-kartu { background: #FFFCF6; border: 1px solid var(--ao-garis-terang); border-radius: var(--ao-radius); overflow: hidden; }
+.ao-gelap .ao-kartu { background: var(--ao-arang); border-color: var(--ao-garis-gelap); }

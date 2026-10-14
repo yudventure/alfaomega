@@ -10,13 +10,14 @@ import { execFileSync } from 'child_process';
 import logoWeb, { faviconSvg } from './assets-logo-web.mjs';
 import social from './assets-social.mjs';
 import mockups from './assets-mockup.mjs';
+import webKit from './assets-web-kit.mjs';
 
 const require = createRequire(import.meta.url);
 let chromium;
 try { ({ chromium } = require('playwright')); } catch { ({ chromium } = require('/opt/node22/lib/node_modules/playwright')); }
 
 const filter = process.argv[2];
-const assets = [...logoWeb(), ...social(), ...mockups()].filter(a => !filter || new RegExp(filter).test(a.out));
+const assets = [...logoWeb(), ...webKit(), ...social(), ...mockups()].filter(a => !filter || new RegExp(filter).test(a.out));
 
 const browser = await chromium.launch();
 const ctx = await browser.newContext({ deviceScaleFactor: 1 });

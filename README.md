@@ -28,7 +28,8 @@ brand/
 ├── logo/asli/           logo asli (arsip)
 ├── fonts/               file TTF + lisensi OFL (gratis, boleh untuk komersial)
 ├── media-sosial/        instagram/ facebook/ youtube/ tiktok/ alternatif/
-├── web/                 favicon, ikon aplikasi, logo header, og-image, brand-tokens.css, site.webmanifest
+├── web/                 kit website siap pakai (lihat brand/web/README.md): favicon, logo, 29 ikon,
+│                        gambar share per halaman, latar hero, pola, placeholder, loader, font WOFF2, CSS
 └── mockup/              kaos hitam, kaos putih, jaket bomber, bendera, umbul-umbul
 referensi-website/       10 referensi website gereja + 3 arah desain + fitur wajib
 tools/                   skrip untuk membuat ulang semua aset
@@ -43,7 +44,7 @@ tools/                   skrip untuk membuat ulang semua aset
 | Banner YouTube | `brand/media-sosial/youtube/banner-youtube-2560x1440.png` |
 | Sampul Facebook | `brand/media-sosial/facebook/sampul-facebook-1640x624.png` |
 | Sorotan (highlight) Instagram | `brand/media-sosial/instagram/highlight-*.png` |
-| Header website | `brand/web/logo-header-terang.svg`, `brand/web/logo-header-gelap.svg` |
+| Website | seluruh isi `brand/web/` (panduan: `brand/web/README.md`, contoh: `brand/web/contoh.html`) |
 | Kirim ke percetakan / konveksi | `brand/logo/svg/*.svg` (vektor) |
 | Desain di Canva | unggah PNG dari `brand/logo/png/` dan font dari `brand/fonts/` |
 
@@ -54,11 +55,12 @@ Instagram dan TikTok tidak punya banner profil, jadi untuk keduanya disediakan s
 Semua gambar dihasilkan dari kode, jadi warna, teks, atau ukuran bisa diubah lalu dirender ulang:
 
 ```bash
-pip install numpy scipy pillow potracer uharfbuzz fonttools
+pip install numpy scipy pillow potracer uharfbuzz fonttools brotli
 npm install playwright        # memakai Chromium
 python3 tools/build_mark.py   # monogram -> tools/mark.json
 python3 tools/build_logos.py  # logo SVG
 node tools/render.mjs         # semua PNG/JPG (logo, web, media sosial, mockup)
+python3 tools/build_web.py    # kit website: SVG, ikon, font WOFF2, WebP, contoh.html
 python3 tools/build_panduan.py # halaman HTML
 node tools/build_pdf.mjs       # PDF A4 lanskap
 ```
