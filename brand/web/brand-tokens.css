@@ -1,0 +1,55 @@
+/* ==========================================================
+   Gereja Alfa Omega: token brand untuk website
+   Pakai: <link rel="stylesheet" href="/brand-tokens.css">
+   ========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Warna inti */
+  --ao-hitam: #121212;      /* Hitam Kekal: warna utama, teks, latar gelap */
+  --ao-emas: #C8A25A;       /* Emas Mulia: aksen, tombol, garis */
+  --ao-gading: #F6F1E7;     /* Putih Gading: latar terang */
+
+  /* Warna pendukung */
+  --ao-emas-tua: #9A7633;   /* teks emas di atas latar terang */
+  --ao-emas-muda: #E6CF95;  /* kutipan/aksen di atas latar gelap */
+  --ao-arang: #2A2826;      /* kartu & permukaan di mode gelap */
+  --ao-batu: #8A8378;       /* teks sekunder, keterangan */
+  --ao-anggur: #6E1E2A;     /* aksen liturgis (Perjamuan, Jumat Agung). Pakai hemat */
+  --ao-putih: #FFFFFF;
+
+  /* Gradien emas metalik (digital saja) */
+  --ao-emas-gradien: linear-gradient(135deg, #EBD9A6 0%, #C8A25A 38%, #A9843F 70%, #D8BC7A 100%);
+
+  /* Tipografi */
+  --ao-font-logo: 'Cinzel', 'Trajan Pro', serif;                      /* judul kapital, wordmark */
+  --ao-font-judul: 'Cormorant Garamond', 'Garamond', serif;           /* headline, kutipan ayat */
+  --ao-font-teks: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif; /* isi & UI */
+
+  /* Skala ukuran (desktop) */
+  --ao-fs-display: clamp(2.75rem, 6vw, 5rem);
+  --ao-fs-h1: clamp(2.25rem, 4.5vw, 3.5rem);
+  --ao-fs-h2: clamp(1.75rem, 3vw, 2.5rem);
+  --ao-fs-h3: 1.375rem;
+  --ao-fs-body: 1.0625rem;
+  --ao-fs-small: 0.875rem;
+  --ao-fs-label: 0.75rem;   /* label kapital, letter-spacing lebar */
+
+  --ao-radius: 6px;
+  --ao-garis: 1px solid color-mix(in srgb, var(--ao-emas) 45%, transparent);
+}
+
+/* Contoh pemakaian dasar */
+.ao-label { font-family: var(--ao-font-teks); font-weight: 600; font-size: var(--ao-fs-label); letter-spacing: .4em; text-transform: uppercase; color: var(--ao-emas-tua); }
+.ao-display { font-family: var(--ao-font-logo); font-weight: 700; font-size: var(--ao-fs-display); letter-spacing: .04em; line-height: 1.05; }
+.ao-judul { font-family: var(--ao-font-judul); font-weight: 600; font-size: var(--ao-fs-h1); line-height: 1.1; }
+.ao-ayat { font-family: var(--ao-font-judul); font-style: italic; font-weight: 500; font-size: var(--ao-fs-h2); line-height: 1.3; }
+.ao-teks { font-family: var(--ao-font-teks); font-size: var(--ao-fs-body); line-height: 1.65; }
+
+.ao-tombol {
+  display: inline-flex; align-items: center; gap: .6em; padding: .9em 1.8em;
+  font-family: var(--ao-font-teks); font-weight: 700; font-size: .875rem; letter-spacing: .12em; text-transform: uppercase;
+  background: var(--ao-emas); color: var(--ao-hitam); border: 0; border-radius: 999px; text-decoration: none;
+}
+.ao-tombol--garis { background: transparent; color: var(--ao-emas); box-shadow: inset 0 0 0 1.5px var(--ao-emas); }

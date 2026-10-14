@@ -1,0 +1,117 @@
+{
+ "alfaomega-monogram-hitam": {
+  "w": 95.75,
+  "h": 100,
+  "variant": "hitam"
+ },
+ "alfaomega-monogram-emas": {
+  "w": 95.75,
+  "h": 100,
+  "variant": "emas"
+ },
+ "alfaomega-monogram-putih": {
+  "w": 95.75,
+  "h": 100,
+  "variant": "putih"
+ },
+ "alfaomega-horizontal-hitam": {
+  "w": 492.55,
+  "h": 100,
+  "variant": "hitam"
+ },
+ "alfaomega-horizontal-emas": {
+  "w": 492.55,
+  "h": 100,
+  "variant": "emas"
+ },
+ "alfaomega-horizontal-emas-gading": {
+  "w": 492.55,
+  "h": 100,
+  "variant": "emas-gading"
+ },
+ "alfaomega-horizontal-putih": {
+  "w": 492.55,
+  "h": 100,
+  "variant": "putih"
+ },
+ "alfaomega-horizontal-ringkas-hitam": {
+  "w": 500.73,
+  "h": 100,
+  "variant": "hitam"
+ },
+ "alfaomega-horizontal-ringkas-emas": {
+  "w": 500.73,
+  "h": 100,
+  "variant": "emas"
+ },
+ "alfaomega-horizontal-ringkas-emas-gading": {
+  "w": 500.73,
+  "h": 100,
+  "variant": "emas-gading"
+ },
+ "alfaomega-horizontal-ringkas-putih": {
+  "w": 500.73,
+  "h": 100,
+  "variant": "putih"
+ },
+ "alfaomega-bertumpuk-hitam": {
+  "w": 280.39,
+  "h": 169.5,
+  "variant": "hitam"
+ },
+ "alfaomega-bertumpuk-emas": {
+  "w": 280.39,
+  "h": 169.5,
+  "variant": "emas"
+ },
+ "alfaomega-bertumpuk-emas-gading": {
+  "w": 280.39,
+  "h": 169.5,
+  "variant": "emas-gading"
+ },
+ "alfaomega-bertumpuk-putih": {
+  "w": 280.39,
+  "h": 169.5,
+  "variant": "putih"
+ },
+ "alfaomega-bertumpuk-tagline-hitam": {
+  "w": 280.39,
+  "h": 197.5,
+  "variant": "hitam"
+ },
+ "alfaomega-bertumpuk-tagline-emas": {
+  "w": 280.39,
+  "h": 197.5,
+  "variant": "emas"
+ },
+ "alfaomega-bertumpuk-tagline-emas-gading": {
+  "w": 280.39,
+  "h": 197.5,
+  "variant": "emas-gading"
+ },
+ "alfaomega-bertumpuk-tagline-putih": {
+  "w": 280.39,
+  "h": 197.5,
+  "variant": "putih"
+ },
+ "alfaomega-wordmark-hitam": {
+  "w": 736.9,
+  "h": 70,
+  "variant": "hitam"
+ },
+ "alfaomega-wordmark-emas": {
+  "w": 736.9,
+  "h": 70,
+  "variant": "emas"
+ },
+ "alfaomega-wordmark-emas-gading": {
+  "w": 736.9,
+  "h": 70,
+  "variant": "emas-gading"
+ },
+ "alfaomega-wordmark-putih": {
+  "w": 736.9,
+  "h": 70,
+  "variant": "putih"
+ }
+}

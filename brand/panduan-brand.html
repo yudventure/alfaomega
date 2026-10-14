@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Panduan Brand Alfa Omega</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: buku brand satu kolom (maks 1160px); tiap bab dibuka label kapital + judul Cinzel, dipisah garis emas tipis. */
+:root {
+  --bg: #F6F1E7; --surface: #FFFCF6; --fg: #121212; --muted: #5E5850; --line: #DDD1B8;
+  --accent: #7A5C22; --gold: #C8A25A; --mark: #121212; --chip: #EFE7D6;
+  --tile-dark: #121212; --tile-light: #F6F1E7; --tile-wine: #6E1E2A;
+  --f-logo: 'Cinzel', 'Trajan Pro', Georgia, serif;
+  --f-head: 'Cormorant Garamond', Garamond, Georgia, serif;
+  --f-body: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121212; --surface: #1B1A18; --fg: #F1ECE2; --muted: #A39C90; --line: #3A342A;
+  --accent: #D9B670; --gold: #C8A25A; --mark: #C8A25A; --chip: #26231F; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #121212; --surface: #1B1A18; --fg: #F1ECE2; --muted: #A39C90; --line: #3A342A;
+  --accent: #D9B670; --gold: #C8A25A; --mark: #C8A25A; --chip: #26231F; color-scheme: dark }
+
+* { box-sizing: border-box }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 400 16px/1.65 var(--f-body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.wrap { max-width: 1160px; margin: 0 auto }
+a { color: var(--accent) }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px }
+h1, h2, h3 { text-wrap: balance; margin: 0 }
+p { margin: 0 }
+img { max-width: 100%; display: block }
+
+/* navigasi */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line);
+  margin-left: calc(-1 * max(16px, env(safe-area-inset-left, 0px))); margin-right: calc(-1 * max(16px, env(safe-area-inset-right, 0px)));
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)) }
+.top .wrap { display: flex; align-items: center; gap: 24px; min-height: 58px }
+.brand { display: flex; align-items: center; gap: 10px; font: 700 15px/1 var(--f-logo); letter-spacing: .08em; color: var(--fg); text-decoration: none; white-space: nowrap }
+.brand svg { width: 24px; height: 25px; fill: var(--mark) }
+.nav { display: flex; gap: 20px; overflow-x: auto; scrollbar-width: none; min-width: 0; margin-left: auto }
+.nav::-webkit-scrollbar { display: none }
+.nav a { font: 600 12px/1 var(--f-body); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); text-decoration: none; white-space: nowrap; padding: 8px 0 }
+.nav a:hover { color: var(--fg) }
+
+/* hero */
+.hero { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 56px; align-items: center; padding-block: 72px 64px }
+.eyebrow { font: 600 12px/1.4 var(--f-body); letter-spacing: .32em; text-transform: uppercase; color: var(--accent) }
+.hero h1 { font: 700 clamp(44px, 7vw, 84px)/1 var(--f-logo); letter-spacing: .03em; margin-top: 14px }
+.hero .verse { font: italic 500 clamp(22px, 2.6vw, 30px)/1.3 var(--f-head); margin-top: 22px; max-width: 30ch }
+.hero .verse cite { display: block; font: 600 12px/1 var(--f-body); font-style: normal; letter-spacing: .3em; color: var(--muted); margin-top: 12px }
+.lead { color: var(--muted); max-width: 60ch; margin-top: 22px }
+.hero-mark { background: var(--tile-dark); border-radius: 4px; aspect-ratio: 1; display: grid; place-items: center; max-width: 100%; position: relative; overflow: hidden }
+.hero-mark svg.m { width: 54%; height: auto; position: relative }
+.hero-mark .rays { position: absolute; inset: 0; width: 100%; height: 100% }
+
+/* bab */
+section { border-top: 1px solid var(--line); padding-block: 64px }
+.sec-head { display: grid; gap: 10px; margin-bottom: 36px; max-width: 760px }
+.sec-head h2 { font: 700 clamp(30px, 4vw, 44px)/1.1 var(--f-logo); letter-spacing: .02em }
+.sec-head p { color: var(--muted) }
+h3 { font: 600 24px/1.2 var(--f-head) }
+.sub { display: grid; gap: 18px; margin-top: 48px }
+.sub > h3 + p { color: var(--muted); max-width: 70ch; margin-top: -8px }
+.note { font-size: 14px; color: var(--muted) }
+
+.grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)) }
+.grid.two { grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)) }
+.grid.small { grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)) }
+figure { margin: 0; display: grid; gap: 10px; align-content: start; min-width: 0 }
+figcaption { font-size: 14px; color: var(--muted) }
+figcaption b { color: var(--fg); font-weight: 600 }
+.tile { border-radius: 4px; display: grid; place-items: center; padding: 34px; min-height: 190px; border: 1px solid var(--line) }
+.tile.dark { background: var(--tile-dark); border-color: var(--line) }
+.tile.light { background: var(--tile-light) }
+.tile.wine { background: var(--tile-wine); border-color: var(--tile-wine) }
+.tile img { max-height: 120px; width: auto }
+.tile.tall { min-height: 260px }
+.tile.tall img { max-height: 190px }
+.shot { border-radius: 4px; border: 1px solid var(--line); background: var(--chip) }
+
+/* ruang aman */
+.clear { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px }
+.clear .tile svg { width: 100%; max-width: 340px; height: auto }
+table { border-collapse: collapse; width: 100%; font-size: 14px }
+th, td { text-align: left; padding: 10px 12px 10px 0; border-bottom: 1px solid var(--line); vertical-align: top }
+th { font: 600 11px/1.3 var(--f-body); letter-spacing: .16em; text-transform: uppercase; color: var(--muted) }
+td { font-variant-numeric: tabular-nums }
+.scroll { overflow-x: auto }
+
+/* larangan */
+.dont .tile { position: relative; min-height: 150px; padding: 24px }
+.dont .tile svg { width: 74px; height: 77px }
+.dont .x { position: absolute; top: 10px; right: 12px; font: 700 13px/1 var(--f-body); color: #B3261E; letter-spacing: .1em }
+
+/* warna */
+.swatches { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)) }
+.sw { border: 1px solid var(--line); border-radius: 4px; overflow: hidden; background: var(--surface); display: grid; grid-template-rows: auto 1fr }
+.sw .chip { height: 120px; display: flex; align-items: flex-end; padding: 12px 14px; font: 600 11px/1 var(--f-body); letter-spacing: .2em; text-transform: uppercase }
+.sw .info { padding: 14px; display: grid; gap: 6px; align-content: start }
+.sw .name { font: 600 22px/1.1 var(--f-head) }
+.sw .role { font-size: 14px; color: var(--muted) }
+.sw dl { display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; margin: 6px 0 0; font-size: 13px; font-variant-numeric: tabular-nums }
+.sw dt { color: var(--muted) }
+.sw dd { margin: 0 }
+.copy { font: 600 12px/1 var(--f-body); letter-spacing: .08em; border: 1px solid var(--line); background: transparent; color: var(--fg); border-radius: 999px; padding: 7px 12px; cursor: pointer; justify-self: start; margin-top: 6px }
+.copy:hover { border-color: var(--gold) }
+.ratio { display: flex; height: 54px; border-radius: 4px; overflow: hidden; border: 1px solid var(--line) }
+.ratio span { display: flex; align-items: center; padding-left: 12px; font: 600 12px/1 var(--f-body); letter-spacing: .1em; white-space: nowrap; overflow: hidden }
+
+/* tipografi */
+.type { display: grid; gap: 16px }
+.font { border: 1px solid var(--line); border-radius: 4px; background: var(--surface); padding: 28px; display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 28px; align-items: center }
+.font .spec { min-width: 0 }
+.font .big { font-size: clamp(38px, 6vw, 68px); line-height: 1.05; overflow-wrap: anywhere }
+.font .alpha { margin-top: 12px; color: var(--muted); font-size: 18px; overflow-wrap: anywhere }
+.font .meta { display: grid; gap: 8px; font-size: 14px; color: var(--muted) }
+.font .meta b { color: var(--fg); font: 600 13px/1 var(--f-body); letter-spacing: .14em; text-transform: uppercase }
+.scale { border: 1px solid var(--line); border-radius: 4px; padding: 28px; display: grid; gap: 20px; background: var(--surface) }
+.scale .row { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 18px; align-items: baseline }
+.scale .row > span { font: 600 11px/1.3 var(--f-body); letter-spacing: .14em; text-transform: uppercase; color: var(--muted) }
+
+/* kode */
+pre { margin: 0; background: var(--tile-dark); color: #E9E2D3; border-radius: 4px; padding: 20px; overflow-x: auto; font: 13px/1.6 ui-monospace, 'SF Mono', Menlo, Consolas, monospace }
+.codebox { display: grid; gap: 10px; min-width: 0 }
+
+/* referensi */
+.dirs { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)) }
+.dir { border: 1px solid var(--line); border-radius: 4px; padding: 22px; background: var(--surface); display: grid; gap: 8px; align-content: start }
+.dir .tag { font: 700 12px/1 var(--f-body); letter-spacing: .2em; color: var(--accent) }
+.dir h3 { font-size: 26px }
+.dir p { font-size: 15px; color: var(--muted) }
+.rec { border-left: 3px solid var(--gold); padding: 6px 0 6px 20px; font: italic 500 22px/1.4 var(--f-head); max-width: 70ch }
+.refs { display: grid; gap: 0 }
+.ref { display: grid; grid-template-columns: 64px minmax(0, 1fr) minmax(0, 1fr); gap: 20px; padding-block: 22px; border-bottom: 1px solid var(--line) }
+.ref .n { font: 700 26px/1 var(--f-logo); color: var(--gold) }
+.ref h4 { margin: 0; font: 600 24px/1.15 var(--f-head) }
+.ref .loc { font: 600 11px/1.4 var(--f-body); letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin-top: 6px }
+.ref .url { font-size: 14px; margin-top: 6px; overflow-wrap: anywhere }
+.ref .why, .ref .take { font-size: 15px }
+.ref .take { color: var(--muted) }
+.ref .take b { display: block; color: var(--accent); font: 600 11px/1.4 var(--f-body); letter-spacing: .16em; text-transform: uppercase; margin-bottom: 4px }
+.group-label { font: 700 12px/1 var(--f-body); letter-spacing: .24em; text-transform: uppercase; color: var(--accent); padding-top: 30px; padding-bottom: 6px; border-bottom: 1px solid var(--line) }
+ol.features { margin: 0; padding-left: 1.3em; display: grid; gap: 10px; max-width: 75ch }
+ol.features b { font-weight: 600 }
+
+.tree { font: 13px/1.7 ui-monospace, 'SF Mono', Menlo, Consolas, monospace }
+footer { border-top: 1px solid var(--line); padding-block: 36px 56px; display: flex; flex-wrap: wrap; gap: 12px 28px; justify-content: space-between; color: var(--muted); font-size: 14px }
+
+@media (max-width: 820px) {
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 32px; padding-block: 44px }
+  .hero-mark { max-width: 360px }
+  .font { grid-template-columns: minmax(0, 1fr) }
+  .clear { grid-template-columns: minmax(0, 1fr) }
+  .ref { grid-template-columns: 44px minmax(0, 1fr) }
+  .ref .take { grid-column: 2 }
+  .scale .row { grid-template-columns: minmax(0, 1fr); gap: 4px }
+  .brand span { display: none }
+}
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth } }
+</style>
+
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="ao" viewBox="0 0 667.45 697.08"><path fill-rule="evenodd" d="M0.48 696.04C0.74 695.51 20.77 653.7 44.98 603.12L89.01 511.16L87.54 509.21C79.28 498.22 71.06 484.69 64.57 471.42C49.75 441.11 41.1 408.03 38.51 371.67C37.82 362 37.75 359.56 37.75 345.17C37.75 331.13 37.81 328.78 38.43 320.58C42.22 269.76 59.37 223.43 88.98 184C96.23 174.34 103.62 165.86 112.74 156.74C120.27 149.21 126.49 143.62 134.25 137.41C178.14 102.25 232.89 80.65 293.92 74.41C296.3 74.17 298.29 73.92 298.35 73.86C298.4 73.8 306.38 57.15 316.09 36.86L333.74 -0.02L334.34 1.28C336.05 4.94 369.04 73.77 369.14 73.87C369.2 73.93 370.86 74.14 372.83 74.33C418.61 78.82 462.27 92.59 499.5 114.29C534.99 134.97 564.73 162.7 586.62 195.5C611.89 233.39 626.28 276.68 629.25 323.75C630.05 336.51 630.05 353.4 629.24 367.17C627.16 402.83 619.51 434.95 605.96 464.92C603.96 469.35 599.49 478.24 597.07 482.58C592.09 491.54 586.07 500.91 580.28 508.72L578.45 511.2L578.83 511.97C580.61 515.63 667.33 696.85 667.33 696.91C667.33 696.96 603.55 697 525.58 697C424.29 697 383.83 696.95 383.83 696.82C383.83 696.61 398.12 584.87 398.26 583.98C398.36 583.37 398.37 583.37 400.14 582.74C401.12 582.4 403.59 581.45 405.63 580.64C432.86 569.79 456.34 551.93 475.69 527.33C482.72 518.39 490.76 505.82 495.78 495.92L496.88 493.75L485.63 470.25L474.38 446.75L333.73 446.71L193.08 446.68L181.81 470.21L170.54 493.75L171.8 496.17C187.75 526.96 210.66 552.15 237.67 568.59C246.81 574.15 257.91 579.44 267.36 582.75L269.13 583.36L269.31 584.81C271.05 598.51 283.52 695.93 283.6 696.38L283.7 697L141.85 697L-0 697L0.48 696.04ZM233.78 632.04C233.73 631.7 232.92 625.45 231.99 618.17C231.06 610.88 230.28 604.89 230.25 604.87C230.23 604.84 228.44 604.29 226.28 603.66C195.86 594.69 167.17 580.84 142.78 563.35C138.38 560.2 138.7 560.41 138.62 560.51C138.5 560.66 104.17 632.46 104.17 632.56C104.17 632.62 133.35 632.67 169.02 632.67L233.88 632.67L233.78 632.04ZM563.31 632.52C563.27 632.43 555.49 616.17 546.01 596.37L528.78 560.38L526.93 561.74C521.43 565.81 514.3 570.55 507.82 574.46C487.53 586.7 465.71 596.3 442.02 603.41C439.41 604.19 437.25 604.86 437.22 604.89C437.15 604.96 433.67 631.88 433.67 632.38C433.67 632.65 436.87 632.67 498.51 632.67C537.15 632.67 563.34 632.61 563.31 632.52ZM455.53 407.38C455.1 406.48 427.52 348.88 394.25 279.38L333.75 153.01L333.31 153.88C332.76 154.96 212.51 406.11 211.73 407.79L211.18 409L333.75 409L456.32 409L455.53 407.38ZM213.4 251.33C251.21 172.36 282.12 107.73 282.09 107.7C282.06 107.67 280.7 107.98 279.06 108.4C240.14 118.2 207.9 141.3 184.24 176.33C160.59 211.34 146.62 256.74 142.84 310.83C142.09 321.6 141.86 327.46 141.67 340.93C141.37 361.37 141.85 377.23 143.25 393.17C143.61 397.17 143.6 397.15 144.18 395.92C144.45 395.37 175.59 330.3 213.4 251.33ZM524.17 393.39C524.7 387.69 525.1 381.77 525.51 373.33C525.79 367.67 525.9 341.77 525.68 333.67C525.21 316.25 524.24 302.8 522.41 288.52C515.76 236.62 498.66 193.4 472.17 161.58C465 152.97 456.87 144.94 448.33 138.07C432.56 125.36 413.79 115.63 394.05 109.93C390.4 108.88 385.49 107.62 385.39 107.72C385.36 107.75 416.47 172.82 454.52 252.31C492.58 331.8 523.75 396.81 523.79 396.77C523.83 396.73 524 395.21 524.17 393.39Z"/></symbol></svg>
+
+<header class="top"><div class="wrap">
+  <a class="brand" href="#awal"><svg viewBox="0 0 667.45 697.08" aria-hidden="true"><use href="#ao"/></svg><span>ALFA OMEGA</span></a>
+  <nav class="nav" aria-label="Bab">
+    <a href="#logo">Logo</a><a href="#warna">Warna</a><a href="#tipografi">Font</a><a href="#elemen">Elemen</a>
+    <a href="#sosial">Media Sosial</a><a href="#website">Website</a><a href="#mockup">Mockup</a><a href="#referensi">Referensi</a><a href="#file">File</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="awal">
+  <div class="hero">
+    <div>
+      <div class="eyebrow">Panduan Identitas Brand · Gereja</div>
+      <h1>ALFA OMEGA</h1>
+      <p class="verse">“Aku adalah Alfa dan Omega, Yang Pertama dan Yang Terkemudian, Yang Awal dan Yang Akhir.”<cite>WAHYU 22:13</cite></p>
+      <p class="lead">Alfa (A) dan Omega (Ω) adalah huruf pertama dan terakhir abjad Yunani. Di logo ini keduanya saling mengunci:
+        kaki huruf A sekaligus menjadi kaki Omega, jadi awal dan akhir menyatu dalam satu bentuk. Panduan ini mengatur cara memakai logo,
+        warna, dan font supaya gereja tampil sama di mana pun, dari website sampai umbul-umbul.</p>
+    </div>
+    <div class="hero-mark">
+      <svg class="rays" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><polyline points="-230.9,960 200,60 630.9,960" fill="none" stroke="#C8A25A" stroke-width="1" stroke-opacity="0.280"/><polyline points="-230.9,998 200,98 630.9,998" fill="none" stroke="#C8A25A" stroke-width="1" stroke-opacity="0.252"/><polyline points="-230.9,1036 200,136 630.9,1036" fill="none" stroke="#C8A25A" stroke-width="1" stroke-opacity="0.224"/><polyline points="-230.9,1074 200,174 630.9,1074" fill="none" stroke="#C8A25A" stroke-width="1" stroke-opacity="0.196"/><polyline points="-230.9,1112 200,212 630.9,1112" fill="none" stroke="#C8A25A" stroke-width="1" stroke-opacity="0.168"/><polyline points="-230.9,1150 200,250 630.9,1150" fill="none" stroke="#C8A25A" stroke-width="1" stroke-opacity="0.140"/><polyline points="-230.9,1188 200,288 630.9,1188" fill="none" stroke="#C8A25A" stroke-width="1" stroke-opacity="0.112"/><polyline points="-230.9,1226 200,326 630.9,1226" fill="none" stroke="#C8A25A" stroke-width="1" stroke-opacity="0.084"/><polyline points="-230.9,1264 200,364 630.9,1264" fill="none" stroke="#C8A25A" stroke-width="1" stroke-opacity="0.056"/><polyline points="-230.9,1302 200,402 630.9,1302" fill="none" stroke="#C8A25A" stroke-width="1" stroke-opacity="0.028"/></svg>
+      <svg class="m" viewBox="0 0 667.45 697.08" role="img" aria-label="Monogram Alfa Omega"><defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#EBD9A6"/><stop offset=".38" stop-color="#C8A25A"/><stop offset=".7" stop-color="#A9843F"/><stop offset="1" stop-color="#D8BC7A"/></linearGradient></defs><use href="#ao" fill="url(#hg)"/></svg>
+    </div>
+  </div>
+
+  <!-- LOGO -->
+  <section id="logo">
+    <div class="sec-head">
+      <div class="eyebrow">Logo</div>
+      <h2>Satu monogram, empat susunan</h2>
+      <p>Bentuk monogram dibangun ulang dari logo asli secara geometris: garis lurus, sudut kaki A yang sama di kiri-kanan, dan simetri sempurna, jadi tetap tajam dari favicon 16 px sampai umbul-umbul 3 meter.</p>
+    </div>
+    <div class="grid two">
+      <figure><div class="tile light tall"><img src="logo/svg/alfaomega-horizontal-hitam.svg" alt="Logo horizontal hitam"></div>
+        <figcaption><b>Horizontal (logo utama).</b> Header website, kop surat, banner lebar.</figcaption></figure>
+      <figure><div class="tile dark tall"><img src="logo/svg/alfaomega-horizontal-emas-gading.svg" alt="Logo horizontal emas dan gading"></div>
+        <figcaption><b>Horizontal di latar gelap.</b> Monogram emas, nama gading.</figcaption></figure>
+      <figure><div class="tile light tall"><img src="logo/svg/alfaomega-bertumpuk-tagline-hitam.svg" alt="Logo bertumpuk dengan tagline"></div>
+        <figcaption><b>Bertumpuk + tagline.</b> Kaos bagian belakang, bendera, poster, sampul buku acara.</figcaption></figure>
+      <figure><div class="tile dark tall"><img src="logo/svg/alfaomega-bertumpuk-emas-gading.svg" alt="Logo bertumpuk emas"></div>
+        <figcaption><b>Bertumpuk.</b> Ruang yang hampir persegi: spanduk tegak, slide pembuka ibadah.</figcaption></figure>
+      <figure><div class="tile dark"><img src="logo/svg/alfaomega-monogram-emas.svg" alt="Monogram emas"></div>
+        <figcaption><b>Monogram.</b> Foto profil media sosial, favicon, bordir dada, stempel.</figcaption></figure>
+      <figure><div class="tile light"><img src="logo/svg/alfaomega-wordmark-hitam.svg" alt="Wordmark Alfa Omega" style="max-width:100%;height:auto"></div>
+        <figcaption><b>Wordmark.</b> Saat monogram sudah tampil di dekatnya, misalnya di footer website.</figcaption></figure>
+    </div>
+
+    <div class="sub">
+      <h3>Varian warna</h3>
+      <p>Pakai hanya empat varian ini. Setiap susunan tersedia dalam keempatnya, sebagai SVG (vektor) dan PNG transparan.</p>
+      <div class="grid small">
+        <figure><div class="tile light"><svg viewBox="0 0 667.45 697.08" width="72" height="75" fill="#121212" aria-hidden="true"><use href="#ao"/></svg></div><figcaption><b>Hitam</b>, di latar terang</figcaption></figure>
+        <figure><div class="tile dark"><svg viewBox="0 0 667.45 697.08" width="72" height="75" fill="#C8A25A" aria-hidden="true"><use href="#ao"/></svg></div><figcaption><b>Emas</b>, di latar hitam</figcaption></figure>
+        <figure><div class="tile wine"><svg viewBox="0 0 667.45 697.08" width="72" height="75" fill="#FFFFFF" aria-hidden="true"><use href="#ao"/></svg></div><figcaption><b>Putih</b>, di foto/warna gelap</figcaption></figure>
+        <figure><div class="tile dark"><img src="logo/svg/alfaomega-horizontal-ringkas-emas-gading.svg" alt="Varian emas-gading" style="max-height:44px"></div><figcaption><b>Emas-gading</b>, susunan dengan teks</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="sub">
+      <h3>Ruang aman & ukuran minimum</h3>
+      <p>Sisakan ruang kosong di sekeliling logo minimal <b>X</b>, yaitu seperempat tinggi monogram. Jangan ada teks, foto, atau tepi kertas di dalam area ini.</p>
+      <div class="clear">
+        <div class="tile light"><svg viewBox="-200 -200 1067.45 1097.08" role="img" aria-label="Diagram ruang aman">
+          <rect x="-174.27" y="-174.27" width="1015.99" height="1045.62" fill="none" stroke="#C8A25A" stroke-width="5" stroke-dasharray="18 12"/>
+          <rect x="0" y="0" width="667.45" height="697.08" fill="none" stroke="#C8A25A" stroke-width="2" opacity=".6"/>
+          <use href="#ao" width="667.45" height="697.08" fill="#121212"/>
+          <g font-family="Plus Jakarta Sans, sans-serif" font-weight="700" font-size="56" fill="#9A7633" text-anchor="middle"><text x="333.7" y="-60">X</text><text x="-87" y="370">X</text><text x="754" y="370">X</text><text x="333.7" y="800">X</text></g>
+        </svg></div>
+        <div class="scroll"><table>
+          <thead><tr><th>Susunan</th><th>Layar (min.)</th><th>Cetak (min.)</th></tr></thead>
+          <tbody>
+            <tr><td>Monogram</td><td>16 px</td><td>8 mm tinggi</td></tr>
+            <tr><td>Horizontal</td><td>140 px lebar</td><td>35 mm lebar</td></tr>
+            <tr><td>Bertumpuk</td><td>90 px lebar</td><td>25 mm lebar</td></tr>
+            <tr><td>Bertumpuk + tagline</td><td>160 px lebar</td><td>45 mm lebar</td></tr>
+            <tr><td>Bordir</td><td>-</td><td>45 mm tinggi monogram</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+
+    <div class="sub dont">
+      <h3>Yang tidak boleh</h3>
+      <div class="grid small">
+        <figure><div class="tile light"><span class="x">✕</span><svg viewBox="0 0 667.45 697.08" fill="#121212" style="transform:scaleX(1.45)" aria-hidden="true"><use href="#ao"/></svg></div><figcaption>Ditarik atau dipipihkan</figcaption></figure>
+        <figure><div class="tile light"><span class="x">✕</span><svg viewBox="0 0 667.45 697.08" fill="#121212" style="transform:rotate(-18deg)" aria-hidden="true"><use href="#ao"/></svg></div><figcaption>Diputar atau dimiringkan</figcaption></figure>
+        <figure><div class="tile light"><span class="x">✕</span><svg viewBox="0 0 667.45 697.08" fill="#2F6FD6" aria-hidden="true"><use href="#ao"/></svg></div><figcaption>Diganti warna di luar palet</figcaption></figure>
+        <figure><div class="tile light"><span class="x">✕</span><svg viewBox="0 0 667.45 697.08" fill="#121212" style="filter:drop-shadow(6px 6px 3px rgba(0,0,0,.55))" aria-hidden="true"><use href="#ao"/></svg></div><figcaption>Diberi bayangan, glow, atau outline</figcaption></figure>
+        <figure><div class="tile light" style="background:repeating-linear-gradient(45deg,#8FB8DE 0 14px,#E8B04B 14px 28px,#D9534F 28px 42px)"><span class="x">✕</span><svg viewBox="0 0 667.45 697.08" fill="#121212" aria-hidden="true"><use href="#ao"/></svg></div><figcaption>Ditaruh di latar ramai tanpa lapisan gelap</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- WARNA -->
+  <section id="warna">
+    <div class="sec-head">
+      <div class="eyebrow">Warna</div>
+      <h2>Hitam, emas, gading</h2>
+      <p>Tiga warna inti membawa makna: hitam untuk keteguhan Allah yang kekal, emas untuk kemuliaan-Nya, gading untuk terang dan kesucian. Empat warna pendukung dipakai secukupnya.</p>
+    </div>
+    <div class="swatches" id="swatches"></div>
+    <div class="sub">
+      <h3>Takaran</h3>
+      <p>Satu desain idealnya didominasi satu warna dasar (hitam atau gading). Emas adalah aksen, bukan latar penuh, kecuali untuk barang khusus seperti umbul-umbul varian emas.</p>
+      <div class="ratio" role="img" aria-label="Proporsi warna: 60 persen warna dasar, 30 persen warna lawan, 10 persen emas">
+        <span style="flex:60;background:#121212;color:#F6F1E7">60% HITAM / GADING</span>
+        <span style="flex:30;background:#F6F1E7;color:#121212">30% LAWANNYA</span>
+        <span style="flex:10;background:#C8A25A;color:#121212">10%</span>
+      </div>
+      <p class="note">Kontras: teks kecil di latar gading pakai Hitam Kekal (16,6 : 1). Emas Mulia di latar hitam aman untuk semua ukuran (7,8 : 1). Emas di latar gading hanya untuk garis, ikon, atau judul besar.</p>
+      <p class="note">Cetak: nilai CMYK di atas adalah konversi langsung dari RGB, jadi minta proof dulu ke percetakan. Untuk emas yang berkilau pakai tinta emas metalik (misalnya Pantone 871 C) atau foil emas. Untuk hitam pekat pakai rich black C60 M40 Y40 K100.</p>
+    </div>
+  </section>
+
+  <!-- TIPOGRAFI -->
+  <section id="tipografi">
+    <div class="sec-head">
+      <div class="eyebrow">Font</div>
+      <h2>Tiga keluarga huruf</h2>
+      <p>Semua dari Google Fonts dengan lisensi SIL Open Font License: gratis, boleh dipakai untuk cetak, website, dan merchandise. File TTF-nya ada di folder <code>brand/fonts</code> untuk dipasang di komputer atau diunggah ke Canva.</p>
+    </div>
+    <div class="type">
+      <div class="font">
+        <div class="spec"><div class="big" style="font-family:var(--f-logo);font-weight:700;letter-spacing:.04em">ALFA OMEGA</div>
+          <div class="alpha" style="font-family:var(--f-logo);font-weight:600">ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789</div></div>
+        <div class="meta"><b>Cinzel</b><span>Logo, judul kapital, nama acara. Terinspirasi huruf pahatan Romawi, serasi dengan bentuk monogram. Ketebalan: SemiBold 600, Bold 700. Selalu huruf kapital dengan jarak huruf lebar.</span>
+          <a href="https://fonts.google.com/specimen/Cinzel" target="_blank" rel="noopener">fonts.google.com/specimen/Cinzel</a></div>
+      </div>
+      <div class="font">
+        <div class="spec"><div class="big" style="font-family:var(--f-head);font-weight:600">Yang Awal <i style="font-weight:500">dan</i> Yang Akhir</div>
+          <div class="alpha" style="font-family:var(--f-head);font-style:italic">“Kasih karunia Tuhan Yesus menyertai kamu sekalian.”</div></div>
+        <div class="meta"><b>Cormorant Garamond</b><span>Headline, kutipan ayat, judul khotbah. Serif klasik yang anggun. Ketebalan: Medium 500, SemiBold 600, plus Italic. Pakai di ukuran besar (24 px ke atas).</span>
+          <a href="https://fonts.google.com/specimen/Cormorant+Garamond" target="_blank" rel="noopener">fonts.google.com/specimen/Cormorant+Garamond</a></div>
+      </div>
+      <div class="font">
+        <div class="spec"><div class="big" style="font-family:var(--f-body);font-weight:700;letter-spacing:-.01em">Ibadah Raya Minggu</div>
+          <div class="alpha" style="font-family:var(--f-body)">Persekutuan doa setiap Rabu, pukul 19.00 WIB. Semua orang disambut.</div></div>
+        <div class="meta"><b>Plus Jakarta Sans</b><span>Teks isi, menu, tombol, keterangan, jadwal. Didesain oleh Tokotype di Jakarta, sangat jelas dibaca di ponsel. Ketebalan: Regular 400 sampai Bold 700.</span>
+          <a href="https://fonts.google.com/specimen/Plus+Jakarta+Sans" target="_blank" rel="noopener">fonts.google.com/specimen/Plus+Jakarta+Sans</a></div>
+      </div>
+      <div class="scale" aria-label="Contoh hierarki huruf">
+        <div class="row"><span>Label · Jakarta 600</span><div class="eyebrow" style="color:var(--accent)">Renungan Harian</div></div>
+        <div class="row"><span>Display · Cinzel 700</span><div style="font:700 clamp(30px,4.5vw,48px)/1.05 var(--f-logo);letter-spacing:.04em">IBADAH PASKAH</div></div>
+        <div class="row"><span>Judul · Cormorant 600</span><div style="font:600 clamp(26px,3.4vw,36px)/1.15 var(--f-head)">Kasih yang tidak berkesudahan</div></div>
+        <div class="row"><span>Ayat · Cormorant Italic</span><div style="font:italic 500 24px/1.35 var(--f-head)">“Aku adalah Alfa dan Omega, firman Tuhan Allah.” Wahyu 1:8</div></div>
+        <div class="row"><span>Teks · Jakarta 400</span><div style="max-width:62ch">Gereja Alfa Omega adalah keluarga orang percaya yang bertumbuh bersama dalam firman, doa, dan pelayanan. Mari datang beribadah bersama kami.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ELEMEN -->
+  <section id="elemen">
+    <div class="sec-head">
+      <div class="eyebrow">Elemen grafis</div>
+      <h2>Pola Gema Alfa</h2>
+      <p>Garis chevron tipis yang mengikuti sudut kaki huruf A (64°), bertumpuk seperti gema yang memudar. Dipakai sebagai latar halus di banner, slide, dan cetakan. Jangan menimpa logo atau teks kecil.</p>
+    </div>
+    <div class="grid two">
+      <figure><img class="shot" src="web/og-image-1200x630.png" alt="Contoh pola Gema Alfa di latar hitam" loading="lazy"><figcaption><b>Pola + cahaya keemasan</b> di latar hitam. Opasitas garis 15–25%.</figcaption></figure>
+      <figure><div class="tile dark" style="min-height:0;aspect-ratio:1200/630;padding:0;overflow:hidden;place-items:stretch">
+        <div style="background:linear-gradient(135deg,#EBD9A6 0%,#C8A25A 38%,#A9843F 70%,#D8BC7A 100%);display:grid;place-items:center">
+          <svg viewBox="0 0 667.45 697.08" width="120" height="125" fill="#121212" aria-hidden="true"><use href="#ao"/></svg></div></div>
+        <figcaption><b>Gradien emas metalik</b> (#EBD9A6 → #C8A25A → #A9843F → #D8BC7A) hanya untuk layar. Di cetakan, ganti dengan emas rata atau foil.</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- MEDIA SOSIAL -->
+  <section id="sosial">
+    <div class="sec-head">
+      <div class="eyebrow">Media sosial</div>
+      <h2>TikTok, YouTube, Instagram, Facebook</h2>
+      <p>Foto profil dibuat sama di keempat platform supaya jemaat langsung mengenali akun resmi. Instagram dan TikTok tidak punya banner profil, jadi untuk keduanya disiapkan sampul sorotan (highlight), template post, dan sampul video.</p>
+    </div>
+    <div class="grid">
+      <figure><img class="shot" src="media-sosial/instagram/profil-instagram-1080x1080.png" alt="Foto profil" loading="lazy" style="border-radius:50%"><figcaption><b>Foto profil</b>, monogram emas di hitam. Aman dipotong lingkaran.</figcaption></figure>
+      <figure><div class="scroll"><table>
+        <thead><tr><th>Platform</th><th>File</th><th>Tampil</th></tr></thead>
+        <tbody>
+          <tr><td>Instagram</td><td>1080 × 1080</td><td>lingkaran 110–320 px</td></tr>
+          <tr><td>Facebook</td><td>1080 × 1080</td><td>lingkaran 176–196 px</td></tr>
+          <tr><td>YouTube</td><td>800 × 800</td><td>lingkaran 98 px</td></tr>
+          <tr><td>TikTok</td><td>1080 × 1080</td><td>lingkaran 200 px</td></tr>
+        </tbody></table></div>
+        <figcaption>Versi terang (monogram hitam di gading) ada di <code>media-sosial/alternatif</code> untuk acara khusus.</figcaption></figure>
+    </div>
+
+    <div class="sub">
+      <h3>YouTube</h3>
+      <p>Banner 2560 × 1440 px. Logo dan tagline berada di area aman 1546 × 423 px di tengah, jadi tidak terpotong di ponsel, laptop, maupun TV.</p>
+      <figure><img class="shot" src="media-sosial/youtube/banner-youtube-2560x1440.png" alt="Banner YouTube" loading="lazy"><figcaption><b>Banner channel</b> · 2560 × 1440</figcaption></figure>
+      <div class="grid two">
+        <figure><img class="shot" src="media-sosial/youtube/thumbnail-khotbah-1280x720.png" alt="Template thumbnail khotbah" loading="lazy"><figcaption><b>Template thumbnail khotbah</b> · 1280 × 720. Ganti judul dan seri tiap minggu; foto pembicara bisa menggantikan monogram di kanan.</figcaption></figure>
+        <figure><div class="tile dark"><img src="media-sosial/youtube/watermark-150x150.png" alt="Watermark YouTube" style="max-height:90px"></div><figcaption><b>Watermark video</b> · 150 × 150, putih transparan. Pasang di YouTube Studio → Kustomisasi → Branding.</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="sub">
+      <h3>Facebook</h3>
+      <p>Sampul 1640 × 624 px. Di ponsel sisi kiri-kanan terpotong, jadi semua isi diletakkan di tengah.</p>
+      <figure><img class="shot" src="media-sosial/facebook/sampul-facebook-1640x624.png" alt="Sampul Facebook" loading="lazy"><figcaption><b>Foto sampul halaman</b> · 1640 × 624</figcaption></figure>
+    </div>
+
+    <div class="sub">
+      <h3>Instagram</h3>
+      <p>Tujuh sampul sorotan (1080 × 1920; Instagram menampilkan lingkaran di tengahnya), dua template post 4:5, dan satu template story.</p>
+      <div class="grid small" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,110px),1fr))">
+        <figure><img class="shot" src="media-sosial/instagram/highlight-ibadah.png" alt="Sampul sorotan ibadah" loading="lazy"><figcaption><b>Ibadah</b></figcaption></figure>
+        <figure><img class="shot" src="media-sosial/instagram/highlight-renungan.png" alt="Sampul sorotan renungan" loading="lazy"><figcaption><b>Renungan</b></figcaption></figure>
+        <figure><img class="shot" src="media-sosial/instagram/highlight-acara.png" alt="Sampul sorotan acara" loading="lazy"><figcaption><b>Acara</b></figcaption></figure>
+        <figure><img class="shot" src="media-sosial/instagram/highlight-pemuda.png" alt="Sampul sorotan pemuda" loading="lazy"><figcaption><b>Pemuda</b></figcaption></figure>
+        <figure><img class="shot" src="media-sosial/instagram/highlight-doa.png" alt="Sampul sorotan doa" loading="lazy"><figcaption><b>Doa</b></figcaption></figure>
+        <figure><img class="shot" src="media-sosial/instagram/highlight-komsel.png" alt="Sampul sorotan komsel" loading="lazy"><figcaption><b>Komsel</b></figcaption></figure>
+        <figure><img class="shot" src="media-sosial/instagram/highlight-info.png" alt="Sampul sorotan info" loading="lazy"><figcaption><b>Info</b></figcaption></figure>
+      </div>
+      <div class="grid">
+        <figure><img class="shot" src="media-sosial/instagram/post-ayat-1080x1350.png" alt="Template post ayat" loading="lazy"><figcaption><b>Post ayat / renungan</b> · 1080 × 1350</figcaption></figure>
+        <figure><img class="shot" src="media-sosial/instagram/post-selamat-datang-1080x1350.png" alt="Template post selamat datang" loading="lazy"><figcaption><b>Post sambutan</b> · 1080 × 1350</figcaption></figure>
+        <figure><img class="shot" src="media-sosial/instagram/story-ibadah-1080x1920.png" alt="Template story ibadah" loading="lazy"><figcaption><b>Story ajakan ibadah</b> · 1080 × 1920</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="sub">
+      <h3>TikTok</h3>
+      <p>Sampul video 1080 × 1920. Judul diletakkan di tengah karena grid profil TikTok memotong bagian atas dan bawah, dan tombol aplikasi menutupi sisi kanan bawah.</p>
+      <div class="grid">
+        <figure><img class="shot" src="media-sosial/tiktok/cover-video-1080x1920.png" alt="Sampul video TikTok" loading="lazy"><figcaption><b>Sampul seri renungan</b> · 1080 × 1920</figcaption></figure>
+        <figure><img class="shot" src="media-sosial/tiktok/profil-tiktok-1080x1080.png" alt="Foto profil TikTok" loading="lazy" style="border-radius:50%"><figcaption><b>Foto profil</b> · 1080 × 1080</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- WEBSITE -->
+  <section id="website">
+    <div class="sec-head">
+      <div class="eyebrow">Website</div>
+      <h2>Siap dipasang di website</h2>
+      <p>Logo header untuk latar terang dan gelap, favicon, ikon aplikasi, gambar pratinjau saat link dibagikan di WhatsApp/Facebook, dan file token CSS berisi warna serta font.</p>
+    </div>
+    <div class="grid">
+      <figure><div class="tile light"><img src="web/logo-header-terang.svg" alt="Logo header terang" style="max-height:48px"></div><figcaption><b>logo-header-terang.svg</b></figcaption></figure>
+      <figure><div class="tile dark"><img src="web/logo-header-gelap.svg" alt="Logo header gelap" style="max-height:48px"></div><figcaption><b>logo-header-gelap.svg</b></figcaption></figure>
+      <figure><div class="tile light" style="gap:18px;grid-auto-flow:column"><img src="web/icon-192.png" alt="Ikon aplikasi" style="max-height:96px"><img src="web/favicon-32.png" alt="Favicon 32" style="max-height:32px"><img src="web/favicon-16.png" alt="Favicon 16" style="max-height:16px"></div><figcaption><b>Favicon & ikon aplikasi</b> · 16, 32, 48, 180, 192, 512 px + favicon.ico/.svg</figcaption></figure>
+    </div>
+    <div class="grid two" style="margin-top:18px">
+      <figure><img class="shot" src="web/og-image-1200x630.png" alt="Gambar pratinjau link" loading="lazy"><figcaption><b>og-image-1200x630.png</b>, muncul saat link website dibagikan.</figcaption></figure>
+      <div class="codebox">
+        <pre id="headcode">&lt;link rel="icon" href="/favicon.ico" sizes="any"&gt;
+&lt;link rel="icon" href="/favicon.svg" type="image/svg+xml"&gt;
+&lt;link rel="apple-touch-icon" href="/apple-touch-icon.png"&gt;
+&lt;link rel="manifest" href="/site.webmanifest"&gt;
+&lt;meta name="theme-color" content="#121212"&gt;
+&lt;meta property="og:image" content="/og-image-1200x630.png"&gt;
+&lt;link rel="stylesheet" href="/brand-tokens.css"&gt;</pre>
+        <button class="copy" type="button" data-copy-el="headcode">Salin kode &lt;head&gt;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOCKUP -->
+  <section id="mockup">
+    <div class="sec-head">
+      <div class="eyebrow">Mockup</div>
+      <h2>Kaos, jaket, bendera, umbul-umbul</h2>
+      <p>Ilustrasi penerapan logo. File desain untuk vendor ambil dari folder <code>logo/svg</code> (vektor), jangan dari gambar mockup.</p>
+    </div>
+    <div class="grid two">
+      <figure><img class="shot" src="mockup/kaos-hitam.jpg" alt="Mockup kaos hitam" loading="lazy"><figcaption><b>Kaos hitam, sablon emas.</b> Dada kiri: monogram ±9 cm. Punggung: logo bertumpuk + tagline ±30 cm. Sablon plastisol emas atau DTF.</figcaption></figure>
+      <figure><img class="shot" src="mockup/kaos-putih.jpg" alt="Mockup kaos putih" loading="lazy"><figcaption><b>Kaos putih, sablon hitam.</b> Tata letak sama. Tagline boleh emas tua.</figcaption></figure>
+      <figure><img class="shot" src="mockup/jaket-bomber.jpg" alt="Mockup jaket bomber" loading="lazy"><figcaption><b>Jaket bomber hitam, bordir emas.</b> Rib kerah, manset, dan pinggang dengan dua garis emas. Bordir dada ±10 cm, punggung ±32 cm.</figcaption></figure>
+      <figure><img class="shot" src="mockup/bendera.jpg" alt="Mockup bendera" loading="lazy"><figcaption><b>Bendera 150 × 100 cm.</b> Hitam dengan bingkai emas ganda, logo bertumpuk + tagline. Kain satin atau dinier, cetak sublim.</figcaption></figure>
+      <figure><img class="shot" src="mockup/umbul-umbul.jpg" alt="Mockup umbul-umbul" loading="lazy"><figcaption><b>Umbul-umbul 60 × 260 cm</b>, tiga varian: hitam, emas, merah anggur. Monogram di atas, nama dibaca dari bawah ke atas, pola Gema Alfa di ujung lancip.</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- REFERENSI -->
+  <section id="referensi">
+    <div class="sec-head">
+      <div class="eyebrow">Referensi website</div>
+      <h2>10 website gereja untuk memilih arah desain</h2>
+      <p>Dipilih dari ulasan "best church websites" 2025–2026 supaya arahnya beragam. Situs-situs ini dipastikan masih aktif lewat hasil pencarian (Oktober 2026), tetapi tidak dibuka langsung saat riset; buka setiap link sendiri untuk melihat tampilan terbarunya.</p>
+    </div>
+    <div class="dirs">
+      <div class="dir"><span class="tag">ARAH A</span><h3>Kemuliaan Gelap</h3><p>Latar hitam, video ibadah layar penuh, aksen emas. Paling dramatis dan paling dekat dengan logo emas di atas hitam.</p></div>
+      <div class="dir"><span class="tag">ARAH B</span><h3>Klasik Terang</h3><p>Latar gading, ruang kosong lega, judul serif besar. Tenang, berwibawa, mudah dibaca jemaat segala usia.</p></div>
+      <div class="dir"><span class="tag">ARAH C</span><h3>Hangat & Komunitas</h3><p>Foto jemaat sendiri, ajakan "Kunjungi Kami" yang jelas. Paling ramah untuk pengunjung baru.</p></div>
+    </div>
+    <p class="rec" style="margin-top:28px">Rekomendasi: beranda memakai hero gelap dari Arah A, halaman isi (jadwal, renungan, tentang kami) memakai Arah B. Tombol dan garis emas menjadi benang merah keduanya.</p>
+    <div class="refs" id="refs"></div>
+    <div class="sub">
+      <h3>Fitur yang dimiliki hampir semua situs di atas</h3>
+      <ol class="features">
+        <li><b>Halaman "Kunjungi Kami / Pertama Kali?"</b>: jam ibadah dan alamat paling atas, parkir, gambaran ibadah, info Sekolah Minggu.</li>
+        <li><b>Tonton online + arsip khotbah</b> yang bisa difilter per seri, pembicara, atau kitab, lengkap dengan bahan diskusi Komsel.</li>
+        <li><b>Persembahan online</b> yang selalu terlihat di header: QRIS, transfer bank, virtual account, e-wallet.</li>
+        <li><b>Komsel dan langkah berikutnya</b>: gabung Komsel, baptisan, melayani, kelas pertumbuhan.</li>
+        <li><b>Acara dan kalender</b> dengan pendaftaran online dan halaman kampanye (Paskah, Natal, doa & puasa).</li>
+        <li><b>Mobile-first</b>: 4–6 menu, tampilan seperti aplikasi di ponsel, tombol ID/EN.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- FILE -->
+  <section id="file">
+    <div class="sec-head">
+      <div class="eyebrow">File</div>
+      <h2>Isi folder brand</h2>
+      <p>Semua file ada di repositori <code>alfaomega</code>. Gambar bisa dibuat ulang dengan skrip di folder <code>tools</code> bila warna atau teks perlu diubah.</p>
+    </div>
+    <div class="scroll"><pre class="tree">brand/
+├── logo/
+│   ├── svg/          23 file vektor: monogram, horizontal, horizontal-ringkas, bertumpuk,
+│   │                 bertumpuk-tagline, wordmark × hitam / emas / emas-gading / putih
+│   ├── png/          versi PNG transparan (2000 px)
+│   └── asli/         logo asli sebagai arsip
+├── fonts/            Cinzel, Cormorant Garamond, Plus Jakarta Sans (TTF + lisensi OFL)
+├── media-sosial/
+│   ├── instagram/    profil, 7 sampul sorotan, post ayat, post sambutan, story
+│   ├── facebook/     profil, sampul 1640×624
+│   ├── youtube/      profil 800, banner 2560×1440, thumbnail 1280×720, watermark
+│   ├── tiktok/       profil, sampul video 1080×1920
+│   └── alternatif/   profil versi terang
+├── web/              favicon, ikon aplikasi, logo header, og-image, brand-tokens.css
+├── mockup/           kaos hitam, kaos putih, jaket bomber, bendera, umbul-umbul
+└── panduan-brand.html  halaman ini
+referensi-website/README.md   10 referensi lengkap + sumber</pre></div>
+  </section>
+</main>
+
+<footer class="wrap"><span>Gereja Alfa Omega · Panduan Brand v1.0</span><span>Oktober 2026</span></footer>
+
+<script>
+const COLORS = [
+  { name: 'Hitam Kekal', role: 'Warna utama: logo, teks, latar gelap', hex: '#121212', rgb: '18 18 18', cmyk: '0 0 0 93', ink: '#F6F1E7', tag: 'Inti' },
+  { name: 'Emas Mulia', role: 'Aksen: monogram, tombol, garis', hex: '#C8A25A', rgb: '200 162 90', cmyk: '0 19 55 22', ink: '#121212', tag: 'Inti' },
+  { name: 'Putih Gading', role: 'Latar terang, teks di latar gelap', hex: '#F6F1E7', rgb: '246 241 231', cmyk: '0 2 6 4', ink: '#121212', tag: 'Inti' },
+  { name: 'Emas Tua', role: 'Emas untuk judul besar di latar terang', hex: '#9A7633', rgb: '154 118 51', cmyk: '0 23 67 40', ink: '#F6F1E7', tag: 'Pendukung' },
+  { name: 'Emas Muda', role: 'Kutipan ayat di latar gelap', hex: '#E6CF95', rgb: '230 207 149', cmyk: '0 10 35 10', ink: '#121212', tag: 'Pendukung' },
+  { name: 'Arang', role: 'Kartu dan permukaan di mode gelap', hex: '#2A2826', rgb: '42 40 38', cmyk: '0 5 10 84', ink: '#F6F1E7', tag: 'Pendukung' },
+  { name: 'Abu Batu', role: 'Keterangan, teks sekunder di latar gelap', hex: '#8A8378', rgb: '138 131 120', cmyk: '0 5 13 46', ink: '#121212', tag: 'Pendukung' },
+  { name: 'Merah Anggur', role: 'Aksen liturgis: Perjamuan Kudus, Jumat Agung', hex: '#6E1E2A', rgb: '110 30 42', cmyk: '0 73 62 57', ink: '#F6F1E7', tag: 'Pendukung' },
+];
+const sw = document.getElementById('swatches');
+sw.innerHTML = COLORS.map(c => `<div class="sw">
+  <div class="chip" style="background:${c.hex};color:${c.ink}">${c.tag}</div>
+  <div class="info"><div class="name">${c.name}</div><div class="role">${c.role}</div>
+    <dl><dt>HEX</dt><dd>${c.hex}</dd><dt>RGB</dt><dd>${c.rgb}</dd><dt>CMYK</dt><dd>${c.cmyk}</dd></dl>
+    <button class="copy" type="button" data-copy="${c.hex}">Salin ${c.hex}</button></div></div>`).join('');
+
+const REFS = [{"n": 1, "dir": "A", "name": "Elevation Church", "url": "https://elevationchurch.org", "country": "Amerika Serikat", "style": "Sinematik, video hero", "why": "Navigasi dipangkas jadi 5–6 menu. Beranda dibuka dengan hero media besar (khotbah terbaru), tipografi tebal, dan ruang kosong lega. Setiap kampus punya halaman “First Time” dan ada panduan diskusi per khotbah.", "take": "Hero video dengan lapisan hitam 60–70% dan satu tombol emas. Halaman “Pertama Kali ke Sini?”. Ringkasan khotbah + pertanyaan diskusi untuk Komsel."}, {"n": 3, "dir": "A", "name": "VOUS Church", "url": "https://www.vouschurch.com", "country": "Amerika Serikat", "style": "Editorial hitam-putih", "why": "Estetika monokrom yang tegas dan premium. Beranda memutar klip ibadah tanpa suara. Halaman “Visit” punya video pratinjau per lokasi serta alamat dan jam ibadah yang jelas.", "take": "Dasar monokrom dengan emas sebagai pengganti putih. Kartu jadwal ibadah dengan video pendek suasana ibadah. Halaman kampanye Paskah/Natal bergaya editorial."}, {"n": 4, "dir": "A", "name": "Transformation Church", "url": "https://transformchurch.us", "country": "Amerika Serikat", "style": "Gelap & tebal, satu aksen hangat", "why": "Masuk daftar “50 Best Church Website Designs” ChurchCreation. Latar hampir hitam dengan aksen oranye-keemasan, grid artwork seri khotbah yang menonjol, tombol persembahan selalu terlihat.", "take": "Paling dekat dengan identitas hitam-emas Alfa Omega. Grid artwork seri khotbah. Tombol “Persembahan” tetap di header. Halaman kampanye doa & puasa."}, {"n": 7, "dir": "A", "name": "Hillsong Church", "url": "https://hillsong.com", "country": "Australia", "style": "Minimalis gelap, multi-bahasa", "why": "Beranda gelap dan atmosferik dengan sangat sedikit teks. Ada pemilih wilayah, dan setiap kampus punya sub-halaman dengan foto kotanya sendiri.", "take": "Suasana gelap yang sinematik. Tombol bahasa ID/EN di header. Struktur halaman per cabang bila nanti ada cabang. Dipakai sebagai referensi tampilan saja."}, {"n": 2, "dir": "B", "name": "Passion City Church", "url": "https://passioncitychurch.com", "country": "Amerika Serikat", "style": "Minimalis bersih", "why": "Nominasi Awwwards. Video latar layar penuh, ruang kosong lega, tipografi mudah dibaca, dan pengunjung langsung diarahkan ke dua tombol utama. Ada halaman “Start Here” untuk pendatang baru.", "take": "Kesan premium dari ruang kosong + judul besar, cocok dengan wordmark Cinzel. Satu halaman “Mulai di Sini” sebagai pintu masuk jemaat baru."}, {"n": 8, "dir": "B", "name": "St Paul's Cathedral", "url": "https://www.stpauls.co.uk", "country": "Inggris", "style": "Klasik, liturgis, elegan", "why": "Identitas baru (Pentagram, 2026) memakai wordmark bergaya ukiran batu dan monogram dari huruf wordmark, dipasangkan dengan sans-serif bersih. Struktur jelas: Ibadah, Acara, Kunjungan. Identitas baru diterapkan bertahap, jadi cek tampilan situsnya saat ini.", "take": "Acuan paling relevan untuk wordmark serif + monogram. Pasangan serif display + sans bersih (sudah kita pakai). Jadwal ibadah dan kalender acara yang rapi."}, {"n": 5, "dir": "C", "name": "Mariners Church", "url": "https://www.marinerschurch.org", "country": "Amerika Serikat", "style": "Hangat, foto jemaat asli", "why": "Foto baptisan asli di beranda membuat situs terasa hangat. Setiap kampus punya halaman “Plan a Visit” lengkap (jam, parkir, program anak) dan pendaftaran anak online sebelum datang.", "take": "Foto jemaat sendiri, bukan foto stok, dengan garis tipis emas. Tombol “Daftar Baptisan”. Formulir Sekolah Minggu. Penjelasan “apa yang akan Anda alami”."}, {"n": 6, "dir": "C", "name": "Life.Church", "url": "https://www.life.church", "country": "Amerika Serikat", "style": "Seperti aplikasi, digital-first", "why": "Beranda hampir kosong dan hanya menyisakan satu langkah berikutnya. Hero video lebar dengan jam ibadah tepat di bawahnya, navigasi ringkas (Plan a Visit, Watch, Give, Groups).", "take": "Prinsip “satu halaman, satu ajakan utama”. Navigasi 4–5 menu. Kartu “Langkah Berikutnya” (Baptis, Komsel, Melayani, Kelas). Navigasi bawah ala aplikasi di ponsel."}, {"n": 9, "dir": "C", "name": "City Harvest Church", "url": "https://www.chc.org.sg", "country": "Singapura", "style": "Megachurch Asia, multi-bahasa", "why": "Halaman “Plan a Visit” menampilkan jam ibadah per lokasi dan per bahasa. Ibadah live lewat situs, aplikasi, YouTube, dan Facebook. Formulir gabung cell group dengan banyak kategori.", "take": "Tabel jadwal per bahasa/lokasi. Formulir “Gabung Komsel” dengan pilihan kategori. Halaman khusus untuk acara besar (KKR, retreat)."}, {"n": 10, "dir": "C", "name": "JPCC", "url": "https://www.jpcc.org", "country": "Indonesia", "style": "Acuan lokal, terhubung aplikasi", "why": "Salah satu ekosistem digital gereja paling matang di Indonesia: reservasi kursi ibadah, persembahan non-tunai, pendaftaran komunitas dan kelas, permohonan doa. Ada panduan cara mengikuti ibadah dan FAQ kunjungan pertama.", "take": "Panduan “Cara Mengikuti Ibadah” + FAQ jemaat baru. Persembahan QRIS, transfer, virtual account, e-wallet. Kontak WhatsApp. Bahasa Indonesia utama dengan tombol English."}];
+const groups = [['A', 'Arah A · Kemuliaan Gelap'], ['B', 'Arah B · Klasik Terang'], ['C', 'Arah C · Hangat & Komunitas']];
+document.getElementById('refs').innerHTML = groups.map(([g, label]) => `<div class="group-label">${label}</div>` +
+  REFS.filter(r => r.dir === g).map(r => `<article class="ref">
+    <div class="n">${r.n}</div>
+    <div class="why"><h4>${r.name}</h4><div class="loc">${r.country} · ${r.style}</div>
+      <div class="url"><a href="${r.url}" target="_blank" rel="noopener">${r.url.replace('https://', '')}</a></div>
+      <p style="margin-top:10px">${r.why}</p></div>
+    <div class="take"><b>Yang bisa dipinjam</b>${r.take}</div></article>`).join('')).join('');
+
+document.addEventListener('click', async e => {
+  const b = e.target.closest('.copy');
+  if (!b) return;
+  const text = b.dataset.copy ?? document.getElementById(b.dataset.copyEl).textContent;
+  const old = b.textContent;
+  try { await navigator.clipboard.writeText(text); b.textContent = 'Tersalin'; }
+  catch { const r = document.createRange(); const el = b.dataset.copyEl ? document.getElementById(b.dataset.copyEl) : b; r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = 'Tekan Ctrl+C'; }
+  setTimeout(() => { b.textContent = old; }, 1600);
+});
+</script>
+</body>
+</html>
