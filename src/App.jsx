@@ -1,10 +1,11 @@
 import { Suspense, lazy, useLayoutEffect, useRef } from 'react';
 import { gereja, isi } from './data/isi.js';
-import { halamanUntuk } from './cms/halaman.js';
+import { LANGKAH, halamanUntuk, jalurLangkah } from './cms/halaman.js';
 import PenahanGalat from './components/PenahanGalat.jsx';
 import { useJalur, useTautanInternal } from './rute.js';
 import Beranda from './halaman/Beranda.jsx';
 import SiapaKami from './halaman/SiapaKami.jsx';
+import HalamanLangkah from './halaman/Langkah.jsx';
 import TidakDitemukan from './halaman/TidakDitemukan.jsx';
 import Footer from './components/Footer.jsx';
 
@@ -15,6 +16,11 @@ const Admin = lazy(() => import('./admin/Admin.jsx'));
 const RUTE = {
   '/': { Halaman: Beranda, judul: halamanUntuk('/').judul(isi) },
   '/siapa-kami': { Halaman: SiapaKami, judul: halamanUntuk('/siapa-kami').judul(isi) },
+  // /langkah/beribadah, /langkah/komsel, ... (satu halaman per langkah bertumbuh)
+  ...Object.fromEntries(LANGKAH.map((slug) => [jalurLangkah(slug), {
+    Halaman: () => <HalamanLangkah slug={slug} />,
+    judul: halamanUntuk(jalurLangkah(slug)).judul(isi),
+  }])),
 };
 const HALAMAN_404 = { Halaman: TidakDitemukan, judul: `Halaman Tidak Ditemukan · ${gereja.nama}` };
 const halamanAdmin = (jalur) => jalur === '/admin' || jalur.startsWith('/admin/');

@@ -18,7 +18,7 @@ npm start        # server produksi (Express) menyajikan dist/, port dari $PORT a
 | Isi bawaan (isi awal sebelum diubah di CMS) | `src/data/konten.js` |
 | Kategori CMS, peran, dan hak aksesnya | `src/cms/skema.js` |
 | Panel CMS / API CMS | `src/admin/` / `server/` |
-| Daftar halaman (`/` beranda, `/siapa-kami`) | `src/App.jsx` (`RUTE`); isi tiap halaman di `src/halaman/` |
+| Daftar halaman (`/` beranda, `/siapa-kami`, `/langkah/beribadah` · `komsel` · `kelas` · `baptisan` · `melayani`) | `src/App.jsx` (`RUTE`) + `src/cms/halaman.js`; isi tiap halaman di `src/halaman/` |
 | Komponen bagian | `src/components/` (Hero, Nav, Sambutan, VideoYouTube, Langkah, Jadwal, Khotbah, Jemaat, Persembahan, Kunjungi, KepalaHalaman, SiapaKami, Nilai, Pengurus, Ajakan, Footer) |
 | Foto bawaan (dibuat dengan AI, ganti dengan foto jemaat sendiri lewat CMS) | `public/img/` |
 | Token brand Tailwind (warna, font, radius) & @font-face | `src/index.css` (blok `@theme`) |
@@ -62,11 +62,16 @@ dari nama platform atau link profil (Instagram, YouTube, Facebook, TikTok, Whats
 |---|---|
 | **Developer** | Semua isi + menu & navigasi, pengguna, cadangan & sistem |
 | **Ketua / Gembala Sidang** | Semua isi + kelola pengguna (tidak dapat memberi peran Developer) |
-| Sekretariat | Halaman depan, jadwal ibadah, profil gereja (Siapa Kami), gembala & pengurus, kontak & lokasi, foto kehidupan jemaat, SEO & berbagi link |
+| Sekretariat | Halaman depan, jadwal ibadah, profil gereja (Siapa Kami), gembala & pengurus, kontak & lokasi, foto kehidupan jemaat, SEO & berbagi link, halaman Datang & Beribadah |
 | Bendahara | Persembahan: tombol online, **rekening** (dengan tombol salin) dan **QRIS** |
 | Multimedia | Sambutan gembala (video YouTube), halaman depan, khotbah, foto kehidupan jemaat, media sosial, SEO & berbagi link |
-| Pembinaan & Pengajaran | Langkah bertumbuh |
-| Komisi Sekolah Minggu / Pemuda / Koordinator Komsel / Pelayanan Doa / Misi & Diakonia | Kartu masing-masing di bagian Kehidupan Jemaat |
+| Pembinaan & Pengajaran | Langkah bertumbuh (termasuk tombol tiap kartu) dan kelima halaman langkah: Datang & Beribadah, Komsel, Kelas Pertumbuhan, Baptisan, Melayani |
+| Komisi Sekolah Minggu / Pemuda / Koordinator Komsel / Pelayanan Doa / Misi & Diakonia | Kartu masing-masing di bagian Kehidupan Jemaat (Koordinator Komsel juga halaman Komsel) |
+
+**Halaman tiap langkah.** Setiap kartu Langkah Bertumbuh di beranda punya tombol ke halamannya sendiri (`/langkah/...`):
+pengantar, kartu poin, tahapan "cara bergabung", tanya jawab, ajakan, dan tautan ke langkah sebelum/sesudahnya; halaman
+Datang & Beribadah juga memuat Jadwal Ibadah dan Kunjungi Kami. Isinya diubah di CMS → Pembinaan → *Halaman …*;
+kosongkan judul sebuah bagian untuk menyembunyikannya. Tombol ajakan dengan link `#` otomatis memakai tombol *Kirim Pesan* di Kontak & Lokasi.
 
 Fitur: formulir per kategori (judul dengan `*kata*` untuk warna emas), unggah foto (otomatis diperkecil maks. 2400 px),
 pustaka media, peringatan bila meninggalkan perubahan yang belum disimpan, deteksi bentrok bila dua orang menyimpan kategori yang sama,

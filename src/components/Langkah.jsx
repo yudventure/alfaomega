@@ -4,6 +4,11 @@ import Reveal from './Reveal.jsx';
 import { Teks } from './Dasar.jsx';
 import { aset } from '../aset.js';
 import { teksPolos } from '../cms/judul.js';
+import { LANGKAH, jalurLangkah } from '../cms/halaman.js';
+import Ikon from './Ikon.jsx';
+
+// Tombol kartu: dari CMS; isi lama yang belum punya tombol memakai halaman langkah sesuai urutan.
+const tombolUntuk = (l, i) => l.tombol ?? (LANGKAH[i] ? { label: 'Selengkapnya', href: jalurLangkah(LANGKAH[i]) } : null);
 
 // Timeline langkah bertumbuh: garis di kiri terisi emas mengikuti guliran (titiknya selalu di ±55% tinggi layar),
 // bulatan bernomor menyala ketika titik itu melewatinya, kartu muncul dari kanan dengan foto berselang-seling.
@@ -86,6 +91,12 @@ export default function Langkah() {
                         <p className="label">Langkah {String(i + 1).padStart(2, '0')}</p>
                         <Teks as="h3" html={l.judul} className="font-judul text-[clamp(1.6rem,2.6vw,2.2rem)] font-semibold leading-[1.2]" />
                         <p className="max-w-[44ch] text-batu-tua">{l.teks}</p>
+                        {tombolUntuk(l, i)?.href && (
+                          <a href={tombolUntuk(l, i).href} className="tombol tombol-hitam group mt-3 self-start">
+                            {tombolUntuk(l, i).label || 'Selengkapnya'}
+                            <Ikon nama="panah-kanan" className="h-[1.15em] w-[1.15em] transition-transform duration-200 group-hover:translate-x-0.5" />
+                          </a>
+                        )}
                       </div>
                       <figure className="relative order-first min-h-[210px] overflow-hidden md:order-none md:min-h-[320px]">
                         <img src={aset(l.gambar)} alt={teksPolos(l.judul)} width="1200" height="900" loading="lazy" className="gambar-muncul absolute inset-0 h-full w-full object-cover" />

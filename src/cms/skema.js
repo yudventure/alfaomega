@@ -11,10 +11,10 @@ export const PERAN = [
   { id: 'sekretariat', nama: 'Sekretariat', ket: 'Halaman depan, jadwal ibadah, profil gereja, pengurus, kontak & lokasi.' },
   { id: 'bendahara', nama: 'Bendahara', ket: 'Persembahan, rekening, dan QRIS gereja.' },
   { id: 'multimedia', nama: 'Multimedia', ket: 'Khotbah, video sambutan, foto halaman depan & kehidupan jemaat, media sosial.' },
-  { id: 'pembinaan', nama: 'Pembinaan & Pengajaran', ket: 'Langkah bertumbuh dan kelas pembinaan.' },
+  { id: 'pembinaan', nama: 'Pembinaan & Pengajaran', ket: 'Langkah bertumbuh, halaman tiap langkah (ibadah, komsel, kelas, baptisan, melayani).' },
   { id: 'komisi-anak', nama: 'Komisi Sekolah Minggu', ket: 'Keterangan Sekolah Minggu.' },
   { id: 'komisi-pemuda', nama: 'Komisi Pemuda', ket: 'Keterangan pelayanan pemuda.' },
-  { id: 'komsel', nama: 'Koordinator Komsel', ket: 'Keterangan kelompok sel.' },
+  { id: 'komsel', nama: 'Koordinator Komsel', ket: 'Keterangan kelompok sel dan halaman Komsel.' },
   { id: 'doa', nama: 'Pelayanan Doa', ket: 'Keterangan doa & puasa.' },
   { id: 'diakonia', nama: 'Misi & Diakonia', ket: 'Keterangan pelayanan sosial dan misi.' },
 ];
@@ -45,6 +45,29 @@ const daftar = (kunci, label, labelButir, butir, maks = 30) => ({ kunci, label, 
 const daftarTeks = (kunci, label, labelButir, maks = 12) => ({ kunci, label, jenis: 'daftar-teks', labelButir, maks });
 const tombol = (kunci, label, denganIkon = false) =>
   objek(kunci, label, [teks('label', 'Teks tombol'), tautan('href', 'Tautan'), ...(denganIkon ? [ikon()] : [])]);
+// Halaman detail satu langkah bertumbuh (/langkah/<slug>), isi di halamanLangkah.<slug>
+const halamanLangkah = (slug, nama, ikonKat, peran) => ({
+  id: `langkah-${slug}`, kelompok: 'pembinaan', ikon: ikonKat, judul: `Halaman ${nama}`, situs: `/langkah/${slug}`,
+  ket: `Halaman yang dibuka dari tombol kartu "${nama}" di Langkah Bertumbuh. Kosongkan judul sebuah bagian untuk menyembunyikannya.`,
+  peran,
+  bagian: [{
+    kunci: `halamanLangkah.${slug}`, judul: nama,
+    bidang: [
+      judul('judul', 'Judul halaman'), paragraf('teks', 'Pengantar di kepala halaman', 'Juga dipakai sebagai deskripsi di Google.'),
+      gambar('gambar', 'Foto kepala halaman', '16:9'),
+      judul('pengantarJudul', 'Judul bagian pengantar'),
+      daftarTeks('pengantar', 'Paragraf pengantar', 'Paragraf', 6),
+      judul('poinJudul', 'Judul kartu-kartu poin'),
+      daftar('poin', 'Kartu poin', 'Poin', [teks('judul', 'Judul'), paragraf('teks', 'Penjelasan'), ikon()], 8),
+      judul('tahapanJudul', 'Judul tahapan'),
+      daftar('tahapan', 'Tahapan (cara bergabung)', 'Tahap', [teks('judul', 'Judul'), paragraf('teks', 'Penjelasan')], 6),
+      teks('tanyaJudul', 'Judul tanya jawab'),
+      daftar('tanya', 'Tanya jawab', 'Pertanyaan', [teks('tanya', 'Pertanyaan'), paragraf('jawab', 'Jawaban')], 12),
+      judul('ajakanJudul', 'Judul ajakan di bawah'), paragraf('ajakanTeks', 'Teks ajakan'),
+      tombol('tombol', 'Tombol ajakan (link # = tombol Kirim Pesan di Kunjungi Kami)'),
+    ],
+  }],
+});
 const keterangan = (kunci, judulBagian) => ({
   kunci, judul: judulBagian, bidang: [teks('judul', 'Nama bagian'), paragraf('teks', 'Keterangan singkat', 'Satu sampai tiga kalimat.')],
 });
@@ -204,9 +227,15 @@ export const KATEGORI = [
     bagian: [{
       kunci: 'langkah', judul: 'Langkah bertumbuh',
       bidang: [judul(), paragraf('teks', 'Keterangan'),
-        daftar('daftar', 'Daftar langkah', 'Langkah', [judul('judul', 'Judul langkah'), paragraf('teks', 'Penjelasan'), gambar('gambar', 'Foto', '4:3')], 8)],
+        daftar('daftar', 'Daftar langkah', 'Langkah', [judul('judul', 'Judul langkah'), paragraf('teks', 'Penjelasan'), gambar('gambar', 'Foto', '4:3'),
+          tombol('tombol', 'Tombol ke halaman langkah (mis. /langkah/komsel; kosong = tanpa tombol)')], 8)],
     }],
   },
+  halamanLangkah('beribadah', 'Datang & Beribadah', 'ibadah', ['pembinaan', 'sekretariat']),
+  halamanLangkah('komsel', 'Komsel', 'komsel', ['pembinaan', 'komsel']),
+  halamanLangkah('kelas', 'Kelas Pertumbuhan', 'alkitab', ['pembinaan']),
+  halamanLangkah('baptisan', 'Baptisan', 'baptisan', ['pembinaan']),
+  halamanLangkah('melayani', 'Melayani', 'pujian', ['pembinaan']),
   { id: 'sekolah-minggu', kelompok: 'komisi', ikon: 'anak', judul: 'Sekolah Minggu', situs: '/#jemaat', ket: 'Kartu Sekolah Minggu di bagian Kehidupan Jemaat.', peran: ['komisi-anak'], bagian: [keterangan('jemaat.sekolahMinggu', 'Sekolah Minggu')] },
   { id: 'pemuda', kelompok: 'komisi', ikon: 'pemuda', judul: 'Pemuda', situs: '/#jemaat', ket: 'Kartu Pemuda di bagian Kehidupan Jemaat.', peran: ['komisi-pemuda'], bagian: [keterangan('jemaat.pemuda', 'Pemuda')] },
   { id: 'komsel', kelompok: 'komisi', ikon: 'komsel', judul: 'Komsel', situs: '/#jemaat', ket: 'Kartu Komsel di bagian Kehidupan Jemaat.', peran: ['komsel'], bagian: [keterangan('jemaat.komsel', 'Komsel')] },
