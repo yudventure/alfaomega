@@ -1,4 +1,4 @@
-# 10 Referensi Website Gereja untuk Gereja Alfa Omega
+# 10 Referensi Website Gereja untuk GBI Kapernaum Sorong
 
 Riset Oktober 2026. Daftar ini disusun dari ulasan "best church websites" tahun 2025–2026
 (ReachRight, Two Ten Creatives, ChurchCreation, Whiteoak Media, Zarla, ChurchTrac, Hostinger, Awwwards)
@@ -23,9 +23,9 @@ dan dipilih supaya **arah desainnya beragam**, jadi tim bisa memilih.
 | 9 | [City Harvest Church](https://www.chc.org.sg) | Singapura | Megachurch Asia, multi-bahasa | Arah C |
 | 10 | [JPCC](https://www.jpcc.org) | Indonesia | Acuan lokal, terhubung aplikasi | Arah C |
 
-## Tiga arah yang paling cocok dengan brand Alfa Omega
+## Tiga arah yang paling cocok dengan brand Kapernaum
 
-Brand Alfa Omega memakai hitam, emas, dan huruf serif klasik. Referensi di atas bisa dikelompokkan jadi tiga arah:
+Brand Kapernaum memakai lambang singa hitam-emas, huruf sans-serif tebal untuk logo, dan serif klasik untuk judul. Referensi di atas bisa dikelompokkan jadi tiga arah:
 
 - **Arah A, Kemuliaan Gelap.** Latar hitam, video ibadah layar penuh, aksen emas. Lihat #1 Elevation, #2 VOUS, #3 Transformation, #4 Hillsong.
   Paling dramatis dan paling dekat dengan logo emas di atas hitam.
@@ -62,7 +62,7 @@ Tombol dan garis emas menjadi benang merah keduanya.
 - **Arah:** Gelap dan tebal dengan satu aksen hangat
 - **Kenapa bagus:** Masuk daftar "50 Best Church Website Designs" ChurchCreation. Latar hampir hitam dengan aksen oranye-keemasan,
   grid artwork seri khotbah yang menonjol, dan tombol persembahan yang selalu terlihat.
-- **Yang bisa dipinjam:** Paling dekat dengan identitas hitam-emas Alfa Omega. Grid artwork seri khotbah. Tombol "Persembahan" tetap di header.
+- **Yang bisa dipinjam:** Paling dekat dengan identitas hitam-emas Kapernaum. Grid artwork seri khotbah. Tombol "Persembahan" tetap di header.
   Halaman kampanye doa & puasa. (Jangan tertukar dengan gereja lain bernama sama di domain berbeda.)
 
 ### 4. Hillsong Church
@@ -88,7 +88,7 @@ Tombol dan garis emas menjadi benang merah keduanya.
 - **Kenapa bagus:** Identitas barunya (Pentagram, 2026) memakai wordmark yang terinspirasi ukiran batu dan monogram dari huruf wordmark,
   dipasangkan dengan sans-serif bersih dan palet dari warna batu & mosaik katedral. Struktur jelas: Ibadah, Acara, Kunjungan.
   Identitas baru ini diterapkan bertahap, jadi cek tampilan situsnya saat ini.
-- **Yang bisa dipinjam:** Acuan paling relevan untuk wordmark serif + monogram Alfa Omega. Pasangan serif display + sans bersih
+- **Yang bisa dipinjam:** Acuan untuk lambang + wordmark yang dipakai berdampingan. Pasangan serif display + sans bersih
   (sudah kita pakai: Cinzel/Cormorant + Plus Jakarta Sans). Jadwal ibadah dan kalender acara yang rapi.
 
 ## Arah C · Hangat & Komunitas
@@ -98,7 +98,7 @@ Tombol dan garis emas menjadi benang merah keduanya.
 - **Arah:** Hangat, komunitas, berbasis foto
 - **Kenapa bagus:** Foto baptisan asli di beranda membuat situs terasa hangat. Setiap kampus punya halaman "Plan a Visit" lengkap
   (jam ibadah, parkir, program anak), plus pendaftaran anak online sebelum datang.
-- **Yang bisa dipinjam:** Foto jemaat Alfa Omega sendiri (bukan foto stok) dengan garis tipis emas. Tombol "Daftar Baptisan".
+- **Yang bisa dipinjam:** Foto jemaat Kapernaum sendiri (bukan foto stok) dengan garis tipis emas. Tombol "Daftar Baptisan".
   Formulir Sekolah Minggu sebelum kunjungan. Penjelasan "apa yang akan Anda alami".
 
 ### 8. Life.Church

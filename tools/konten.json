@@ -1,7 +1,7 @@
 {
  "warna": [
   {
-   "name": "Hitam Kekal",
+   "name": "Hitam Malam",
    "role": "Warna utama: logo, teks, latar gelap",
    "hex": "#121212",
    "rgb": "18 18 18",
@@ -10,11 +10,11 @@
    "tag": "Inti"
   },
   {
-   "name": "Emas Mulia",
-   "role": "Aksen: monogram, tombol, garis",
-   "hex": "#C8A25A",
-   "rgb": "200 162 90",
-   "cmyk": "C0 M19 Y55 K22",
+   "name": "Emas Singa",
+   "role": "Aksen: lambang singa, tombol, garis",
+   "hex": "#C89C4A",
+   "rgb": "200 156 74",
+   "cmyk": "C0 M22 Y63 K22",
    "ink": "#121212",
    "tag": "Inti"
   },
@@ -30,18 +30,18 @@
   {
    "name": "Emas Tua",
    "role": "Emas untuk judul besar di latar terang",
-   "hex": "#9A7633",
-   "rgb": "154 118 51",
-   "cmyk": "C0 M23 Y67 K40",
+   "hex": "#94702B",
+   "rgb": "148 112 43",
+   "cmyk": "C0 M24 Y71 K42",
    "ink": "#F6F1E7",
    "tag": "Pendukung"
   },
   {
    "name": "Emas Muda",
    "role": "Kutipan ayat di latar gelap",
-   "hex": "#E6CF95",
-   "rgb": "230 207 149",
-   "cmyk": "C0 M10 Y35 K10",
+   "hex": "#E8CB86",
+   "rgb": "232 203 134",
+   "cmyk": "C0 M13 Y42 K9",
    "ink": "#121212",
    "tag": "Pendukung"
   },
@@ -64,12 +64,12 @@
    "tag": "Pendukung"
   },
   {
-   "name": "Merah Anggur",
-   "role": "Aksen liturgis: Perjamuan Kudus, Jumat Agung",
-   "hex": "#6E1E2A",
-   "rgb": "110 30 42",
-   "cmyk": "C0 M73 Y62 K57",
-   "ink": "#F6F1E7",
+   "name": "Krem",
+   "role": "Kartu & permukaan terang di website",
+   "hex": "#FFFCF6",
+   "rgb": "255 252 246",
+   "cmyk": "C0 M1 Y4 K0",
+   "ink": "#121212",
    "tag": "Pendukung"
   }
  ],
@@ -102,7 +102,7 @@
    "country": "Amerika Serikat",
    "style": "Gelap & tebal, satu aksen hangat",
    "why": "Masuk daftar “50 Best Church Website Designs” dari ChurchCreation. Latar hampir hitam dengan aksen oranye-keemasan, grid artwork seri khotbah yang menonjol, tombol persembahan selalu terlihat.",
-   "take": "Paling dekat dengan identitas hitam-emas Alfa Omega. Grid artwork seri khotbah. Tombol “Persembahan” tetap di header. Halaman kampanye doa & puasa."
+   "take": "Paling dekat dengan identitas hitam-emas Kapernaum. Grid artwork seri khotbah. Tombol “Persembahan” tetap di header. Halaman kampanye doa & puasa."
   },
   {
    "n": 4,
@@ -122,7 +122,7 @@
    "country": "Amerika Serikat",
    "style": "Minimalis bersih",
    "why": "Nominasi Awwwards. Video latar layar penuh, ruang kosong lega, tipografi mudah dibaca, dan pengunjung langsung diarahkan ke dua tombol utama. Ada halaman “Start Here” untuk pendatang baru.",
-   "take": "Kesan premium dari ruang kosong + judul besar, cocok dengan wordmark Cinzel. Satu halaman “Mulai di Sini” sebagai pintu masuk jemaat baru."
+   "take": "Kesan premium dari ruang kosong + judul besar, cocok dengan wordmark KAPERNAUM yang tegas. Satu halaman “Mulai di Sini” sebagai pintu masuk jemaat baru."
   },
   {
    "n": 6,
@@ -132,7 +132,7 @@
    "country": "Inggris",
    "style": "Klasik, liturgis, elegan",
    "why": "Identitas baru (Pentagram, 2026) memakai wordmark bergaya ukiran batu dan monogram dari huruf wordmark, dipasangkan dengan sans-serif bersih. Struktur jelas: Ibadah, Acara, Kunjungan. Identitas baru diterapkan bertahap, jadi cek tampilan situsnya saat ini.",
-   "take": "Acuan paling relevan untuk wordmark serif + monogram. Pasangan serif display + sans bersih (sudah kita pakai). Jadwal ibadah dan kalender acara yang rapi."
+   "take": "Acuan untuk lambang + wordmark yang dipakai berdampingan. Pasangan serif display + sans bersih (sudah kita pakai). Jadwal ibadah dan kalender acara yang rapi."
   },
   {
    "n": 7,

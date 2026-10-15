@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Contoh Kit Website · Gereja Alfa Omega</title>
+<title>Contoh Kit Website · GBI Kapernaum Sorong</title>
 <link rel="icon" href="favicon.ico" sizes="48x48">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -14,65 +14,64 @@
 <style>{{FONTS}}</style>
 <style>
   * { box-sizing: border-box }
-  body { margin: 0; font-family: var(--ao-font-teks); font-size: var(--ao-fs-body); line-height: 1.65; background: var(--ao-gading); color: var(--ao-hitam) }
+  body { margin: 0; font-family: var(--kp-font-teks); font-size: var(--kp-fs-body); line-height: 1.65; background: var(--kp-gading); color: var(--kp-hitam) }
   img { max-width: 100%; display: block }
   a { color: inherit }
-  .isi { max-width: var(--ao-lebar-isi); margin: 0 auto; padding-inline: max(20px, 4vw) }
-  .catatan { background: var(--ao-anggur); color: var(--ao-gading); font-size: .8125rem; text-align: center; padding: .5rem 1rem }
+  .isi { max-width: var(--kp-lebar-isi); margin: 0 auto; padding-inline: max(20px, 4vw) }
 
-  header { position: sticky; top: 0; z-index: 10; background: rgba(18,18,18,.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--ao-garis-gelap) }
+  header { position: sticky; top: 0; z-index: 10; background: rgba(18,18,18,.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--kp-garis-gelap) }
   header .isi { display: flex; align-items: center; gap: 2rem; min-height: 72px }
   header nav { display: flex; gap: 1.6rem; margin-left: auto }
-  header nav a { color: var(--ao-gading); text-decoration: none; font-size: .8125rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; opacity: .85 }
-  header nav a:hover { opacity: 1; color: var(--ao-emas) }
-  .menu-ponsel { display: none; background: none; border: 0; color: var(--ao-gading); padding: 6px }
+  header nav a { color: var(--kp-gading); text-decoration: none; font-size: .8125rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; opacity: .85 }
+  header nav a:hover { opacity: 1; color: var(--kp-emas) }
+  .menu-ponsel { display: none; background: none; border: 0; color: var(--kp-gading); padding: 6px }
 
   .hero { min-height: min(82vh, 760px); display: flex; align-items: center }
   .hero .isi { padding-block: 6rem; display: grid; gap: 1.4rem; justify-items: start }
-  .hero .ao-display { margin: 0; max-width: 14ch; color: var(--ao-gading) }
-  .hero .ao-ayat { margin: 0; color: var(--ao-emas-muda); max-width: 30ch }
+  .hero .kp-display { margin: 0; max-width: 14ch; color: var(--kp-gading) }
+  .hero .kp-ayat { margin: 0; color: var(--kp-emas-muda); max-width: 30ch }
   .hero .tombol { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem }
 
   section { padding-block: 5.5rem }
   .kepala { display: grid; gap: .6rem; margin-bottom: 2.5rem; max-width: 640px }
-  .kepala h2 { margin: 0; font-family: var(--ao-font-judul); font-weight: 600; font-size: var(--ao-fs-h1); line-height: 1.1 }
-  .kepala p { margin: 0; color: var(--ao-batu-tua) }
-  .ao-gelap .kepala p { color: var(--ao-batu) }
+  .kepala h2 { margin: 0; font-family: var(--kp-font-judul); font-weight: 600; font-size: var(--kp-fs-h1); line-height: 1.1 }
+  .kepala p { margin: 0; color: var(--kp-batu-tua) }
+  .kp-gelap .kepala p { color: var(--kp-batu) }
   .grid { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)) }
 
   .jadwal { padding: 1.6rem; display: grid; gap: .5rem }
-  .jadwal h3 { margin: 0; font-family: var(--ao-font-logo); font-size: 1.15rem; letter-spacing: .04em }
-  .baris { display: flex; align-items: center; gap: .6rem; color: var(--ao-batu-tua); font-size: .9375rem }
-  .baris .ao-ikon { color: var(--ao-emas-tua); width: 1.25em; height: 1.25em }
+  .jadwal h3 { margin: 0; font-family: var(--kp-font-logo); font-weight: 800; font-size: 1.05rem; letter-spacing: .06em }
+  .baris { display: flex; align-items: center; gap: .6rem; color: var(--kp-batu-tua); font-size: .9375rem }
+  .baris .kp-ikon { color: var(--kp-emas-tua); width: 1.25em; height: 1.25em }
 
   .langkah { padding: 1.8rem; display: grid; gap: .8rem; text-decoration: none }
-  .langkah .bulat { width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; border: 1.5px solid var(--ao-emas); color: var(--ao-emas) }
-  .langkah h3 { margin: 0; font-family: var(--ao-font-judul); font-size: 1.6rem; font-weight: 600; color: var(--ao-gading) }
-  .langkah p { margin: 0; color: var(--ao-batu); font-size: .9375rem }
-  .langkah .lanjut { display: flex; align-items: center; gap: .4rem; color: var(--ao-emas); font-size: .8125rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase }
+  .langkah .bulat { width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; border: 1.5px solid var(--kp-emas); color: var(--kp-emas) }
+  .langkah h3 { margin: 0; font-family: var(--kp-font-judul); font-size: 1.6rem; font-weight: 600; color: var(--kp-gading) }
+  .langkah p { margin: 0; color: var(--kp-batu); font-size: .9375rem }
+  .langkah .lanjut { display: flex; align-items: center; gap: .4rem; color: var(--kp-emas); font-size: .8125rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase }
 
   .khotbah img { aspect-ratio: 16 / 9; width: 100%; object-fit: cover }
   .khotbah .teks { padding: 1.2rem 1.4rem 1.5rem; display: grid; gap: .5rem }
-  .khotbah h3 { margin: 0; font-family: var(--ao-font-judul); font-size: 1.5rem; font-weight: 600; line-height: 1.15 }
-  .pembicara { display: flex; align-items: center; gap: .7rem; font-size: .875rem; color: var(--ao-batu-tua) }
+  .khotbah h3 { margin: 0; font-family: var(--kp-font-judul); font-size: 1.5rem; font-weight: 600; line-height: 1.15 }
+  .pembicara { display: flex; align-items: center; gap: .7rem; font-size: .875rem; color: var(--kp-batu-tua) }
   .pembicara img { width: 34px; height: 34px }
 
   .ikon-grid { display: grid; gap: .75rem; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)) }
-  .ikon-grid div { display: grid; justify-items: center; gap: .5rem; padding: 1rem .5rem; border: 1px solid var(--ao-garis-terang); border-radius: var(--ao-radius); background: #FFFCF6; font-size: .75rem; color: var(--ao-batu-tua) }
-  .ikon-grid .ao-ikon { width: 28px; height: 28px; color: var(--ao-hitam) }
+  .ikon-grid div { display: grid; justify-items: center; gap: .5rem; padding: 1rem .5rem; border: 1px solid var(--kp-garis-terang); border-radius: var(--kp-radius); background: #FFFCF6; font-size: .75rem; color: var(--kp-batu-tua) }
+  .ikon-grid .kp-ikon { width: 28px; height: 28px; color: var(--kp-hitam) }
   .pola { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)) }
-  .pola div { height: 150px; border-radius: var(--ao-radius); border: 1px solid var(--ao-garis-terang) }
-  .loader { display: grid; place-items: center; background: var(--ao-hitam) }
+  .pola div { height: 150px; border-radius: var(--kp-radius); border: 1px solid var(--kp-garis-terang) }
+  .loader { display: grid; place-items: center; background: var(--kp-hitam) }
 
   footer { padding-block: 4rem 3rem }
   footer .isi { display: grid; gap: 2.5rem; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start }
   footer .kontak { display: grid; gap: .8rem; justify-self: end }
-  footer .kontak span { display: flex; align-items: center; gap: .6rem; color: var(--ao-batu) }
-  footer .kontak .ao-ikon { color: var(--ao-emas); width: 1.2em; height: 1.2em }
-  footer small { grid-column: 1 / -1; color: var(--ao-batu); border-top: 1px solid var(--ao-garis-gelap); padding-top: 1.5rem }
+  footer .kontak span { display: flex; align-items: center; gap: .6rem; color: var(--kp-batu) }
+  footer .kontak .kp-ikon { color: var(--kp-emas); width: 1.2em; height: 1.2em }
+  footer small { grid-column: 1 / -1; color: var(--kp-batu); border-top: 1px solid var(--kp-garis-gelap); padding-top: 1.5rem }
 
   @media (max-width: 860px) {
-    header nav, header .ao-tombol { display: none }
+    header nav, header .kp-tombol { display: none }
     .menu-ponsel { display: block; margin-left: auto }
     footer .isi { grid-template-columns: minmax(0, 1fr) }
     footer .kontak { justify-self: start }
@@ -85,82 +84,82 @@
 
 <header>
   <div class="isi">
-    <a href="#"><img src="logo/logo-header-gelap.svg" alt="Gereja Alfa Omega" height="40" style="height:40px;width:auto"></a>
+    <a href="#"><img src="logo/logo-header-gelap.svg" alt="GBI Kapernaum Sorong" height="40" style="height:40px;width:auto"></a>
     <nav aria-label="Menu utama"><a href="#jadwal">Ibadah</a><a href="#langkah">Komsel</a><a href="#khotbah">Khotbah</a><a href="#ikon">Acara</a><a href="#">Tentang</a></nav>
-    <a class="ao-tombol" href="#"><svg class="ao-ikon"><use href="#ikon-persembahan"/></svg>Persembahan</a>
-    <button class="menu-ponsel" type="button" aria-label="Buka menu"><svg class="ao-ikon" style="width:28px;height:28px"><use href="#ikon-menu"/></svg></button>
+    <a class="kp-tombol" href="#"><svg class="kp-ikon"><use href="#ikon-persembahan"/></svg>Persembahan</a>
+    <button class="menu-ponsel" type="button" aria-label="Buka menu"><svg class="kp-ikon" style="width:28px;height:28px"><use href="#ikon-menu"/></svg></button>
   </div>
 </header>
 
-<div class="hero ao-hero-gelap">
+<div class="hero kp-hero-gelap">
   <div class="isi">
-    <span class="ao-label">Selamat datang</span>
-    <h1 class="ao-display">Gereja Alfa Omega</h1>
-    <p class="ao-ayat">“Aku adalah Alfa dan Omega, Yang Awal dan Yang Akhir.” Wahyu 22:13</p>
+    <span class="kp-label">Selamat datang</span>
+    <h1 class="kp-display">GBI Kapernaum Sorong</h1>
+    <p class="kp-ayat">“Sesungguhnya, singa dari suku Yehuda, yaitu tunas Daud, telah menang.” Wahyu 5:5</p>
     <div class="tombol">
-      <a class="ao-tombol" href="#jadwal"><svg class="ao-ikon"><use href="#ikon-lokasi"/></svg>Kunjungi Kami</a>
-      <a class="ao-tombol ao-tombol--garis" href="#khotbah"><svg class="ao-ikon"><use href="#ikon-live"/></svg>Tonton Ibadah</a>
+      <a class="kp-tombol" href="#jadwal"><svg class="kp-ikon"><use href="#ikon-lokasi"/></svg>Kunjungi Kami</a>
+      <a class="kp-tombol kp-tombol--garis" href="#khotbah"><svg class="kp-ikon"><use href="#ikon-live"/></svg>Tonton Ibadah</a>
     </div>
   </div>
 </div>
 
-<section id="jadwal" class="ao-terang">
+<section id="jadwal" class="kp-terang">
   <div class="isi">
-    <div class="kepala"><span class="ao-label">Jadwal ibadah</span><h2>Mari beribadah bersama</h2><p>Kartu jadwal memakai ikon jam dan lokasi berwarna Emas Tua di latar gading.</p></div>
+    <div class="kepala"><span class="kp-label">Jadwal ibadah</span><h2>Mari beribadah bersama</h2><p>Kartu jadwal memakai ikon jam dan lokasi berwarna Emas Tua di latar gading.</p></div>
     <div class="grid">
-      <div class="ao-kartu jadwal"><h3>IBADAH RAYA 1</h3><span class="baris"><svg class="ao-ikon"><use href="#ikon-jam"/></svg>Minggu, 07.00 WIB (contoh)</span><span class="baris"><svg class="ao-ikon"><use href="#ikon-lokasi"/></svg>Gedung utama</span></div>
-      <div class="ao-kartu jadwal"><h3>IBADAH RAYA 2</h3><span class="baris"><svg class="ao-ikon"><use href="#ikon-jam"/></svg>Minggu, 10.00 WIB (contoh)</span><span class="baris"><svg class="ao-ikon"><use href="#ikon-lokasi"/></svg>Gedung utama</span></div>
-      <div class="ao-kartu jadwal"><h3>SEKOLAH MINGGU</h3><span class="baris"><svg class="ao-ikon"><use href="#ikon-jam"/></svg>Minggu, 10.00 WIB (contoh)</span><span class="baris"><svg class="ao-ikon"><use href="#ikon-anak"/></svg>Ruang anak</span></div>
+      <div class="kp-kartu jadwal"><h3>IBADAH RAYA</h3><span class="baris"><svg class="kp-ikon"><use href="#ikon-jam"/></svg>Minggu, 09.00 WIT</span><span class="baris"><svg class="kp-ikon"><use href="#ikon-lokasi"/></svg>Jl. Sejahtera KM.10</span></div>
+      <div class="kp-kartu jadwal"><h3>YOUTH</h3><span class="baris"><svg class="kp-ikon"><use href="#ikon-jam"/></svg>Jumat, 18.00 WIT</span><span class="baris"><svg class="kp-ikon"><use href="#ikon-pemuda"/></svg>Generasi muda</span></div>
+      <div class="kp-kartu jadwal"><h3>IBADAH ANAK</h3><span class="baris"><svg class="kp-ikon"><use href="#ikon-jam"/></svg>Minggu, 09.40 WIT</span><span class="baris"><svg class="kp-ikon"><use href="#ikon-anak"/></svg>Ruang anak</span></div>
     </div>
-    <hr class="ao-pembatas">
+    <hr class="kp-pembatas">
   </div>
 </section>
 
-<section id="langkah" class="ao-gelap">
+<section id="langkah" class="kp-gelap">
   <div class="isi">
-    <div class="kepala"><span class="ao-label">Langkah berikutnya</span><h2>Bertumbuh bersama</h2><p>Kartu gelap dengan ikon di lingkaran emas, untuk Komsel, baptisan, pelayanan, dan persembahan.</p></div>
+    <div class="kepala"><span class="kp-label">Langkah berikutnya</span><h2>Bertumbuh bersama</h2><p>Kartu gelap dengan ikon di lingkaran emas, untuk Komsel, baptisan, pelayanan, dan persembahan.</p></div>
     <div class="grid">
-      <a class="ao-kartu langkah" href="#"><span class="bulat"><svg class="ao-ikon"><use href="#ikon-komsel"/></svg></span><h3>Gabung Komsel</h3><p>Temukan kelompok sel di dekat rumah.</p><span class="lanjut">Selengkapnya<svg class="ao-ikon" style="width:1.1em;height:1.1em"><use href="#ikon-panah-kanan"/></svg></span></a>
-      <a class="ao-kartu langkah" href="#"><span class="bulat"><svg class="ao-ikon"><use href="#ikon-baptisan"/></svg></span><h3>Baptisan</h3><p>Daftar kelas dan ibadah baptisan.</p><span class="lanjut">Selengkapnya<svg class="ao-ikon" style="width:1.1em;height:1.1em"><use href="#ikon-panah-kanan"/></svg></span></a>
-      <a class="ao-kartu langkah" href="#"><span class="bulat"><svg class="ao-ikon"><use href="#ikon-pujian"/></svg></span><h3>Melayani</h3><p>Pujian, multimedia, penyambutan, dan lainnya.</p><span class="lanjut">Selengkapnya<svg class="ao-ikon" style="width:1.1em;height:1.1em"><use href="#ikon-panah-kanan"/></svg></span></a>
-      <a class="ao-kartu langkah" href="#"><span class="bulat"><svg class="ao-ikon"><use href="#ikon-persembahan"/></svg></span><h3>Persembahan</h3><p>QRIS, transfer bank, atau e-wallet.</p><span class="lanjut">Selengkapnya<svg class="ao-ikon" style="width:1.1em;height:1.1em"><use href="#ikon-panah-kanan"/></svg></span></a>
-    </div>
-  </div>
-</section>
-
-<section id="khotbah" class="ao-terang">
-  <div class="isi">
-    <div class="kepala"><span class="ao-label">Khotbah terbaru</span><h2>Dengarkan kembali firman Tuhan</h2><p>Gambar placeholder dan avatar dipakai selama thumbnail atau foto pembicara belum tersedia.</p></div>
-    <div class="grid">
-      <article class="ao-kartu khotbah"><img src="placeholder/placeholder-gelap-16x9.webp" alt=""><div class="teks"><span class="ao-label">Seri Wahyu · 1</span><h3>Yang Awal dan Yang Akhir</h3><span class="pembicara"><img src="placeholder/avatar-terang.svg" alt="">Nama pembicara</span></div></article>
-      <article class="ao-kartu khotbah"><img src="placeholder/placeholder-terang-16x9.webp" alt=""><div class="teks"><span class="ao-label">Seri Wahyu · 2</span><h3>Kasih yang mula-mula</h3><span class="pembicara"><img src="placeholder/avatar-terang.svg" alt="">Nama pembicara</span></div></article>
-      <article class="ao-kartu khotbah"><img src="og/og-khotbah.jpg" alt=""><div class="teks"><span class="ao-label">Seri Wahyu · 3</span><h3>Setia sampai akhir</h3><span class="pembicara"><img src="placeholder/avatar-terang.svg" alt="">Nama pembicara</span></div></article>
+      <a class="kp-kartu langkah" href="#"><span class="bulat"><svg class="kp-ikon"><use href="#ikon-komsel"/></svg></span><h3>Gabung Komsel</h3><p>Temukan kelompok sel di dekat rumah.</p><span class="lanjut">Selengkapnya<svg class="kp-ikon" style="width:1.1em;height:1.1em"><use href="#ikon-panah-kanan"/></svg></span></a>
+      <a class="kp-kartu langkah" href="#"><span class="bulat"><svg class="kp-ikon"><use href="#ikon-baptisan"/></svg></span><h3>Baptisan</h3><p>Daftar kelas dan ibadah baptisan.</p><span class="lanjut">Selengkapnya<svg class="kp-ikon" style="width:1.1em;height:1.1em"><use href="#ikon-panah-kanan"/></svg></span></a>
+      <a class="kp-kartu langkah" href="#"><span class="bulat"><svg class="kp-ikon"><use href="#ikon-pujian"/></svg></span><h3>Melayani</h3><p>Pujian, multimedia, penyambutan, dan lainnya.</p><span class="lanjut">Selengkapnya<svg class="kp-ikon" style="width:1.1em;height:1.1em"><use href="#ikon-panah-kanan"/></svg></span></a>
+      <a class="kp-kartu langkah" href="#"><span class="bulat"><svg class="kp-ikon"><use href="#ikon-persembahan"/></svg></span><h3>Persembahan</h3><p>QRIS, transfer bank, atau e-wallet.</p><span class="lanjut">Selengkapnya<svg class="kp-ikon" style="width:1.1em;height:1.1em"><use href="#ikon-panah-kanan"/></svg></span></a>
     </div>
   </div>
 </section>
 
-<section id="ikon" class="ao-terang" style="padding-top:0">
+<section id="khotbah" class="kp-terang">
   <div class="isi">
-    <div class="kepala"><span class="ao-label">Set ikon</span><h2>{{N_IKON}} ikon garis</h2><p>File terpisah di folder ikon/, atau satu file ikon-sprite.svg. Warna mengikuti warna teks (currentColor).</p></div>
+    <div class="kepala"><span class="kp-label">Khotbah terbaru</span><h2>Dengarkan kembali firman Tuhan</h2><p>Gambar placeholder dan avatar dipakai selama thumbnail atau foto pembicara belum tersedia.</p></div>
+    <div class="grid">
+      <article class="kp-kartu khotbah"><img src="placeholder/placeholder-gelap-16x9.webp" alt=""><div class="teks"><span class="kp-label">Family Restoration · 1</span><h3>Aku dan seisi rumahku</h3><span class="pembicara"><img src="placeholder/avatar-terang.svg" alt="">Nama pembicara</span></div></article>
+      <article class="kp-kartu khotbah"><img src="placeholder/placeholder-terang-16x9.webp" alt=""><div class="teks"><span class="kp-label">Family Restoration · 2</span><h3>Kasih yang memulihkan</h3><span class="pembicara"><img src="placeholder/avatar-terang.svg" alt="">Nama pembicara</span></div></article>
+      <article class="kp-kartu khotbah"><img src="og/og-khotbah.jpg" alt=""><div class="teks"><span class="kp-label">Family Restoration · 3</span><h3>Rumah di atas batu</h3><span class="pembicara"><img src="placeholder/avatar-terang.svg" alt="">Nama pembicara</span></div></article>
+    </div>
+  </div>
+</section>
+
+<section id="ikon" class="kp-terang" style="padding-top:0">
+  <div class="isi">
+    <div class="kepala"><span class="kp-label">Set ikon</span><h2>{{N_IKON}} ikon garis</h2><p>File terpisah di folder ikon/, atau satu file ikon-sprite.svg. Warna mengikuti warna teks (currentColor).</p></div>
     <div class="ikon-grid">{{IKON_GRID}}</div>
-    <div class="kepala" style="margin-top:4rem"><span class="ao-label">Pola, ornamen, loader</span></div>
+    <div class="kepala" style="margin-top:4rem"><span class="kp-label">Pola, ornamen, loader</span></div>
     <div class="pola">
-      <div style="background:#121212 url('pola/pola-gema-alfa-emas.svg') center / cover"></div>
-      <div style="background:#F6F1E7 url('pola/pola-ubin-emas.svg') 0 0 / 48px auto repeat"></div>
+      <div style="background:#121212 url('pola/pola-gema-cincin-emas.svg') center / cover"></div>
+      <div style="background:#F6F1E7 url('pola/pola-ubin-emas.svg') 0 0 / 40px auto repeat"></div>
       <div class="loader"><img src="loader/loader-emas.svg" alt="Memuat" width="64"></div>
     </div>
   </div>
 </section>
 
-<footer class="ao-gelap">
+<footer class="kp-gelap">
   <div class="isi">
-    <img src="logo/logo-footer-gelap.svg" alt="Gereja Alfa Omega" style="width:220px">
+    <img src="logo/logo-footer-gelap.svg" alt="GBI Kapernaum Sorong" style="width:220px">
     <div class="kontak">
-      <span><svg class="ao-ikon"><use href="#ikon-lokasi"/></svg>Alamat gereja</span>
-      <span><svg class="ao-ikon"><use href="#ikon-telepon"/></svg>Nomor telepon</span>
-      <span><svg class="ao-ikon"><use href="#ikon-email"/></svg>Alamat email</span>
+      <span><svg class="kp-ikon"><use href="#ikon-lokasi"/></svg>Jl. Sejahtera KM.10, Kota Sorong</span>
+      <span><svg class="kp-ikon"><use href="#ikon-telepon"/></svg>Nomor telepon</span>
+      <span><svg class="kp-ikon"><use href="#ikon-email"/></svg>Alamat email</span>
     </div>
-    <small>© Gereja Alfa Omega</small>
+    <small>© GBI Kapernaum Sorong</small>
   </div>
 </footer>
 </body>

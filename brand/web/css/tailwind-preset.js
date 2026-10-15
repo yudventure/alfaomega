@@ -1,31 +1,31 @@
-// Preset Tailwind CSS untuk Gereja Alfa Omega.
+// Preset Tailwind CSS untuk GBI Kapernaum Sorong.
 // Pakai di tailwind.config.js:  presets: [require('./tailwind-preset.js')]
-// Contoh kelas: bg-ao-hitam text-ao-emas font-logo font-judul font-teks rounded-ao
+// Contoh kelas: bg-kp-hitam text-kp-emas font-logo font-judul font-teks rounded-kp
 module.exports = {
   theme: {
     extend: {
       colors: {
-        ao: {
+        kp: {
           hitam: '#121212',
-          emas: '#C8A25A',
+          emas: '#C89C4A',
           gading: '#F6F1E7',
-          'emas-tua': '#9A7633',
-          'emas-teks': '#7A5C22',
-          'emas-muda': '#E6CF95',
+          'emas-tua': '#94702B',
+          'emas-teks': '#76561C',
+          'emas-muda': '#E8CB86',
           arang: '#2A2826',
           batu: '#8A8378',
           'batu-tua': '#5E5850',
-          anggur: '#6E1E2A',
         },
       },
       fontFamily: {
-        logo: ['Cinzel', 'Trajan Pro', 'Georgia', 'serif'],
+        logo: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+        // logo: KAPERNAUM selalu kapital, ExtraBold 800
         judul: ['Cormorant Garamond', 'Garamond', 'Georgia', 'serif'],
         teks: ['Plus Jakarta Sans', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
       },
-      borderRadius: { ao: '6px' },
+      borderRadius: { kp: '6px' },
       backgroundImage: {
-        'ao-emas': 'linear-gradient(135deg, #EBD9A6 0%, #C8A25A 38%, #A9843F 70%, #D8BC7A 100%)',
+        'kp-emas': 'linear-gradient(135deg, #F0D99E 0%, #C89C4A 38%, #A27A2E 70%, #DDB86A 100%)',
       },
       letterSpacing: { label: '.4em' },
     },

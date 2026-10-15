@@ -196,7 +196,7 @@ def contoh():
         b64 = base64.b64encode(open(os.path.join(WEB, "fonts", f"{name}.woff2"), "rb").read()).decode()
         faces.append(f"@font-face{{font-family:'{fam}';font-style:{style};font-weight:{weight};font-display:swap;src:url(data:font/woff2;base64,{b64}) format('woff2')}}")
     symbols = "".join(f'<symbol id="ikon-{n}" viewBox="0 0 24 24" {STROKE}>{b}</symbol>' for n, b in ICONS.items())
-    grid = "".join(f'<div><svg class="ao-ikon"><use href="#ikon-{n}"/></svg>{n}</div>' for n in ICONS)
+    grid = "".join(f'<div><svg class="kp-ikon"><use href="#ikon-{n}"/></svg>{n}</div>' for n in ICONS)
     t = (t.replace("{{FONTS}}", "\n".join(faces)).replace("{{SPRITE}}", f'<svg xmlns="http://www.w3.org/2000/svg" style="display:none">{symbols}</svg>')
           .replace("{{IKON_GRID}}", grid).replace("{{N_IKON}}", str(len(ICONS))))
     write("contoh.html", t)

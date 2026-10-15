@@ -154,30 +154,30 @@ Dokumen Hostinger: [How to add a Node.js web app](https://www.hostinger.com/supp
 
 ## Identitas brand
 
-**Mulai dari sini:** buka [`brand/panduan-brand-alfa-omega.pdf`](brand/panduan-brand-alfa-omega.pdf) (24 halaman, A4 lanskap) untuk dibagikan atau dicetak,
+**Mulai dari sini:** buka [`brand/panduan-brand-kapernaum.pdf`](brand/panduan-brand-kapernaum.pdf) (25 halaman, A4 lanskap) untuk dibagikan atau dicetak,
 atau [`brand/panduan-brand.html`](brand/panduan-brand.html) di browser untuk versi interaktif.
 
 ### Ringkasan brand
 
 | | |
 |---|---|
-| **Logo** | Monogram Alfa (A) dan Omega (Ω) yang saling mengunci, dibangun ulang secara geometris dari logo asli |
-| **Tagline** | *Yang Awal dan Yang Akhir* (Wahyu 22:13) |
-| **Warna inti** | Hitam Kekal `#121212` · Emas Mulia `#C8A25A` · Putih Gading `#F6F1E7` |
-| **Warna pendukung** | Emas Tua `#9A7633` · Emas Muda `#E6CF95` · Arang `#2A2826` · Abu Batu `#8A8378` · Merah Anggur `#6E1E2A` |
-| **Font** | Cinzel (logo & judul kapital) · Cormorant Garamond (headline & ayat) · Plus Jakarta Sans (teks & UI) |
+| **Logo** | Lambang singa emas dalam cincin di piringan hitam (Singa dari suku Yehuda, Wahyu 5:5), divektorkan dari logo asli; tulisan KAPERNAUM / SORONG |
+| **Nama** | GBI Kapernaum Sorong · Gereja Bethel Indonesia, Jl. Sejahtera KM.10, Kota Sorong |
+| **Warna inti** | Hitam Malam `#121212` · Emas Singa `#C89C4A` (diambil dari logo) · Putih Gading `#F6F1E7` |
+| **Warna pendukung** | Emas Tua `#94702B` · Emas Muda `#E8CB86` · Arang `#2A2826` · Abu Batu `#8A8378` · Krem `#FFFCF6` |
+| **Font** | Plus Jakarta Sans ExtraBold (logo & judul kapital) · Cormorant Garamond (headline & ayat) · Plus Jakarta Sans (teks & UI) |
 
 ### Isi folder
 
 ```
 src/, public/, server/, index.html, server.js   aplikasi website + CMS (lihat di atas)
 brand/
-├── panduan-brand-alfa-omega.pdf   panduan brand untuk dibagikan / dicetak
+├── panduan-brand-kapernaum.pdf    panduan brand untuk dibagikan / dicetak
 ├── panduan-brand.html   panduan brand interaktif (buka di browser)
-├── logo/svg/            23 logo vektor: monogram, horizontal, horizontal-ringkas, bertumpuk,
-│                        bertumpuk-tagline, wordmark × hitam / emas / emas-gading / putih
+├── logo/svg/            28 logo vektor: lambang, horizontal, horizontal-ringkas, bertumpuk,
+│                        bertumpuk-lengkap, wordmark × warna / hitam / emas / emas-gading / putih
 ├── logo/png/            versi PNG transparan
-├── logo/asli/           logo asli (arsip)
+├── logo/asli/           logo asli singa (arsip, sumber vektorisasi)
 ├── fonts/               file TTF + lisensi OFL (gratis, boleh untuk komersial)
 ├── media-sosial/        instagram/ facebook/ youtube/ tiktok/ alternatif/
 ├── web/                 kit website siap pakai (lihat brand/web/README.md): favicon, logo, 29 ikon,
@@ -209,13 +209,14 @@ Semua gambar dihasilkan dari kode, jadi warna, teks, atau ukuran bisa diubah lal
 ```bash
 pip install numpy scipy pillow potracer uharfbuzz fonttools brotli
 npm install playwright        # memakai Chromium
-python3 tools/build_mark.py   # monogram -> tools/mark.json
+python3 tools/build_mark.py   # lambang singa dari logo asli -> tools/mark.json
 python3 tools/build_logos.py  # logo SVG
 node tools/render.mjs         # semua PNG/JPG (logo, web, media sosial, mockup)
 python3 tools/build_web.py    # kit website: SVG, ikon, font WOFF2, WebP, contoh.html
 python3 tools/build_panduan.py # halaman HTML
 node tools/build_pdf.mjs       # PDF A4 lanskap
-python3 tools/build_react_assets.py  # ikon & monogram untuk komponen React
+python3 tools/build_react_assets.py  # ikon & lambang untuk komponen React
+python3 tools/sync_public.py  # salin favicon, logo, gambar share, font ke public/
 ```
 
 `node tools/render.mjs "youtube"` hanya merender aset yang path-nya cocok dengan pola tersebut.

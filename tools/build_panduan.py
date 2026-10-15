@@ -18,11 +18,11 @@ HIGHLIGHTS = ["ibadah", "renungan", "acara", "pemuda", "doa", "komsel", "info"]
 
 
 def rays():
-    s, out = 0.47875, []
+    """Pola Gema Cincin di belakang lambang: lingkaran sepusat yang memudar."""
+    out = []
     for i in range(10):
-        y0 = 60 + i * 38
         op = 0.28 * (1 - i / 10)
-        out.append(f'<polyline points="{200 - 900 * s:.1f},{y0 + 900} 200,{y0} {200 + 900 * s:.1f},{y0 + 900}" fill="none" stroke="#C8A25A" stroke-width="1" stroke-opacity="{op:.3f}"/>')
+        out.append(f'<circle cx="200" cy="200" r="{120 + i * 30}" fill="none" stroke="#C89C4A" stroke-width="1" stroke-opacity="{op:.3f}"/>')
     return "".join(out)
 
 
