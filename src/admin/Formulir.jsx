@@ -1,5 +1,5 @@
 // Formulir otomatis dari skema bidang (src/cms/skema.js)
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Ikon from '../components/Ikon.jsx';
 import { IKON } from '../components/ikon-paths.js';
 import { idYouTube } from '../cms/youtube.js';
@@ -9,8 +9,9 @@ import { siapkanGambar } from './alat.js';
 import PilihMedia from './PilihMedia.jsx';
 import { Bidang, Tombol, kelasInput, useCms } from './ui.jsx';
 import { aset } from '../aset.js';
+import { formatSingkat, tanggalSah, urai } from '../kalender.js';
 
-const TAUTAN_INTERNAL = ['/', '/siapa-kami', '/#sambutan', '/#langkah', '/#jadwal', '/#khotbah', '/#jemaat', '/#persembahan', '/#kunjungi'];
+const TAUTAN_INTERNAL = ['/', '/siapa-kami', '/#sambutan', '/#langkah', '/#jadwal', '/#kalender', '/#khotbah', '/#jemaat', '/#persembahan', '/#kunjungi'];
 const tautanSah = (s) => !s || /^(https?:\/\/|mailto:|tel:|\/(?!\/)|#|wa\.me|www\.)/i.test(s.trim());
 
 export const nilaiKosong = (f) => (f.jenis === 'objek' ? objekKosong(f.bidang) : f.jenis === 'daftar' || f.jenis === 'daftar-teks' ? [] : '');
@@ -36,6 +37,8 @@ export function BidangIsi({ f, nilai, ubah }) {
     case 'gambar': return <BidangGambar f={f} nilai={nilai} ubah={ubah} />;
     case 'video': return <BidangVideo f={f} nilai={nilai} ubah={ubah} />;
     case 'ikon': return <BidangIkon f={f} nilai={nilai} ubah={ubah} />;
+    case 'tanggal': return <BidangTanggal f={f} nilai={nilai} ubah={ubah} />;
+    case 'pilihan': return <BidangPilihan f={f} nilai={nilai} ubah={ubah} />;
     case 'objek': return <BidangObjek f={f} nilai={nilai} ubah={ubah} />;
     case 'daftar': return <BidangDaftar f={f} nilai={nilai} ubah={ubah} />;
     case 'daftar-teks': return <BidangDaftarTeks f={f} nilai={nilai} ubah={ubah} />;
@@ -47,6 +50,27 @@ function BidangTeks({ f, nilai, ubah }) {
   return (
     <Bidang label={f.label} bantuan={f.bantuan}>
       {(id) => <input id={id} className={kelasInput} value={nilai ?? ''} maxLength={200} onChange={(e) => ubah(e.target.value)} />}
+    </Bidang>
+  );
+}
+
+function BidangTanggal({ f, nilai, ubah }) {
+  return (
+    <Bidang label={f.label} bantuan={f.bantuan}>
+      {(id) => <input id={id} type="date" className={kelasInput} value={nilai ?? ''} min="2000-01-01" max="2100-12-31" onChange={(e) => ubah(e.target.value)} />}
+    </Bidang>
+  );
+}
+
+function BidangPilihan({ f, nilai, ubah }) {
+  return (
+    <Bidang label={f.label} bantuan={f.bantuan}>
+      {(id) => (
+        <select id={id} className={kelasInput} value={nilai ?? ''} onChange={(e) => ubah(e.target.value)}>
+          <option value="">— Pilih —</option>
+          {f.pilihan.map((o) => <option key={o.nilai} value={o.nilai}>{o.label}</option>)}
+        </select>
+      )}
     </Bidang>
   );
 }
@@ -202,6 +226,15 @@ function BidangObjek({ f, nilai, ubah }) {
 
 function BidangDaftar({ f, nilai, ubah }) {
   const daftar = Array.isArray(nilai) ? nilai : [];
+  // butir yang baru ditambahkan langsung terbuka & bidang pertamanya difokuskan (daftar panjang tertutup semua)
+  const [baru, setBaru] = useState(-1);
+  const wadahRef = useRef(null);
+  useEffect(() => {
+    if (baru < 0) return;
+    const el = wadahRef.current?.querySelector(`[data-butir="${baru}"]`);
+    el?.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    el?.querySelector('input, textarea, select')?.focus({ preventScroll: true });
+  }, [baru]);
   const ganti = (i, baru) => ubah(daftar.map((x, j) => (j === i ? baru : x)));
   const geser = (i, arah) => {
     const j = i + arah;
@@ -210,20 +243,26 @@ function BidangDaftar({ f, nilai, ubah }) {
     [salin[i], salin[j]] = [salin[j], salin[i]];
     ubah(salin);
   };
+  // butir bertanggal (agenda, hari libur) diringkas dengan tanggalnya, mis. "19 Okt 2026 · Seminar Keluarga"
+  const bidangTanggal = f.butir.find((b) => b.jenis === 'tanggal');
   const ringkas = (butir) => {
-    const teks = f.butir.map((b) => butir?.[b.kunci]).find((x) => typeof x === 'string' && x.trim());
-    return teks ? keMarkup(teks).replace(/\*/g, '').replace(/\n/g, ' ') : '(belum diisi)';
+    const teks = f.butir.filter((b) => b.jenis !== 'tanggal' && b.jenis !== 'pilihan')
+      .map((b) => butir?.[b.kunci]).find((x) => typeof x === 'string' && x.trim());
+    const isi = teks ? keMarkup(teks).replace(/\*/g, '').replace(/\n/g, ' ') : '(belum diisi)';
+    const tgl = bidangTanggal && butir?.[bidangTanggal.kunci];
+    return tanggalSah(tgl) ? `${formatSingkat(tgl)} · ${isi}` : isi;
   };
+  const urutkan = () => ubah([...daftar].sort((a, b) => (urai(a?.[bidangTanggal.kunci]) ?? Infinity) - (urai(b?.[bidangTanggal.kunci]) ?? Infinity)));
 
   return (
-    <div className="grid grid-cols-1 gap-2.5">
+    <div ref={wadahRef} className="grid grid-cols-1 gap-2.5">
       <div className="flex items-center justify-between gap-3">
         <span className="text-[.85rem] font-semibold text-arang">{f.label}</span>
         <span className="text-[.78rem] text-batu">{daftar.length} / {f.maks}</span>
       </div>
       {daftar.map((butir, i) => (
         // eslint-disable-next-line react/no-array-index-key
-        <details key={i} open={daftar.length <= 4 || undefined} className="group min-w-0 rounded-xl border border-garis bg-white/70 open:bg-white">
+        <details key={i} data-butir={i} open={daftar.length <= 4 || i === baru || undefined} className="group min-w-0 rounded-xl border border-garis bg-white/70 open:bg-white">
           <summary className="flex cursor-pointer list-none items-center gap-3 px-4 py-3 [&::-webkit-details-marker]:hidden">
             <span className="grid grid-cols-1 h-7 w-7 shrink-0 place-items-center rounded-full bg-pasir text-[.75rem] font-bold text-batu-tua">{i + 1}</span>
             <span className="min-w-0 flex-1 truncate text-[.92rem] font-medium">{f.labelButir}: {ringkas(butir)}</span>
@@ -248,11 +287,16 @@ function BidangDaftar({ f, nilai, ubah }) {
           </div>
         </details>
       ))}
-      {daftar.length < f.maks && (
-        <Tombol varian="garis" kecil className="justify-self-start" onClick={() => ubah([...daftar, objekKosong(f.butir)])}>
-          <span aria-hidden="true" className="text-[1.1em] leading-none">+</span> Tambah {f.labelButir.toLowerCase()}
-        </Tombol>
-      )}
+      <div className="flex flex-wrap gap-2">
+        {daftar.length < f.maks && (
+          <Tombol varian="garis" kecil onClick={() => { ubah([...daftar, objekKosong(f.butir)]); setBaru(daftar.length); }}>
+            <span aria-hidden="true" className="text-[1.1em] leading-none">+</span> Tambah {f.labelButir.toLowerCase()}
+          </Tombol>
+        )}
+        {bidangTanggal && daftar.length > 1 && (
+          <Tombol varian="garis" kecil onClick={urutkan}>Urutkan menurut tanggal</Tombol>
+        )}
+      </div>
     </div>
   );
 }

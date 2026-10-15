@@ -2,6 +2,7 @@ import Hero from '../components/Hero.jsx';
 import Sambutan from '../components/Sambutan.jsx';
 import Langkah from '../components/Langkah.jsx';
 import Jadwal from '../components/Jadwal.jsx';
+import KalenderKegiatan from '../components/KalenderKegiatan.jsx';
 import Khotbah from '../components/Khotbah.jsx';
 import Jemaat from '../components/Jemaat.jsx';
 import Persembahan from '../components/Persembahan.jsx';
@@ -15,6 +16,7 @@ export default function Beranda() {
         <Sambutan />
         <Langkah />
         <Jadwal />
+        <KalenderKegiatan />
         <Khotbah />
         <Jemaat />
         <Persembahan />

@@ -4,6 +4,8 @@
 // Menambah kategori baru = menambah satu entri di KATEGORI.
 // ==========================================================
 
+import { JENIS_HARI_BESAR, PEKAN, PILIHAN_HARI } from '../kalender.js';
+
 // ---------- Peran (mengikuti struktur pelayanan gereja pada umumnya) ----------
 export const PERAN = [
   { id: 'developer', nama: 'Developer', ket: 'Akses penuh ke semua isi, pengguna, menu, cadangan data, dan pengaturan sistem.', penuh: true },
@@ -32,7 +34,7 @@ export const KELOMPOK = [
 ];
 
 // ---------- Pembuat bidang ----------
-// jenis: teks | paragraf | judul (boleh *emas* & baris baru) | tautan | gambar | video | ikon | objek | daftar | daftar-teks
+// jenis: teks | paragraf | judul (boleh *emas* & baris baru) | tautan | gambar | video | ikon | tanggal | pilihan | objek | daftar | daftar-teks
 const teks = (kunci, label, bantuan) => ({ kunci, label, jenis: 'teks', bantuan });
 const paragraf = (kunci, label, bantuan) => ({ kunci, label, jenis: 'paragraf', bantuan });
 const judul = (kunci = 'judul', label = 'Judul') => ({ kunci, label, jenis: 'judul' });
@@ -40,6 +42,8 @@ const tautan = (kunci, label, bantuan) => ({ kunci, label, jenis: 'tautan', bant
 const gambar = (kunci, label, rasio, bantuan) => ({ kunci, label, jenis: 'gambar', rasio, bantuan });
 const video = (kunci, label, bantuan) => ({ kunci, label, jenis: 'video', bantuan });
 const ikon = (kunci = 'ikon', label = 'Ikon') => ({ kunci, label, jenis: 'ikon' });
+const tanggal = (kunci, label, bantuan) => ({ kunci, label, jenis: 'tanggal', bantuan });
+const pilihan = (kunci, label, opsi, bantuan) => ({ kunci, label, jenis: 'pilihan', pilihan: opsi, bantuan });
 const objek = (kunci, label, bidang) => ({ kunci, label, jenis: 'objek', bidang });
 const daftar = (kunci, label, labelButir, butir, maks = 30) => ({ kunci, label, jenis: 'daftar', labelButir, butir, maks });
 const daftarTeks = (kunci, label, labelButir, maks = 12) => ({ kunci, label, jenis: 'daftar-teks', labelButir, maks });
@@ -119,6 +123,35 @@ export const KATEGORI = [
       kunci: 'jadwal', judul: 'Jadwal',
       bidang: [judul(), paragraf('teks', 'Keterangan'), teks('ringkas', 'Ringkasan jam', 'Tampil di footer. Contoh: Minggu, 09.00 WIT'),
         daftar('daftar', 'Daftar ibadah', 'Ibadah', [teks('nama', 'Nama ibadah'), teks('waktu', 'Hari & jam', 'Contoh: Minggu · 09.00 WIT'), ikon()], 12)],
+    }],
+  },
+  {
+    id: 'kalender', kelompok: 'sekretariat', ikon: 'acara', judul: 'Kalender Kegiatan', situs: '/#kalender',
+    ket: 'Agenda kegiatan setahun, agenda rutin bulanan, serta hari raya & hari libur di kalender bawah Jadwal Ibadah. Ibadah mingguan diambil dari Jadwal Ibadah.',
+    peran: ['sekretariat'],
+    bagian: [{
+      kunci: 'kalender', judul: 'Kalender Kegiatan',
+      bidang: [judul(), paragraf('teks', 'Keterangan'), teks('catatan', 'Catatan di bawah kalender', 'Contoh: Semua waktu dalam WIT. Agenda dapat berubah.'),
+        daftar('agenda', 'Agenda kegiatan', 'Agenda', [
+          teks('judul', 'Nama kegiatan'),
+          tanggal('mulai', 'Tanggal mulai'),
+          tanggal('selesai', 'Tanggal selesai', 'Kosongkan bila hanya satu hari.'),
+          teks('jam', 'Jam', 'Contoh: 18.30–20.30 WIT. Kosongkan bila sepanjang hari.'),
+          teks('lokasi', 'Tempat'),
+          paragraf('ket', 'Keterangan singkat (boleh kosong)'),
+        ], 150),
+        daftar('bulanan', 'Agenda rutin bulanan', 'Agenda', [
+          teks('judul', 'Nama kegiatan', 'Contoh: Ibadah Perjamuan Kudus'),
+          pilihan('pekan', 'Pekan ke-', PEKAN),
+          pilihan('hari', 'Hari', PILIHAN_HARI),
+          teks('jam', 'Jam', 'Contoh: 09.00 WIT'),
+          teks('lokasi', 'Tempat'),
+        ], 10),
+        daftar('hariBesar', 'Hari raya & hari libur', 'Hari', [
+          teks('nama', 'Nama hari'),
+          tanggal('tanggal', 'Tanggal'),
+          pilihan('jenis', 'Jenis', JENIS_HARI_BESAR, 'Menentukan warna tanggal di kalender.'),
+        ], 80)],
     }],
   },
   {

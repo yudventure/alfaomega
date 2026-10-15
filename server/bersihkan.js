@@ -3,6 +3,7 @@
 import { IKON } from '../src/components/ikon-paths.js';
 import { idYouTube } from '../src/cms/youtube.js';
 import { objekBiasa } from '../src/cms/gabung.js';
+import { tanggalSah } from '../src/kalender.js';
 
 const KONTROL = /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g;
 const str = (v) => (typeof v === 'string' ? v : typeof v === 'number' ? String(v) : '');
@@ -52,6 +53,10 @@ export function bersihVideo(v) {
 
 export const bersihIkon = (v) => (Object.hasOwn(IKON, str(v)) ? str(v) : '');
 
+// Tanggal 'YYYY-MM-DD' yang benar-benar ada; pilihan harus salah satu nilai di skema
+export const bersihTanggal = (v) => { const s = bersihTeks(v, 10); return tanggalSah(s) ? s : ''; };
+export const bersihPilihan = (def, v) => (def.pilihan ?? []).some((o) => o.nilai === str(v)) ? str(v) : '';
+
 const kosong = (def) => (def.jenis === 'objek' ? kosongObjek(def.bidang) : def.jenis === 'daftar' || def.jenis === 'daftar-teks' ? [] : '');
 const kosongObjek = (bidang) => Object.fromEntries(bidang.map((f) => [f.kunci, kosong(f)]));
 
@@ -73,6 +78,8 @@ export function bersihkan(def, nilai, lama) {
     case 'gambar': return bersihGambar(nilai);
     case 'video': return bersihVideo(nilai);
     case 'ikon': return bersihIkon(nilai);
+    case 'tanggal': return bersihTanggal(nilai);
+    case 'pilihan': return bersihPilihan(def, nilai);
     case 'daftar-teks':
       return (Array.isArray(nilai) ? nilai : []).slice(0, def.maks ?? 12).map((t) => bersihParagraf(t, 1000)).filter(Boolean);
     case 'daftar':
