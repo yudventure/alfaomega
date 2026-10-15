@@ -79,7 +79,9 @@ export default function Footer() {
         <span>© {new Date().getFullYear()} {gereja.nama}</span>
         <a
           href="/admin"
-          rel="nofollow"
+          target="_blank"
+          rel="nofollow noopener"
+          aria-label="Login Admin (terbuka di tab baru)"
           className="inline-flex items-center gap-2 rounded-full border border-garis-gelap px-4 py-2.5 font-teks text-[.68rem] font-semibold uppercase leading-none tracking-[.24em] text-emas no-underline transition-colors duration-200 hover:border-emas hover:bg-emas hover:text-hitam"
         >
           <Ikon nama="pengguna" className="h-[15px] w-[15px]" />

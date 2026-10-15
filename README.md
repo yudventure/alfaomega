@@ -55,7 +55,7 @@ dalam struktur pelayanan gereja; **Ketua/Gembala Sidang** dan **Developer** dapa
    Semua tombol **Petunjuk Arah** (bagian Kunjungi Kami dan footer) langsung membuka rute ke tujuan itu di Google Maps
    (di ponsel terbuka di aplikasi Maps). Selama kosong, rute memakai nama gereja + alamat.
 
-Pengurus bisa masuk lewat tombol **Login Admin** di bagian paling bawah footer. Logo media sosial di footer dipilih otomatis
+Pengurus bisa masuk lewat tombol **Login Admin** di bagian paling bawah footer (terbuka di tab baru). Logo media sosial di footer dipilih otomatis
 dari nama platform atau link profil (Instagram, YouTube, Facebook, TikTok, WhatsApp, X, Threads, Spotify, Telegram).
 
 | Peran | Kategori yang dapat diubah |
