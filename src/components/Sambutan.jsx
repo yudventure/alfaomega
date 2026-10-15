@@ -10,7 +10,7 @@ export default function Sambutan() {
     <section className="bagian" id="sambutan">
       <div className="isi grid gap-5 md:grid-cols-[1fr_1.9fr]">
         {/* di ponsel video tampil lebih dulu; di layar lebar video di kanan, setinggi kartu teks */}
-        <Reveal className="relative overflow-hidden rounded-kartu shadow-kartu md:col-start-2 md:row-start-1 md:min-h-[24rem]">
+        <Reveal gaya="kanan" tunda={120} className="relative overflow-hidden rounded-kartu shadow-kartu md:col-start-2 md:row-start-1 md:min-h-[24rem]">
           <VideoYouTube
             sumber={sambutan.video}
             poster={sambutan.poster}
@@ -20,7 +20,7 @@ export default function Sambutan() {
           />
         </Reveal>
 
-        <Reveal className="kartu flex flex-col justify-between gap-8 p-[clamp(1.6rem,3vw,2.4rem)] md:col-start-1 md:row-start-1">
+        <Reveal gaya="kiri" className="kartu flex flex-col justify-between gap-8 p-[clamp(1.6rem,3vw,2.4rem)] md:col-start-1 md:row-start-1">
           <div className="grid gap-4">
             <p className="label">{sambutan.label}</p>
             <Teks as="h2" html={sambutan.judul} className="judul" />

@@ -11,7 +11,7 @@ export default function Nilai() {
         <Reveal><Kepala judul={nilai.judul} teks={nilai.teks} /></Reveal>
         <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,240px),1fr))] gap-4">
           {nilai.daftar.map((n, i) => (
-            <Reveal key={n.judul} className="kartu grid content-start gap-3 p-6">
+            <Reveal key={n.judul} tunda={i * 90} className="kartu grid content-start gap-3 p-6">
               <div className="mb-2 flex items-start justify-between">
                 <Ikon nama={n.ikon} className="h-11 w-11 text-emas-tua" />
                 <span className="font-logo text-[.85rem] font-semibold tracking-[.1em] text-batu">{String(i + 1).padStart(2, '0')}</span>

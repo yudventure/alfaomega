@@ -22,7 +22,7 @@ export default function Persembahan() {
   return (
     <section className="bagian" id="persembahan">
       <div className="isi">
-        <Reveal className="relative grid items-center gap-8 overflow-hidden rounded-kartu bg-hitam p-[clamp(1.8rem,4vw,3.2rem)] text-gading md:grid-cols-[1.4fr_1fr]">
+        <Reveal gaya="skala" className="relative grid items-center gap-8 overflow-hidden rounded-kartu bg-hitam p-[clamp(1.8rem,4vw,3.2rem)] text-gading md:grid-cols-[1.4fr_1fr]">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_85%_50%,rgba(200,162,90,.22),transparent_55%)]" aria-hidden="true" />
           <div className="relative grid gap-4">
             <p className="label text-emas">Persembahan</p>

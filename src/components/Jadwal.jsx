@@ -11,8 +11,8 @@ export default function Jadwal() {
           <Kepala judul={jadwal.judul} teks={jadwal.teks} aksi={<Tautan href="#kunjungi">Petunjuk arah</Tautan>} />
         </Reveal>
         <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,220px),1fr))] gap-4">
-          {jadwal.daftar.map((j) => (
-            <Reveal key={j.nama} className="kartu grid content-start gap-2 p-6">
+          {jadwal.daftar.map((j, i) => (
+            <Reveal key={j.nama} tunda={i * 90} className="kartu grid content-start gap-2 p-6">
               <Ikon nama={j.ikon} className="mb-2 h-11 w-11 text-emas-tua" />
               <h3 className="font-logo text-[1.05rem] font-bold tracking-[.04em]">{j.nama}</h3>
               <p className="flex items-center gap-2 text-[.95rem] text-batu-tua">

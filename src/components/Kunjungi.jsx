@@ -8,7 +8,7 @@ export default function Kunjungi() {
   return (
     <section className="bagian" id="kunjungi">
       <div className="isi grid gap-5 md:grid-cols-2">
-        <Reveal className="kartu grid content-center gap-5 p-[clamp(1.6rem,3vw,2.6rem)]">
+        <Reveal gaya="kiri" className="kartu grid content-center gap-5 p-[clamp(1.6rem,3vw,2.6rem)]">
           <Teks as="h2" html={kunjungi.judul} className="judul" />
           <p className="text-batu-tua">{kunjungi.teks}</p>
           <ul className="grid gap-4">
@@ -28,8 +28,8 @@ export default function Kunjungi() {
           </div>
         </Reveal>
 
-        <Reveal as="figure" className="kartu relative min-h-[320px] overflow-hidden">
-          <img src={aset(kunjungi.gambar)} alt={kunjungi.keteranganGambar} width="1200" height="900" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+        <Reveal as="figure" gaya="kanan" tunda={120} className="kartu relative min-h-[320px] overflow-hidden">
+          <img src={aset(kunjungi.gambar)} alt={kunjungi.keteranganGambar} width="1200" height="900" loading="lazy" className="gambar-muncul absolute inset-0 h-full w-full object-cover" />
           <figcaption className="absolute bottom-4 left-4 rounded-full bg-krem px-4 py-2 font-teks text-[.72rem] font-semibold uppercase leading-none tracking-[.2em] text-emas-teks">
             {kunjungi.keteranganGambar}
           </figcaption>
