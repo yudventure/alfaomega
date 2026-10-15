@@ -60,7 +60,7 @@ export const KATEGORI = [
     bagian: [{
       kunci: 'gereja', judul: 'Identitas',
       bidang: [teks('nama', 'Nama gereja'), teks('namaPendek', 'Nama pendek'), teks('tagline', 'Tagline'),
-        paragraf('ayat', 'Ayat pegangan'), teks('ayatRujukan', 'Rujukan ayat', 'Contoh: Wahyu 22:13')],
+        paragraf('ayat', 'Ayat pegangan'), teks('ayatRujukan', 'Rujukan ayat', 'Contoh: Wahyu 5:5')],
     }],
   },
   {
@@ -94,8 +94,8 @@ export const KATEGORI = [
     peran: ['sekretariat'],
     bagian: [{
       kunci: 'jadwal', judul: 'Jadwal',
-      bidang: [judul(), paragraf('teks', 'Keterangan'), teks('ringkas', 'Ringkasan jam', 'Tampil di footer. Contoh: 07.00 & 10.00 WIB'),
-        daftar('daftar', 'Daftar ibadah', 'Ibadah', [teks('nama', 'Nama ibadah'), teks('waktu', 'Hari & jam', 'Contoh: Minggu · 07.00 WIB'), ikon()], 12)],
+      bidang: [judul(), paragraf('teks', 'Keterangan'), teks('ringkas', 'Ringkasan jam', 'Tampil di footer. Contoh: Minggu, 09.00 WIT'),
+        daftar('daftar', 'Daftar ibadah', 'Ibadah', [teks('nama', 'Nama ibadah'), teks('waktu', 'Hari & jam', 'Contoh: Minggu · 09.00 WIT'), ikon()], 12)],
     }],
   },
   {
@@ -105,7 +105,7 @@ export const KATEGORI = [
     bagian: [
       { kunci: 'halamanSiapaKami', judul: 'Kepala halaman', bidang: [judul(), paragraf('teks', 'Pengantar')] },
       {
-        kunci: 'siapaKami', judul: 'Mengapa Alfa Omega',
+        kunci: 'siapaKami', judul: 'Arti nama & lambang',
         bidang: [judul(), daftarTeks('paragraf', 'Paragraf', 'Paragraf', 6), tombol('tautan', 'Tautan'),
           gambar('gambar', 'Foto', '4:3', 'Foto jemaat, minimal 1200×900 piksel.')],
       },
@@ -125,7 +125,7 @@ export const KATEGORI = [
       kunci: 'pengurus', judul: 'Gembala & pengurus',
       bidang: [judul(), paragraf('teks', 'Keterangan'),
         daftar('daftar', 'Daftar pengurus', 'Pengurus', [teks('nama', 'Nama lengkap'), teks('jabatan', 'Jabatan'),
-          gambar('foto', 'Foto', '4:5', 'Foto tegak, minimal 800×1000 piksel. Kosong = monogram.')], 24)],
+          gambar('foto', 'Foto', '4:5', 'Foto tegak, minimal 800×1000 piksel. Kosong = lambang singa.')], 24)],
     }],
   },
   {

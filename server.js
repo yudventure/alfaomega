@@ -87,13 +87,13 @@ app.use('/api', buatApi());
 app.use('/media', express.static(DIR_MEDIA, { immutable: true, maxAge: '1y', index: false, dotfiles: 'deny' }));
 // aset ber-hash dari Vite boleh di-cache lama
 app.use('/assets', express.static(path.join(dist, 'assets'), { immutable: true, maxAge: '1y' }));
-// foto bawaan: dengan ?v=... (berubah tiap foto diganti) di-cache lama; tanpa itu selalu dicek ulang
+// foto & logo bawaan: dengan ?v=... (berubah tiap file diganti) di-cache lama; tanpa itu selalu dicek ulang
 app.use(express.static(dist, {
   maxAge: '1h',
   index: false,
   setHeaders(res, berkas) {
     const rel = path.relative(dist, berkas).split(path.sep).join('/');
-    if (/^(img|og)\//.test(rel)) res.setHeader('Cache-Control', res.req.query.v ? 'public, max-age=31536000, immutable' : 'no-cache');
+    if (/^(img|og|logo)\//.test(rel)) res.setHeader('Cache-Control', res.req.query.v ? 'public, max-age=31536000, immutable' : 'no-cache');
   },
 }));
 
@@ -137,7 +137,7 @@ app.use((req, res) => {
 const port = Number(process.env.PORT) || 3000;
 const server = app.listen(port, '0.0.0.0', () => {
   const b = infoBuild();
-  console.log(`Gereja Alfa Omega berjalan di port ${port} (commit ${b.commit}, dibangun ${b.dibangun})`);
+  console.log(`Website GBI Kapernaum Sorong berjalan di port ${port} (commit ${b.commit}, dibangun ${b.dibangun})`);
   console.log(`Data CMS disimpan di ${DATA_DIR}`);
   try {
     if (daftarPengguna().length === 0) console.log(`Belum ada akun CMS. Buka /admin untuk membuat akun developer pertama dengan kode setup: ${kodeSetup()}`);

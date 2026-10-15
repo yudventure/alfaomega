@@ -11,10 +11,10 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 FONTS = os.path.join(ROOT, "brand", "fonts")
 
 COLORS = {
-    "hitam": "#121212",       # Hitam Kekal
-    "emas": "#C8A25A",        # Emas Mulia
-    "emas-tua": "#9A7633",    # Emas Tua
-    "emas-muda": "#E6CF95",   # Emas Muda
+    "hitam": "#121212",       # Hitam Malam (piringan lambang)
+    "emas": "#C89C4A",        # Emas Singa (diambil dari logo asli)
+    "emas-tua": "#94702B",    # Emas Tua
+    "emas-muda": "#E8CB86",   # Emas Muda
     "gading": "#F6F1E7",      # Putih Gading
     "putih": "#FFFFFF",
     "arang": "#2A2826",       # Arang
@@ -66,8 +66,18 @@ def text_path(font, text, cap_height, tracking=0.0, x=0.0, baseline=0.0):
     return f'<path d="{"".join(ds)}"/>', pen_x * k, size
 
 
-def mark_path(x, y, height):
-    """<path> monogram diletakkan di (x, y) dengan tinggi tertentu (tanpa fill)."""
+def mark_path(x, y, height, kunci="d"):
+    """<path> lambang (cincin + singa; kunci="singa" untuk singa saja) di (x, y) dengan tinggi tertentu, tanpa fill."""
     k = height / MARK["h"]
     return (f'<path transform="translate({x:.2f} {y:.2f}) scale({k:.6f})" '
-            f'fill-rule="evenodd" d="{MARK["d"]}"/>'), MARK["w"] * k
+            f'fill-rule="evenodd" d="{MARK[kunci]}"/>'), MARK["w"] * k
+
+
+def badge_path(x, y, height, disc, mark):
+    """Lencana berwarna: piringan `disc` + cincin & singa `mark`. (x, y) = kiri atas piringan, height = diameter piringan."""
+    rp = MARK["r_piringan"]
+    k = height / (2 * rp)
+    off = rp - MARK["w"] / 2  # piringan lebih besar dari kotak cincin
+    t = f'translate({x + off * k:.2f} {y + off * k:.2f}) scale({k:.6f})'
+    return (f'<g transform="{t}"><circle cx="50" cy="50" r="{rp}" fill="{disc}"/>'
+            f'<path fill="{mark}" fill-rule="evenodd" d="{MARK["d"]}"/></g>'), height

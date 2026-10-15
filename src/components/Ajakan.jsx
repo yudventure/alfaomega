@@ -1,5 +1,5 @@
 import { ajakan } from '../data/isi.js';
-import Monogram from './Monogram.jsx';
+import Lambang from './Lambang.jsx';
 import Reveal from './Reveal.jsx';
 import { Teks, Tombol } from './Dasar.jsx';
 
@@ -9,8 +9,8 @@ export default function Ajakan() {
     <section className="bagian" id="ajakan">
       <div className="isi">
         <Reveal gaya="skala" className="relative grid items-end gap-8 overflow-hidden rounded-kartu bg-hitam p-[clamp(1.8rem,4vw,3.2rem)] text-gading md:grid-cols-[1.4fr_1fr]">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_85%_50%,rgba(200,162,90,.22),transparent_55%)]" aria-hidden="true" />
-          <Monogram garis strokeWidth={6} className="pointer-events-none absolute -bottom-[30%] right-[4%] w-[min(40%,340px)] text-emas/20" />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_85%_50%,rgba(200,156,74,.22),transparent_55%)]" aria-hidden="true" />
+          <Lambang garis className="pointer-events-none absolute -bottom-[34%] right-[4%] w-[min(40%,340px)] text-emas/25" />
           <div className="relative grid gap-4">
             <Teks as="h2" html={ajakan.judul} className="judul [&_em]:text-emas-muda" />
             <p className="max-w-[48ch] text-gading/85">{ajakan.teks}</p>

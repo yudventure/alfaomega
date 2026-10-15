@@ -1,8 +1,9 @@
 // Halaman masuk, setup akun developer pertama, dan lupa kata sandi (kode OTP lewat email)
 import { useEffect, useState } from 'react';
-import Monogram from '../components/Monogram.jsx';
+import Lambang from '../components/Lambang.jsx';
 import { api } from './api.js';
 import { Bidang, Pesan, Tombol, kelasInput } from './ui.jsx';
+import { aset } from '../aset.js';
 
 const JUDUL = {
   setup: ['Setup awal CMS', 'Belum ada akun. Buat akun developer pertama; akun lain bisa ditambahkan setelahnya dari menu Pengguna & Peran.'],
@@ -57,20 +58,20 @@ export default function Masuk({ perluSetup, berakhir, onMasuk }) {
   return (
     <div className="grid grid-cols-1 min-h-screen bg-gading lg:grid-cols-[1.05fr_1fr]">
       <aside className="relative hidden overflow-hidden bg-hitam p-12 text-gading lg:flex lg:flex-col lg:justify-between">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,rgba(200,162,90,.3),transparent_55%)]" aria-hidden="true" />
-        <Monogram garis strokeWidth={4} className="absolute -bottom-[12%] -right-[10%] w-[78%] text-emas/20" />
-        <img src="/logo/logo-header-gelap.svg" alt="Gereja Alfa Omega" className="relative h-10 w-auto self-start" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,rgba(200,156,74,.3),transparent_55%)]" aria-hidden="true" />
+        <Lambang garis className="absolute -bottom-[14%] -right-[12%] w-[78%] text-emas/25" />
+        <img src={aset('/logo/logo-header-gelap.svg')} alt="GBI Kapernaum Sorong" className="relative h-11 w-auto self-start" />
         <div className="relative grid grid-cols-1 max-w-[30rem] gap-4">
           <p className="label text-emas">Panel Pengelola Website</p>
           <p className="font-judul text-[3rem] font-semibold leading-[1.05]">Melayani lewat <em className="text-emas-muda">kabar baik</em> setiap minggu.</p>
           <p className="text-gading/75">Jadwal, khotbah, foto, dan profil gereja diperbarui oleh tiap bidang pelayanan sesuai perannya.</p>
         </div>
-        <p className="relative text-[.8rem] text-batu">Yang Awal dan Yang Akhir · Wahyu 22:13</p>
+        <p className="relative text-[.8rem] text-batu">GBI Kapernaum Sorong · Gereja Bethel Indonesia</p>
       </aside>
 
       <main className="grid grid-cols-1 place-items-center px-5 py-12">
         <form onSubmit={kirim} className="grid grid-cols-1 w-full max-w-[420px] gap-5" noValidate>
-          <img src="/logo/logo-header-terang.svg" alt="Gereja Alfa Omega" className="mb-2 h-10 w-auto justify-self-start lg:hidden" />
+          <img src={aset('/logo/logo-header-terang.svg')} alt="GBI Kapernaum Sorong" className="mb-2 h-11 w-auto justify-self-start lg:hidden" />
           <div className="grid grid-cols-1 gap-2">
             <h1 className="font-judul text-[2.4rem] font-semibold leading-tight">{judul}</h1>
             <p className="text-batu-tua">{ket}</p>

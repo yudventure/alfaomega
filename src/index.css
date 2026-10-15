@@ -1,17 +1,17 @@
 @import "tailwindcss";
 
 /* ==========================================================
-   Token brand Gereja Alfa Omega (lihat brand/web/css/brand-tokens.css)
+   Token brand GBI Kapernaum Sorong (lihat brand/web/css/brand-tokens.css)
    Dipakai sebagai kelas Tailwind: bg-gading, text-emas-tua, font-judul, rounded-kartu, ...
    ========================================================== */
 @theme {
   --color-hitam: #121212;
-  --color-emas: #C8A25A;
+  --color-emas: #C89C4A;
   --color-gading: #F6F1E7;
   --color-krem: #FFFCF6;
-  --color-emas-tua: #9A7633;
-  --color-emas-teks: #7A5C22;
-  --color-emas-muda: #E6CF95;
+  --color-emas-tua: #94702B;
+  --color-emas-teks: #76561C;
+  --color-emas-muda: #E8CB86;
   --color-arang: #2A2826;
   --color-batu: #8A8378;
   --color-batu-tua: #5E5850;
@@ -20,7 +20,8 @@
   --color-garis-gelap: #3A342A;
   --color-pasir: #EFE6D3;
 
-  --font-logo: 'Cinzel', 'Trajan Pro', Georgia, serif;
+  /* huruf logo KAPERNAUM: Plus Jakarta Sans ExtraBold, selalu kapital */
+  --font-logo: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-judul: 'Cormorant Garamond', Garamond, Georgia, serif;
   --font-teks: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
@@ -31,8 +32,6 @@
 }
 
 /* ---------- font (di-host sendiri, lisensi SIL OFL) ---------- */
-@font-face { font-family: 'Cinzel'; font-weight: 600; font-display: swap; src: url('/fonts/cinzel-600.woff2') format('woff2'); }
-@font-face { font-family: 'Cinzel'; font-weight: 700; font-display: swap; src: url('/fonts/cinzel-700.woff2') format('woff2'); }
 @font-face { font-family: 'Cormorant Garamond'; font-weight: 500; font-display: swap; src: url('/fonts/cormorant-garamond-500.woff2') format('woff2'); }
 @font-face { font-family: 'Cormorant Garamond'; font-weight: 600; font-display: swap; src: url('/fonts/cormorant-garamond-600.woff2') format('woff2'); }
 @font-face { font-family: 'Cormorant Garamond'; font-style: italic; font-weight: 500; font-display: swap; src: url('/fonts/cormorant-garamond-500-italic.woff2') format('woff2'); }
@@ -42,6 +41,7 @@
 @font-face { font-family: 'Plus Jakarta Sans'; font-weight: 500; font-display: swap; src: url('/fonts/plus-jakarta-sans-500.woff2') format('woff2'); }
 @font-face { font-family: 'Plus Jakarta Sans'; font-weight: 600; font-display: swap; src: url('/fonts/plus-jakarta-sans-600.woff2') format('woff2'); }
 @font-face { font-family: 'Plus Jakarta Sans'; font-weight: 700; font-display: swap; src: url('/fonts/plus-jakarta-sans-700.woff2') format('woff2'); }
+@font-face { font-family: 'Plus Jakarta Sans'; font-weight: 800; font-display: swap; src: url('/fonts/plus-jakarta-sans-800.woff2') format('woff2'); }
 
 @layer base {
   /* overflow-x: clip mencegah geser samping saat elemen masuk dari kanan/kiri */

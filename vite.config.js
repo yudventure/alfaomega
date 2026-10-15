@@ -6,8 +6,8 @@ import { execSync } from 'node:child_process';
 import { readdirSync, readFileSync, statSync } from 'node:fs';
 import path from 'node:path';
 
-// Sidik isi foto bawaan (public/img, public/og). Ditempel sebagai ?v=... pada alamat gambar,
-// jadi setiap kali foto diganti browser & CDN langsung mengambil yang baru (tidak tertahan cache).
+// Sidik isi foto & logo bawaan (public/img, public/og, public/logo). Ditempel sebagai ?v=... pada alamat gambar,
+// jadi setiap kali foto atau logo diganti browser & CDN langsung mengambil yang baru (tidak tertahan cache).
 function sidikFolder(folder) {
   const h = createHash('sha1');
   const jelajah = (dir) => {
@@ -17,7 +17,7 @@ function sidikFolder(folder) {
       else h.update(path.relative(folder, p)).update(readFileSync(p));
     }
   };
-  for (const d of ['img', 'og']) jelajah(path.join(folder, d));
+  for (const d of ['img', 'og', 'logo']) jelajah(path.join(folder, d));
   return h.digest('hex').slice(0, 10);
 }
 

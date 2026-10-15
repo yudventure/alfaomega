@@ -1,9 +1,9 @@
 import Nav from './Nav.jsx';
-import Monogram from './Monogram.jsx';
+import Lambang from './Lambang.jsx';
 import { Teks } from './Dasar.jsx';
 import { useParalaks } from '../paralaks.js';
 
-// Kepala untuk halaman selain beranda: kartu gelap dengan menu, judul halaman, dan ornamen monogram.
+// Kepala untuk halaman selain beranda: kartu gelap dengan menu, judul halaman, dan ornamen lambang singa.
 // `remah` = nama halaman untuk jejak "Beranda / ...". `children` = tombol opsional di bawah teks.
 export default function KepalaHalaman({ remah, label, judul, teks, children }) {
   const kepalaRef = useParalaks();
@@ -18,11 +18,11 @@ export default function KepalaHalaman({ remah, label, judul, teks, children }) {
         {/* latar + ornamen dalam bingkai yang dipotong membulat, supaya sudut tetap bulat walau ornamennya bergerak */}
         <div className="klip-besar absolute inset-0 -z-10 overflow-hidden rounded-[inherit]" aria-hidden="true">
           <div
-            className="absolute inset-0 bg-[radial-gradient(ellipse_at_82%_18%,rgba(200,162,90,.32),transparent_55%),radial-gradient(ellipse_at_0%_100%,rgba(154,118,51,.22),transparent_50%)]"
+            className="absolute inset-0 bg-[radial-gradient(ellipse_at_82%_18%,rgba(200,156,74,.32),transparent_55%),radial-gradient(ellipse_at_0%_100%,rgba(148,112,43,.22),transparent_50%)]"
             aria-hidden="true"
           />
           <div className="paralaks-ornamen absolute -right-[6%] top-[12%] w-[min(70%,560px)] md:-right-[2%] md:w-[min(44%,560px)]">
-            <Monogram garis strokeWidth={5} className="masuk-ornamen w-full text-emas/25" />
+            <Lambang garis className="masuk-ornamen w-full text-emas/30" />
           </div>
         </div>
 

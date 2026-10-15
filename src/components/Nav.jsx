@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { gereja, menu } from '../data/isi.js';
 import Ikon from './Ikon.jsx';
 import { useJalur } from '../rute.js';
+import { aset } from '../aset.js';
 
 // Menu utama. Di posisi paling atas: berada di atas kartu foto hero, tanpa latar, selebar kartu hero.
 // Begitu halaman digulir: menempel di atas layar sebagai kapsul berlatar krem dengan bayangan.
@@ -42,7 +43,7 @@ export default function Nav() {
       }`}
     >
       <a href="/" aria-label={`${gereja.nama}, ke beranda`} className="shrink-0">
-        <img src="/logo/logo-header-terang.svg" alt="" width="166" height="40" className="h-9 w-auto" />
+        <img src={aset('/logo/logo-header-terang.svg')} alt="" width="156" height="40" className="h-10 w-auto" />
       </a>
 
       <ul

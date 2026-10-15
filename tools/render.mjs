@@ -15,7 +15,9 @@ import site from './assets-site.mjs';
 
 const require = createRequire(import.meta.url);
 let chromium;
-try { ({ chromium } = require('playwright')); } catch { ({ chromium } = require('/opt/node22/lib/node_modules/playwright')); }
+try { ({ chromium } = require('playwright')); } catch {
+  try { ({ chromium } = require('/opt/node22/lib/node_modules/playwright')); } catch { ({ chromium } = require('/opt/node-tools/node_modules/playwright')); }
+}
 
 const filter = process.argv[2];
 const assets = [...logoWeb(), ...webKit(), ...site(), ...social(), ...mockups()].filter(a => !filter || new RegExp(filter).test(a.out));

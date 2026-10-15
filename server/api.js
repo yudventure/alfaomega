@@ -23,7 +23,7 @@ class Galat extends Error {
 
 const publik = (p) => (p ? { id: p.id, nama: p.nama, email: p.email, peran: p.peran, dibuat: p.dibuat, terakhirMasuk: p.terakhirMasuk ?? null } : null);
 const jumlahDeveloper = (daftar) => daftar.filter((p) => p.peran.includes('developer')).length;
-const namaGereja = () => isiLengkap().gereja?.nama || 'Gereja Alfa Omega';
+const namaGereja = () => isiLengkap().gereja?.nama || 'GBI Kapernaum Sorong';
 const emailSah = (e) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
 
 // Email dikirim di latar supaya respons tetap cepat (dan tidak membocorkan apakah email terdaftar)
@@ -196,7 +196,7 @@ export function buatApi() {
     const surat = templatSurel({
       namaGereja: namaGereja(),
       judul: 'Kata sandi Anda baru saja diubah',
-      paragraf: [`Shalom ${p.nama},`, `Kata sandi akun CMS Anda diatur ulang memakai kode OTP pada ${new Date().toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' })} WIB. Semua perangkat lain otomatis keluar.`],
+      paragraf: [`Shalom ${p.nama},`, `Kata sandi akun CMS Anda diatur ulang memakai kode OTP pada ${new Date().toLocaleString('id-ID', { timeZone: 'Asia/Jayapura' })} WIT. Semua perangkat lain otomatis keluar.`],
       catatan: 'Bila bukan Anda yang melakukannya, segera hubungi ketua atau developer gereja.',
     });
     kirimLatar({ ke: p.email, subjek: `Kata sandi CMS ${namaGereja()} diubah`, teks: surat.teks, html: surat.html }, 'pemberitahuan sandi');
@@ -417,12 +417,13 @@ export function buatApi() {
 
   r.get('/cadangan', wajib(bolehSistem), (req, res) => {
     const { isi, meta } = data.bacaIsi();
-    res.attachment(`cadangan-alfaomega-${kini().slice(0, 10)}.json`);
-    res.json({ format: 'alfaomega-cms', versi: 1, dibuat: kini(), isi, meta, media: data.daftarMedia() });
+    res.attachment(`cadangan-kapernaum-${kini().slice(0, 10)}.json`);
+    res.json({ format: 'kapernaum-cms', versi: 1, dibuat: kini(), isi, meta, media: data.daftarMedia() });
   });
 
   r.post('/cadangan', wajib(bolehSistem), jsonBesar, (req, res) => {
-    if (req.body?.format !== 'alfaomega-cms' || typeof req.body?.isi !== 'object') throw new Galat(400, 'Berkas ini bukan cadangan CMS Alfa Omega.');
+    // 'alfaomega-cms' = cadangan dari sebelum rebranding, tetap bisa dipulihkan
+    if (!['kapernaum-cms', 'alfaomega-cms'].includes(req.body?.format) || typeof req.body?.isi !== 'object') throw new Galat(400, 'Berkas ini bukan cadangan CMS website gereja.');
     const simpanan = data.bacaIsi();
     const sumber = isiLengkap(req.body.isi);
     let isiBaru = simpanan.isi;

@@ -1,4 +1,4 @@
-// Panel CMS Gereja Alfa Omega (/admin). Dimuat terpisah sehingga tidak memperberat website.
+// Panel CMS GBI Kapernaum Sorong (/admin). Dimuat terpisah sehingga tidak memperberat website.
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { kategoriById, bolehKategori, bolehKelolaPengguna, bolehSistem } from '../cms/skema.js';
 import { api } from './api.js';
@@ -112,7 +112,7 @@ export default function Admin({ jalur }) {
     else konten = <Tanpa judul="Halaman tidak ditemukan" teks="Periksa kembali alamatnya." />;
   }
 
-  useEffect(() => { document.title = `${judul} · CMS Alfa Omega`; }, [judul]);
+  useEffect(() => { document.title = `${judul} · CMS Kapernaum`; }, [judul]);
 
   return (
     <KonteksCms.Provider value={konteks}>

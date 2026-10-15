@@ -25,7 +25,7 @@ export const VARIABEL = [
   },
   {
     nama: 'DATA_DIR', kelompok: 'Penyimpanan', contoh: '/home/u123456789/alfaomega-data',
-    ket: 'Folder data CMS (isi, pengguna, foto unggahan, log, versi). Taruh di luar folder aplikasi agar tidak terhapus saat deploy ulang. Bawaan: ~/alfaomega-data.',
+    ket: 'Folder data CMS (isi, pengguna, foto unggahan, log, versi). Taruh di luar folder aplikasi agar tidak terhapus saat deploy ulang. Bawaan: ~/alfaomega-data (nama folder lama dipertahankan agar data CMS yang sudah ada tidak hilang).',
   },
   {
     nama: 'CMS_KODE_SETUP', kelompok: 'Keamanan', rahasia: true, contoh: 'ganti-dengan-kode-pilihan-anda',
@@ -42,7 +42,7 @@ export const VARIABEL = [
   { nama: 'SMTP_PORT', kelompok: 'Email', cms: true, contoh: '465', ket: 'Port SMTP. 465 (SSL, disarankan) atau 587 (STARTTLS).' },
   { nama: 'SMTP_USER', kelompok: 'Email', cms: true, contoh: 'noreply@testingwebsite.click', ket: 'Nama pengguna SMTP, biasanya alamat email lengkap.' },
   { nama: 'SMTP_PASS', kelompok: 'Email', cms: true, rahasia: true, contoh: 'kata-sandi-email', ket: 'Kata sandi akun email (Gmail: App Password, bukan sandi biasa).' },
-  { nama: 'MAIL_FROM', kelompok: 'Email', cms: true, contoh: 'Gereja Alfa Omega <noreply@testingwebsite.click>', ket: 'Pengirim yang tampil di email. Bawaan: SMTP_USER.' },
+  { nama: 'MAIL_FROM', kelompok: 'Email', cms: true, contoh: 'GBI Kapernaum Sorong <noreply@testingwebsite.click>', ket: 'Pengirim yang tampil di email. Bawaan: SMTP_USER.' },
   { nama: 'MAIL_BALAS', kelompok: 'Email', cms: true, contoh: 'sekretariat@testingwebsite.click', ket: 'Alamat balasan (Reply-To), opsional.' },
   { nama: 'PORT', kelompok: 'Server', contoh: '3000', ket: 'Port server. Biasanya diatur otomatis oleh Hostinger; bawaan 3000.' },
 ];
@@ -105,7 +105,7 @@ function kutip(nilai) {
 function tulisFileEnv(berkas, judul, nilai) {
   const baris = [
     `# ${judul}`,
-    `# Ditulis otomatis oleh CMS Gereja Alfa Omega pada ${new Date().toISOString()}. Jangan dibagikan: dapat memuat kata sandi.`,
+    `# Ditulis otomatis oleh CMS GBI Kapernaum Sorong pada ${new Date().toISOString()}. Jangan dibagikan: dapat memuat kata sandi.`,
     '',
   ];
   let kelompok = '';
@@ -135,7 +135,7 @@ export function simpanEnvCms(perubahan) {
     diubah.push(nama);
   }
   if (baru.SITE_URL) {
-    if (!/^https?:\/\/[^\s/]+$/i.test(baru.SITE_URL.replace(/\/+$/, ''))) throw Object.assign(new Error('SITE_URL harus berupa alamat lengkap, mis. https://gerejaalfaomega.org'), { status: 400 });
+    if (!/^https?:\/\/[^\s/]+$/i.test(baru.SITE_URL.replace(/\/+$/, ''))) throw Object.assign(new Error('SITE_URL harus berupa alamat lengkap, mis. https://gbikapernaumsorong.org'), { status: 400 });
     baru.SITE_URL = baru.SITE_URL.replace(/\/+$/, '');
   }
   if (baru.SMTP_PORT && !/^\d{2,5}$/.test(baru.SMTP_PORT)) throw Object.assign(new Error('SMTP_PORT harus berupa angka, mis. 465.'), { status: 400 });
@@ -149,7 +149,7 @@ export function simpanEnvCms(perubahan) {
 export function teksEnvContoh() {
   const baris = [
     '# ==========================================================',
-    '# Contoh pengaturan lingkungan Gereja Alfa Omega',
+    '# Contoh pengaturan lingkungan website GBI Kapernaum Sorong',
     '# Salin menjadi .env (folder aplikasi) atau isi di hPanel > Node.js > Environment variables.',
     '# Variabel bertanda [CMS] juga bisa diubah developer dari /admin > Sistem & Cadangan;',
     '# perubahan itu disimpan otomatis ke DATA_DIR/.env setiap kali disimpan.',

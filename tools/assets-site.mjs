@@ -1,6 +1,6 @@
 // Visual untuk website (site/img): komposisi "cahaya" bergaya brand sebagai pengganti foto
 // sampai foto gereja asli tersedia. Dirender lewat render.mjs ("site/").
-import { C, page, markSvg, chevrons } from './lib.mjs';
+import { C, page, markSvg, gema } from './lib.mjs';
 
 // Latar abstrak lama. public/img kini berisi foto, jadi hasilnya ditaruh di .cache agar foto tidak tertimpa.
 const DIR = '.cache/latar-abstrak';
@@ -11,7 +11,7 @@ const orb = ([x, y, s, col, op, bl]) =>
 
 function scene(w, h, { base, orbs, pattern = {}, vignette = 0.55, grain = true, mark = null, tint = null }) {
   const pat = pattern.count === 0 ? '' : `<svg width="${w}" height="${h}" style="position:absolute;inset:0;opacity:${pattern.op ?? 0.16}">
-    ${chevrons({ cx: pattern.cx ?? w / 2, cy: 0, count: pattern.count ?? 12, step: -(pattern.step ?? h * 0.08), color: pattern.color ?? C.emas, opacity: 1, width: Math.max(1.2, w / 1400), start: -(pattern.apex ?? h * 0.12) })}</svg>`;
+    ${gema({ cx: pattern.cx ?? w / 2, cy: h / 2, r0: pattern.apex ?? h * 0.12, count: pattern.count ?? 12, step: pattern.step ?? h * 0.08, color: pattern.color ?? C.emas, opacity: 1, width: Math.max(1.2, w / 1400) })}</svg>`;
   const body = `
     <div style="position:absolute;inset:0;background:${base}"></div>
     ${pat}

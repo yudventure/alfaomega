@@ -35,7 +35,7 @@ function FormPengguna({ awal, onTutup, onSimpan }) {
     const terkunci = p.id === 'developer' && !developer;
     return (
       <label key={p.id} className={`flex gap-3 rounded-xl border p-3 ${isian.peran.includes(p.id) ? 'border-emas bg-emas/10' : 'border-garis bg-white'} ${terkunci ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`}>
-        <input type="checkbox" className="mt-1 h-4 w-4 accent-[#9A7633]" checked={isian.peran.includes(p.id)} disabled={terkunci} onChange={() => ubahPeran(p.id)} />
+        <input type="checkbox" className="mt-1 h-4 w-4 accent-[#94702B]" checked={isian.peran.includes(p.id)} disabled={terkunci} onChange={() => ubahPeran(p.id)} />
         <span>
           <span className="block text-[.9rem] font-semibold">{p.nama}</span>
           <span className="block text-[.8rem] leading-snug text-batu-tua">{p.ket}</span>
@@ -61,7 +61,7 @@ function FormPengguna({ awal, onTutup, onSimpan }) {
         {!awal && (
           <div className={`flex gap-3 rounded-xl border border-garis bg-white p-3 ${emailSiap ? '' : 'opacity-60'}`}>
             <input
-              id="kirim-email" type="checkbox" className="mt-1 h-4 w-4 accent-[#9A7633]" aria-describedby="kirim-email-ket"
+              id="kirim-email" type="checkbox" className="mt-1 h-4 w-4 accent-[#94702B]" aria-describedby="kirim-email-ket"
               checked={emailSiap && isian.kirimEmail} disabled={!emailSiap} onChange={(e) => setIsian({ ...isian, kirimEmail: e.target.checked })}
             />
             <span>

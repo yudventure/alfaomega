@@ -9,7 +9,9 @@ import { C, BRAND, TOOLS, fontCSS, markSvg, logoSvg, chevrons } from './lib.mjs'
 
 const require = createRequire(import.meta.url);
 let chromium;
-try { ({ chromium } = require('playwright')); } catch { ({ chromium } = require('/opt/node22/lib/node_modules/playwright')); }
+try { ({ chromium } = require('playwright')); } catch {
+  try { ({ chromium } = require('/opt/node22/lib/node_modules/playwright')); } catch { ({ chromium } = require('/opt/node-tools/node_modules/playwright')); }
+}
 
 const KONTEN = JSON.parse(fs.readFileSync(path.join(TOOLS, 'konten.json'), 'utf8'));
 const CACHE = path.join(TOOLS, '.cache');

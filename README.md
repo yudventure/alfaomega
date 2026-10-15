@@ -1,6 +1,6 @@
-# Gereja Alfa Omega
+# GBI Kapernaum Sorong
 
-Website Gereja Alfa Omega (**React + Vite + Tailwind CSS v4**, disajikan oleh Express) dengan **CMS berbasis peran** di `/admin`, sekaligus paket identitas brandnya:
+Website GBI Kapernaum Sorong — Gereja Bethel Indonesia, Jl. Sejahtera KM.10, Kota Sorong (**React + Vite + Tailwind CSS v4**, disajikan oleh Express) dengan **CMS berbasis peran** di `/admin`, sekaligus paket identitas brandnya:
 logo, warna, font, aset media sosial, mockup merchandise, dan 10 referensi website gereja.
 
 ## Website (aplikasi di root repo)
@@ -73,7 +73,7 @@ pustaka media, peringatan bila meninggalkan perubahan yang belum disimpan, detek
 riwayat aktivitas, **60 versi otomatis** yang bisa dipulihkan (ketua & developer), serta unduh/pulihkan cadangan (developer).
 
 **Penyimpanan.** Tidak perlu database: isi, pengguna, log, versi, dan foto unggahan disimpan sebagai berkas di `DATA_DIR`
-(bawaan `~/alfaomega-data`). Atur `DATA_DIR` ke folder di luar folder aplikasi agar tidak ikut terhapus saat deploy ulang,
+(bawaan `~/alfaomega-data`; nama folder dari sebelum rebranding sengaja dipertahankan agar data yang sudah ada tetap terbaca). Atur `DATA_DIR` ke folder di luar folder aplikasi agar tidak ikut terhapus saat deploy ulang,
 dan unduh cadangan secara berkala dari menu **Sistem & Cadangan**.
 
 **Keamanan.** Kata sandi di-hash dengan scrypt; sesi berupa cookie HttpOnly bertanda tangan (12 jam, otomatis tidak berlaku saat sandi diganti);
@@ -117,7 +117,7 @@ Saat menambah pengguna, ketua/developer juga bisa mengirim **email pemberitahuan
 Mengaktifkan email (developer, **CMS → Sistem & Cadangan**):
 1. Buat akun email di hPanel → **Emails**, mis. `noreply@domain-anda`.
 2. Isi `SMTP_HOST=smtp.hostinger.com`, `SMTP_PORT=465`, `SMTP_USER=noreply@domain-anda`, `SMTP_PASS=` kata sandi email itu,
-   dan `MAIL_FROM=Gereja Alfa Omega <noreply@domain-anda>`. (Gmail: `smtp.gmail.com`, port 465, pakai *App Password*.)
+   dan `MAIL_FROM=GBI Kapernaum Sorong <noreply@domain-anda>`. (Gmail: `smtp.gmail.com`, port 465, pakai *App Password*.)
 3. Klik **Kirim email uji**.
 
 ### SEO & berbagi link
@@ -132,7 +132,7 @@ Mengaktifkan email (developer, **CMS → Sistem & Cadangan**):
 
 ### Gambar & cache
 
-Alamat foto bawaan diberi penanda versi otomatis (`/img/langkah-1.jpg?v=…`, dari sidik isi folder `public/img`).
+Alamat foto & logo bawaan diberi penanda versi otomatis (`/img/langkah-1.jpg?v=…`, dari sidik isi folder `public/img`, `public/og`, `public/logo`).
 Setiap kali foto diganti, alamatnya berubah sehingga browser dan CDN langsung mengambil foto baru, sementara foto yang sama
 tetap di-cache lama (cepat). Foto unggahan CMS selalu bernama baru. Halaman HTML tidak di-cache, jadi isi CMS langsung tampil.
 

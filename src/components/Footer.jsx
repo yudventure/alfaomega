@@ -2,6 +2,7 @@ import { footer, gereja, jadwal, kunjungi } from '../data/isi.js';
 import Ikon from './Ikon.jsx';
 import { LOGO_SOSIAL, POLA_SOSIAL } from './logo-sosial.js';
 import { tautanArah } from '../peta.js';
+import { aset } from '../aset.js';
 
 const judulKolom = 'mb-1.5 font-teks text-[.7rem] font-semibold uppercase leading-[1.6] tracking-[.3em] text-emas';
 const tautanKaki = 'text-[.95rem] text-gading/80 no-underline hover:text-white';
@@ -27,7 +28,7 @@ function TombolArah() {
       target="_blank"
       rel="noopener"
       aria-label={`${kunjungi.tombolArah.label} ke ${gereja.nama} di Google Maps`}
-      className="group mt-3 flex w-full max-w-[290px] items-center gap-3 rounded-full border border-emas/40 bg-[linear-gradient(120deg,rgba(200,162,90,.2),rgba(200,162,90,.04))] p-[7px] pr-5 no-underline transition-[transform,border-color,box-shadow] duration-300 ease-[cubic-bezier(.16,1,.3,1)] hover:-translate-y-0.5 hover:border-emas hover:shadow-[0_18px_40px_-18px_rgba(200,162,90,.7)] focus-visible:border-emas"
+      className="group mt-3 flex w-full max-w-[290px] items-center gap-3 rounded-full border border-emas/40 bg-[linear-gradient(120deg,rgba(200,156,74,.2),rgba(200,156,74,.04))] p-[7px] pr-5 no-underline transition-[transform,border-color,box-shadow] duration-300 ease-[cubic-bezier(.16,1,.3,1)] hover:-translate-y-0.5 hover:border-emas hover:shadow-[0_18px_40px_-18px_rgba(200,156,74,.7)] focus-visible:border-emas"
     >
       <span className="relative grid h-11 w-11 shrink-0 place-items-center rounded-full bg-emas text-hitam">
         <span className="denyut absolute inset-0 rounded-full bg-emas" aria-hidden="true" />
@@ -47,7 +48,7 @@ export default function Footer() {
     <footer className="mt-4 rounded-t-besar bg-hitam px-[clamp(1.25rem,4vw,3rem)] pb-8 pt-[clamp(3rem,6vw,4.5rem)] text-gading">
       <div className="isi grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.2fr_1fr_1fr_1.2fr]">
         <div>
-          <img src="/logo/logo-footer-gelap.svg" alt={gereja.nama} width="220" height="190" className="w-[200px]" />
+          <img src={aset('/logo/logo-footer-gelap.svg')} alt={gereja.nama} width="214" height="188" className="w-[200px]" />
         </div>
         <nav className="grid content-start gap-2" aria-label="Menu footer">
           <h4 className={judulKolom}>Halaman</h4>
@@ -56,7 +57,7 @@ export default function Footer() {
         <div className="grid content-start gap-2">
           <h4 className={judulKolom}>Ikuti Kami</h4>
           <ul className="grid gap-2.5">
-            {footer.sosial.map((s) => (
+            {footer.sosial.filter((s) => s.href && s.href !== '#').map((s) => (
               <li key={s.label}>
                 <a href={s.href} target="_blank" rel="noopener" className="group inline-flex items-center gap-3 text-[.95rem] text-gading/80 no-underline hover:text-white">
                   <span className="grid h-9 w-9 place-items-center rounded-full border border-garis-gelap text-emas transition-colors duration-200 group-hover:border-emas group-hover:bg-emas group-hover:text-hitam">

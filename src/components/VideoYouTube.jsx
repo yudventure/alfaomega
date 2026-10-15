@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Monogram from './Monogram.jsx';
+import Lambang from './Lambang.jsx';
 import { idYouTube } from '../cms/youtube.js';
 import { aset } from '../aset.js';
 
@@ -21,8 +21,8 @@ export default function VideoYouTube({ sumber, judul, poster, keterangan, classN
   if (!id) {
     return (
       <div className={bingkai}>
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_30%,rgba(200,162,90,.3),transparent_60%)]" aria-hidden="true" />
-        <Monogram garis strokeWidth={5} className="absolute -right-[6%] -top-[10%] w-[52%] text-emas/20" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_30%,rgba(200,156,74,.3),transparent_60%)]" aria-hidden="true" />
+        <Lambang garis className="absolute -right-[6%] -top-[12%] w-[52%] text-emas/25" />
         <div className="absolute inset-0 grid place-content-center justify-items-center gap-4 p-6 text-center">
           <TombolPutar className="opacity-60" />
           <p className="label text-emas-muda">Video sambutan segera hadir</p>

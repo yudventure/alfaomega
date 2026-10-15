@@ -1,117 +1,142 @@
 {
- "alfaomega-monogram-hitam": {
-  "w": 95.75,
+ "kapernaum-lambang-warna": {
+  "w": 100,
+  "h": 100,
+  "variant": "warna"
+ },
+ "kapernaum-lambang-hitam": {
+  "w": 100.0,
   "h": 100,
   "variant": "hitam"
  },
- "alfaomega-monogram-emas": {
-  "w": 95.75,
+ "kapernaum-lambang-emas": {
+  "w": 100.0,
   "h": 100,
   "variant": "emas"
  },
- "alfaomega-monogram-putih": {
-  "w": 95.75,
+ "kapernaum-lambang-putih": {
+  "w": 100.0,
   "h": 100,
   "variant": "putih"
  },
- "alfaomega-horizontal-hitam": {
-  "w": 492.55,
+ "kapernaum-horizontal-warna": {
+  "w": 422.28,
+  "h": 100,
+  "variant": "warna"
+ },
+ "kapernaum-horizontal-hitam": {
+  "w": 422.28,
   "h": 100,
   "variant": "hitam"
  },
- "alfaomega-horizontal-emas": {
-  "w": 492.55,
+ "kapernaum-horizontal-emas": {
+  "w": 422.28,
   "h": 100,
   "variant": "emas"
  },
- "alfaomega-horizontal-emas-gading": {
-  "w": 492.55,
+ "kapernaum-horizontal-emas-gading": {
+  "w": 422.28,
   "h": 100,
   "variant": "emas-gading"
  },
- "alfaomega-horizontal-putih": {
-  "w": 492.55,
+ "kapernaum-horizontal-putih": {
+  "w": 422.28,
   "h": 100,
   "variant": "putih"
  },
- "alfaomega-horizontal-ringkas-hitam": {
-  "w": 500.73,
+ "kapernaum-horizontal-ringkas-warna": {
+  "w": 389.95,
+  "h": 100,
+  "variant": "warna"
+ },
+ "kapernaum-horizontal-ringkas-hitam": {
+  "w": 389.95,
   "h": 100,
   "variant": "hitam"
  },
- "alfaomega-horizontal-ringkas-emas": {
-  "w": 500.73,
+ "kapernaum-horizontal-ringkas-emas": {
+  "w": 389.95,
   "h": 100,
   "variant": "emas"
  },
- "alfaomega-horizontal-ringkas-emas-gading": {
-  "w": 500.73,
+ "kapernaum-horizontal-ringkas-emas-gading": {
+  "w": 389.95,
   "h": 100,
   "variant": "emas-gading"
  },
- "alfaomega-horizontal-ringkas-putih": {
-  "w": 500.73,
+ "kapernaum-horizontal-ringkas-putih": {
+  "w": 389.95,
   "h": 100,
   "variant": "putih"
  },
- "alfaomega-bertumpuk-hitam": {
-  "w": 280.39,
-  "h": 169.5,
+ "kapernaum-bertumpuk-warna": {
+  "w": 214.36,
+  "h": 167,
+  "variant": "warna"
+ },
+ "kapernaum-bertumpuk-hitam": {
+  "w": 214.36,
+  "h": 167,
   "variant": "hitam"
  },
- "alfaomega-bertumpuk-emas": {
-  "w": 280.39,
-  "h": 169.5,
+ "kapernaum-bertumpuk-emas": {
+  "w": 214.36,
+  "h": 167,
   "variant": "emas"
  },
- "alfaomega-bertumpuk-emas-gading": {
-  "w": 280.39,
-  "h": 169.5,
+ "kapernaum-bertumpuk-emas-gading": {
+  "w": 214.36,
+  "h": 167,
   "variant": "emas-gading"
  },
- "alfaomega-bertumpuk-putih": {
-  "w": 280.39,
-  "h": 169.5,
+ "kapernaum-bertumpuk-putih": {
+  "w": 214.36,
+  "h": 167,
   "variant": "putih"
  },
- "alfaomega-bertumpuk-tagline-hitam": {
-  "w": 280.39,
-  "h": 197.5,
+ "kapernaum-bertumpuk-lengkap-warna": {
+  "w": 214.36,
+  "h": 187.6,
+  "variant": "warna"
+ },
+ "kapernaum-bertumpuk-lengkap-hitam": {
+  "w": 214.36,
+  "h": 187.6,
   "variant": "hitam"
  },
- "alfaomega-bertumpuk-tagline-emas": {
-  "w": 280.39,
-  "h": 197.5,
+ "kapernaum-bertumpuk-lengkap-emas": {
+  "w": 214.36,
+  "h": 187.6,
   "variant": "emas"
  },
- "alfaomega-bertumpuk-tagline-emas-gading": {
-  "w": 280.39,
-  "h": 197.5,
+ "kapernaum-bertumpuk-lengkap-emas-gading": {
+  "w": 214.36,
+  "h": 187.6,
   "variant": "emas-gading"
  },
- "alfaomega-bertumpuk-tagline-putih": {
-  "w": 280.39,
-  "h": 197.5,
+ "kapernaum-bertumpuk-lengkap-putih": {
+  "w": 214.36,
+  "h": 187.6,
   "variant": "putih"
  },
- "alfaomega-wordmark-hitam": {
-  "w": 736.9,
-  "h": 70,
+ "kapernaum-wordmark-hitam": {
+  "w": 625.21,
+  "h": 117,
   "variant": "hitam"
  },
- "alfaomega-wordmark-emas": {
-  "w": 736.9,
-  "h": 70,
+ "kapernaum-wordmark-emas": {
+  "w": 625.21,
+  "h": 117,
   "variant": "emas"
  },
- "alfaomega-wordmark-emas-gading": {
-  "w": 736.9,
-  "h": 70,
+ "kapernaum-wordmark-emas-gading": {
+  "w": 625.21,
+  "h": 117,
   "variant": "emas-gading"
  },
- "alfaomega-wordmark-putih": {
-  "w": 736.9,
-  "h": 70,
+ "kapernaum-wordmark-putih": {
+  "w": 625.21,
+  "h": 117,
   "variant": "putih"
  }
 }

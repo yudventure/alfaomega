@@ -4,6 +4,7 @@ import Ikon from '../components/Ikon.jsx';
 import { KELOMPOK, kategoriUntuk, aksesPenuh, bolehSistem, namaPeran } from '../cms/skema.js';
 import { inisial } from './alat.js';
 import { useCms } from './ui.jsx';
+import { aset } from '../aset.js';
 
 function TautanMenu({ href, ikon, aktif, children }) {
   return (
@@ -69,14 +70,14 @@ export default function Tata({ jalur, children }) {
     <div className="min-h-screen bg-gading lg:grid lg:grid-cols-[280px_minmax(0,1fr)]">
       {/* menu samping (layar lebar) */}
       <aside className="hidden bg-hitam text-gading lg:sticky lg:top-0 lg:flex lg:h-screen lg:flex-col lg:gap-6 lg:overflow-y-auto lg:px-4 lg:py-6">
-        <a href="/admin" className="px-3"><img src="/logo/logo-header-gelap.svg" alt="CMS Gereja Alfa Omega" className="h-9 w-auto" /></a>
+        <a href="/admin" className="px-3"><img src={aset('/logo/logo-header-gelap.svg')} alt="CMS GBI Kapernaum Sorong" className="h-9 w-auto" /></a>
         <div className="flex-1">{menu}</div>
         {kartuPengguna}
       </aside>
 
       {/* bilah atas (ponsel & tablet) */}
       <div className="sticky top-0 z-30 flex items-center justify-between bg-hitam px-4 py-3 text-gading lg:hidden">
-        <a href="/admin"><img src="/logo/logo-header-gelap.svg" alt="CMS Gereja Alfa Omega" className="h-8 w-auto" /></a>
+        <a href="/admin"><img src={aset('/logo/logo-header-gelap.svg')} alt="CMS GBI Kapernaum Sorong" className="h-8 w-auto" /></a>
         <button type="button" onClick={() => setBuka((b) => !b)} className="grid grid-cols-1 h-10 w-10 place-items-center rounded-full bg-white/10" aria-expanded={buka} aria-label={buka ? 'Tutup menu' : 'Buka menu'}>
           <Ikon nama={buka ? 'tutup' : 'menu'} className="h-5 w-5" />
         </button>

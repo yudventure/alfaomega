@@ -1,20 +1,4 @@
-/* Font brand Alfa Omega, di-host sendiri (WOFF2, subset Latin). Lisensi: SIL OFL 1.1, lihat fonts/OFL-*.txt */
-
-@font-face {
-  font-family: 'Cinzel';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url('../fonts/cinzel-600.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Cinzel';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('../fonts/cinzel-700.woff2') format('woff2');
-}
+/* Font brand GBI Kapernaum Sorong, di-host sendiri (WOFF2, subset Latin). Lisensi: SIL OFL 1.1, lihat fonts/OFL-*.txt */
 
 @font-face {
   font-family: 'Cormorant Garamond';
@@ -86,4 +70,12 @@
   font-weight: 700;
   font-display: swap;
   src: url('../fonts/plus-jakarta-sans-700.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('../fonts/plus-jakarta-sans-800.woff2') format('woff2');
 }

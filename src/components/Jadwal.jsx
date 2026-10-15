@@ -14,7 +14,7 @@ export default function Jadwal() {
           {jadwal.daftar.map((j, i) => (
             <Reveal key={j.nama} tunda={i * 90} className="kartu grid content-start gap-2 p-6">
               <Ikon nama={j.ikon} className="mb-2 h-11 w-11 text-emas-tua" />
-              <h3 className="font-logo text-[1.05rem] font-bold tracking-[.04em]">{j.nama}</h3>
+              <h3 className="font-logo text-[.95rem] font-extrabold uppercase tracking-[.07em]">{j.nama}</h3>
               <p className="flex items-center gap-2 text-[.95rem] text-batu-tua">
                 <Ikon nama="jam" className="h-[1.2em] w-[1.2em] text-emas-tua" />{j.waktu}
               </p>

@@ -193,7 +193,7 @@ export default function Sistem() {
 
         <Kartu judul="Cadangan isi website" ket="Unduh cadangan secara berkala, terutama sebelum mengubah banyak hal. Cadangan berisi teks dan daftar media; berkas foto ada di folder media.">
           <div className="flex flex-wrap gap-3">
-            <Tombol varian="utama" ikon="unduh" onClick={() => unduh('/cadangan', `cadangan-alfaomega-${new Date().toISOString().slice(0, 10)}.json`).catch((e) => beriTahu(e.message, 'galat'))}>Unduh cadangan</Tombol>
+            <Tombol varian="utama" ikon="unduh" onClick={() => unduh('/cadangan', `cadangan-kapernaum-${new Date().toISOString().slice(0, 10)}.json`).catch((e) => beriTahu(e.message, 'galat'))}>Unduh cadangan</Tombol>
             <Tombol varian="garis" memuat={memulihkan} onClick={() => berkas.current?.click()}>Pulihkan dari berkas…</Tombol>
             <input ref={berkas} type="file" accept="application/json,.json" className="sr-only" tabIndex={-1} aria-hidden="true" onChange={(e) => pulihkan(e.target.files?.[0])} />
           </div>

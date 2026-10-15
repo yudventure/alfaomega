@@ -2,7 +2,7 @@
 import fs from 'fs';
 import path from 'path';
 import { execFileSync } from 'child_process';
-import { C, BRAND, TOOLS, MARK_RATIO, page, markPath, logoNested, chevrons } from './lib.mjs';
+import { C, BRAND, TOOLS, MARK_RATIO, page, markPath, logoNested, gema } from './lib.mjs';
 
 const DIR = 'mockup';
 const W = 2400, H = 1600;
@@ -24,7 +24,7 @@ function caption(x, y, text, color = '#6B655C') {
 function title(main, sub, color = C.hitam, subColor = '#7A7368') {
   return `<div style="position:absolute;left:90px;top:80px">
     <div class="jak" style="font-weight:700;font-size:22px;letter-spacing:.42em;color:${subColor}">${sub}</div>
-    <div class="cinzel" style="font-weight:700;font-size:54px;letter-spacing:.04em;color:${color};margin-top:10px">${main}</div></div>`;
+    <div class="logo" style="font-size:52px;letter-spacing:.01em;color:${color};margin-top:10px">${main}</div></div>`;
 }
 
 // ---------- efek kain bersama ----------
@@ -84,20 +84,22 @@ function tee({ x, y, scale = 1, color, dark, back = false, print, id }) {
 
 // print untuk kaos/jaket (koordinat kanvas 1000 x 1100)
 const chestPrint = (fill, cx = 640, cy = 250, h = 96) => {
-  const w = h * 667.45 / 697.08;
+  const w = h * MARK_RATIO;
   return `${markPath({ x: cx - w / 2, y: cy - h / 2, h, fill })}`;
 };
 const backPrint = (variant, cx, top, width) => logoNested(variant, cx - width / 2, top, width);
+// KAPERNAUM (tebal) + SORONG (kecil berjarak) di bawah lambang dada
+const teksDada = (cx, y, warna, aksen, size) =>
+  `<text x="${cx}" y="${y}" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="800" font-size="${size}" letter-spacing="${size * 0.06}" fill="${warna}">KAPERNAUM</text>` +
+  `<text x="${cx + size * 0.2}" y="${y + size * 1.15}" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="600" font-size="${size * 0.5}" letter-spacing="${size * 0.3}" fill="${aksen}">SORONG</text>`;
 
 function kaos(color) {
   const dark = color === 'hitam';
   const fabric = dark ? '#1C1C1D' : '#F4F2EE';
   const gold = C.emas;
   const ink = dark ? gold : C.hitam;
-  const frontPrint = chestPrint(ink) + (dark
-    ? `<text x="640" y="330" text-anchor="middle" font-family="Cinzel" font-weight="700" font-size="17" letter-spacing="3" fill="${C.gading}">ALFA OMEGA</text>`
-    : `<text x="640" y="330" text-anchor="middle" font-family="Cinzel" font-weight="700" font-size="17" letter-spacing="3" fill="${C.hitam}">ALFA OMEGA</text>`);
-  const back = backPrint(dark ? 'bertumpuk-tagline-emas-gading' : 'bertumpuk-tagline-hitam', 500, 180, 340);
+  const frontPrint = chestPrint(ink) + teksDada(640, 330, dark ? C.gading : C.hitam, ink, 17);
+  const back = backPrint(dark ? 'bertumpuk-lengkap-emas-gading' : 'bertumpuk-lengkap-hitam', 500, 180, 340);
   const body = `${studioBg}
     <svg width="${W}" height="${H}" style="position:absolute;inset:0">
       ${tee({ x: 170, y: 250, scale: 0.98, color: fabric, dark, print: frontPrint, id: 'tf' })}
@@ -167,8 +169,8 @@ function jacket({ x, y, scale = 1, back = false, print, id }) {
 function jaket() {
   // bordir emas: sedikit timbul (bayangan + sorotan)
   const emb = (inner) => `<g filter="url(#emb)">${inner}</g>`;
-  const front = emb(chestPrint(C.emas, 650, 300, 110) + `<text x="650" y="392" text-anchor="middle" font-family="Cinzel" font-weight="700" font-size="20" letter-spacing="3" fill="${C.emas}">ALFA OMEGA</text>`);
-  const back = emb(backPrint('bertumpuk-tagline-emas', 500, 210, 360));
+  const front = emb(chestPrint(C.emas, 650, 300, 110) + teksDada(650, 392, C.emas, C.emas, 20));
+  const back = emb(backPrint('bertumpuk-lengkap-emas', 500, 210, 360));
   const defs = `<svg width="0" height="0" style="position:absolute"><defs>
     <filter id="emb" x="-10%" y="-10%" width="120%" height="120%">
       <feTurbulence type="fractalNoise" baseFrequency="1.6 .25" numOctaves="1" seed="5" result="thread"/>
@@ -203,16 +205,16 @@ function benderaFlat() {
     <rect x="0" y="0" width="34" height="${fh}" fill="#e9e4da"/>
     <rect x="70" y="40" width="${fw - 110}" height="${fh - 80}" fill="none" stroke="${C.emas}" stroke-width="6"/>
     <rect x="86" y="56" width="${fw - 142}" height="${fh - 112}" fill="none" stroke="${C.emas}" stroke-width="2" opacity=".6"/>
-    ${logoNested('bertumpuk-tagline-emas-gading', fw / 2 + 17 - 290, 175, 580)}
+    ${logoNested('bertumpuk-lengkap-emas-gading', fw / 2 + 17 - 270, 150, 540)}
   </svg>`;
   return { out: kainOut('bendera'), w: fw, h: fh, transparent: true, html: page(fw, fh, body) };
 }
 
 function umbulFlat(variant) {
   const w = 600, h = 2600, tail = 220;
-  const bg = { hitam: C.hitam, emas: C.emas, anggur: C.anggur }[variant];
-  const ink = { hitam: C.emas, emas: C.hitam, anggur: C.emas }[variant];
-  const text = { hitam: C.gading, emas: C.hitam, anggur: C.gading }[variant];
+  const bg = { hitam: C.hitam, emas: C.emas, gading: C.gading }[variant];
+  const ink = { hitam: C.emas, emas: C.hitam, gading: C.hitam }[variant];
+  const text = { hitam: C.gading, emas: C.hitam, gading: C.hitam }[variant];
   const shape = `M0 0H${w}V${h - tail}L${w / 2} ${h}L0 ${h - tail}Z`;
   const i = 30;
   const inner = `M${i} ${i}H${w - i}V${h - tail - 8}L${w / 2} ${h - i - 14}L${i} ${h - tail - 8}Z`;
@@ -224,9 +226,9 @@ function umbulFlat(variant) {
     <path d="${inner}" fill="none" stroke="${ink}" stroke-width="7"/>
     ${markPath({ x: (w - mw) / 2, y: 190, h: mh, fill: ink })}
     <rect x="${w / 2 - 70}" y="600" width="140" height="4" fill="${ink}"/>
-    <text transform="translate(${w / 2 + 64} 1320) rotate(-90)" text-anchor="middle" font-family="Cinzel" font-weight="700" font-size="178" letter-spacing="10" fill="${text}">ALFA OMEGA</text>
+    <text transform="translate(${w / 2 + 62} 1305) rotate(-90)" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="800" font-size="168" letter-spacing="6" fill="${text}">KAPERNAUM</text>
     <rect x="${w / 2 - 70}" y="2010" width="140" height="4" fill="${ink}"/>
-    <g clip-path="url(#bn)">${chevrons({ cx: w / 2, cy: 0, count: 3, step: -46, color: ink, width: 8, opacity: 1, fade: false, start: -2090 })}</g>
+    <g clip-path="url(#bn)">${gema({ cx: w / 2, cy: 2190, r0: 34, count: 3, step: 30, color: ink, width: 6, opacity: 1, fade: false })}</g>
   </svg>`;
   return { out: kainOut(`umbul-${variant}`), w, h, transparent: true, html: page(w, h, body) };
 }
@@ -255,7 +257,7 @@ function bendera() {
         <svg width="${W}" height="${H}" style="position:absolute;inset:0">${rings}</svg>
         <div style="position:absolute;right:90px;bottom:80px;text-align:right">
           <div class="jak" style="font-weight:700;font-size:22px;letter-spacing:.42em;color:#4a4236">MOCKUP</div>
-          <div class="cinzel" style="font-weight:700;font-size:54px;letter-spacing:.04em;color:${C.hitam};margin-top:10px">Bendera · 150 × 100 cm</div>
+          <div class="logo" style="font-size:52px;letter-spacing:.01em;color:${C.hitam};margin-top:10px">Bendera · 150 × 100 cm</div>
         </div>`;
       return page(W, H, body, { bg: '#B9CCD9' });
     },
@@ -263,8 +265,8 @@ function bendera() {
 }
 
 function umbul() {
-  const variants = ['hitam', 'emas', 'hitam', 'anggur'];
-  const files = { hitam: 'umbul-hitam', emas: 'umbul-emas', anggur: 'umbul-anggur' };
+  const variants = ['hitam', 'emas', 'hitam', 'gading'];
+  const files = { hitam: 'umbul-hitam', emas: 'umbul-emas', gading: 'umbul-gading' };
   return {
     out: `${DIR}/umbul-umbul.jpg`, w: W, h: H, before: runWarp,
     html: () => {
@@ -282,7 +284,7 @@ function umbul() {
         ${xs.map((x, i) => `<img src="${kibar(files[variants[i]])}" style="position:absolute;left:${x + 4 - pad}px;top:${tops[i] - pad}px;width:${bw + 2 * pad}px;filter:drop-shadow(0 24px 30px rgba(30,40,60,.25))">`).join('')}
         <div style="position:absolute;right:70px;bottom:60px;background:rgba(246,241,231,.94);padding:30px 40px;border-radius:10px;box-shadow:0 10px 30px rgba(30,40,60,.18)">
           <div class="jak" style="font-weight:700;font-size:22px;letter-spacing:.42em;color:#4a4236">MOCKUP</div>
-          <div class="cinzel" style="font-weight:700;font-size:54px;letter-spacing:.04em;color:${C.hitam};margin-top:10px">Umbul-umbul</div>
+          <div class="logo" style="font-size:52px;letter-spacing:.01em;color:${C.hitam};margin-top:10px">Umbul-umbul</div>
           <div class="jak" style="font-weight:600;font-size:24px;color:#4a4236;margin-top:6px">60 × 260 cm · 3 varian warna</div>
         </div>`;
       return page(W, H, body, { bg: '#B9CCD9' });
@@ -293,7 +295,7 @@ function umbul() {
 export default function () {
   return [
     kaos('hitam'), kaos('putih'), jaket(),
-    benderaFlat(), umbulFlat('hitam'), umbulFlat('emas'), umbulFlat('anggur'),
+    benderaFlat(), umbulFlat('hitam'), umbulFlat('emas'), umbulFlat('gading'),
     bendera(), umbul(),
   ];
 }

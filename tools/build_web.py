@@ -18,8 +18,10 @@ BRAND = os.path.join(T, "..", "brand")
 WEB = os.path.join(BRAND, "web")
 MARK = json.load(open(os.path.join(T, "mark.json")))
 MW, MH, MD = MARK["w"], MARK["h"], MARK["d"]
-EMAS, HITAM, GADING, ARANG = "#C8A25A", "#121212", "#F6F1E7", "#2A2826"
-SLOPE = 0.47875  # kemiringan kaki huruf A (dx/dy)
+EMAS, HITAM, GADING, ARANG = "#C89C4A", "#121212", "#F6F1E7", "#2A2826"
+SINGA, RP = MARK["singa"], MARK["r_piringan"]
+PREFIX = "kapernaum"
+NAMA = "GBI Kapernaum Sorong"
 
 
 def write(rel, text):
@@ -30,25 +32,31 @@ def write(rel, text):
 
 
 GOLD_GRAD = ('<linearGradient id="emas" x1="0" y1="0" x2="1" y2="1">'
-             '<stop offset="0" stop-color="#EBD9A6"/><stop offset=".38" stop-color="#C8A25A"/>'
-             '<stop offset=".7" stop-color="#A9843F"/><stop offset="1" stop-color="#D8BC7A"/></linearGradient>')
+             '<stop offset="0" stop-color="#F0D99E"/><stop offset=".38" stop-color="#C89C4A"/>'
+             '<stop offset=".7" stop-color="#A27A2E"/><stop offset="1" stop-color="#DDB86A"/></linearGradient>')
 
 
 # ---------- logo ----------
 def logos():
     src = os.path.join(BRAND, "logo", "svg")
     pairs = {
-        "logo-header-terang": "horizontal-ringkas-hitam", "logo-header-gelap": "horizontal-ringkas-emas-gading",
-        "logo-lengkap-terang": "horizontal-hitam", "logo-lengkap-gelap": "horizontal-emas-gading",
-        "logo-footer-terang": "bertumpuk-tagline-hitam", "logo-footer-gelap": "bertumpuk-tagline-emas-gading",
-        "monogram-hitam": "monogram-hitam", "monogram-emas": "monogram-emas", "monogram-putih": "monogram-putih",
+        "logo-header-terang": "horizontal-ringkas-warna", "logo-header-gelap": "horizontal-ringkas-emas-gading",
+        "logo-lengkap-terang": "horizontal-warna", "logo-lengkap-gelap": "horizontal-emas-gading",
+        "logo-footer-terang": "bertumpuk-lengkap-warna", "logo-footer-gelap": "bertumpuk-lengkap-emas-gading",
+        "lambang-warna": "lambang-warna", "lambang-hitam": "lambang-hitam", "lambang-emas": "lambang-emas", "lambang-putih": "lambang-putih",
     }
-    os.makedirs(os.path.join(WEB, "logo"), exist_ok=True)
+    d = os.path.join(WEB, "logo")
+    os.makedirs(d, exist_ok=True)
+    for lama in glob.glob(os.path.join(d, "monogram-*")):  # logo lama Alfa Omega
+        os.remove(lama)
     for dst, s in pairs.items():
-        shutil.copy(os.path.join(src, f"alfaomega-{s}.svg"), os.path.join(WEB, "logo", f"{dst}.svg"))
-    write("logo/monogram-gradien.svg",
-          f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {MW} {MH}" width="{MW:.0f}" height="{MH:.0f}" role="img" aria-label="Monogram Alfa Omega">'
+        shutil.copy(os.path.join(src, f"{PREFIX}-{s}.svg"), os.path.join(d, f"{dst}.svg"))
+    write("logo/lambang-gradien.svg",
+          f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {MW} {MH}" width="{MW:.0f}" height="{MH:.0f}" role="img" aria-label="Lambang {NAMA}">'
           f'<defs>{GOLD_GRAD}</defs><path fill="url(#emas)" fill-rule="evenodd" d="{MD}"/></svg>')
+    write("logo/lencana-gradien.svg",
+          f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{50 - RP} {50 - RP} {2 * RP} {2 * RP}" width="{2 * RP:.0f}" height="{2 * RP:.0f}" role="img" aria-label="Lambang {NAMA}">'
+          f'<defs>{GOLD_GRAD}</defs><circle cx="50" cy="50" r="{RP}" fill="{HITAM}"/><path fill="url(#emas)" fill-rule="evenodd" d="{MD}"/></svg>')
     # Safari pinned tab: satu warna, tanpa ukuran
     write("safari-pinned-tab.svg", f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {MW} {MH}"><path fill-rule="evenodd" d="{MD}"/></svg>')
 
@@ -98,26 +106,29 @@ def icons():
 
 
 # ---------- pola & ornamen ----------
-def chevrons(cx, apex, count, step, color, width, op, fade=True, length=2000):
+def gema(cx, cy, r0, count, step, color, width, op, fade=True):
+    """Pola "Gema Cincin": lingkaran sepusat yang memantulkan cincin lambang, makin jauh makin pudar."""
     out = []
     for i in range(count):
-        y0 = apex + i * step
         o = op * (1 - i / count) if fade else op
-        out.append(f'<polyline points="{cx - length * SLOPE:.1f},{y0 + length:.1f} {cx},{y0:.1f} {cx + length * SLOPE:.1f},{y0 + length:.1f}" '
-                   f'stroke="{color}" stroke-opacity="{o:.3f}" stroke-width="{width}"/>')
+        out.append(f'<circle cx="{cx}" cy="{cy}" r="{r0 + i * step:.1f}" stroke="{color}" stroke-opacity="{o:.3f}" stroke-width="{width}"/>')
     return "".join(out)
 
 
 def patterns():
+    d = os.path.join(WEB, "pola")
+    shutil.rmtree(d, ignore_errors=True)  # buang pola lama
     for tone, color in (("emas", EMAS), ("hitam", HITAM)):
-        write(f"pola/pola-gema-alfa-{tone}.svg",
+        write(f"pola/pola-gema-cincin-{tone}.svg",
               f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" fill="none">'
-              f'{chevrons(800, 60, 14, 64, color, 1.5, 0.35 if tone == "emas" else 0.18)}</svg>')
-        # ubin berulang: zig-zag dengan sudut kaki A
-        tw, th = 2 * 48 * SLOPE, 48
+              f'{gema(800, 450, 150, 14, 64, color, 1.5, 0.35 if tone == "emas" else 0.18)}</svg>')
+        # ubin berulang: cincin kecil berselang, seperti butiran pada cincin lambang
+        t = 40
         write(f"pola/pola-ubin-{tone}.svg",
-              f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {tw:.2f} {th}" width="{tw:.2f}" height="{th}" fill="none">'
-              f'<polyline points="0,{th} {tw / 2:.2f},0 {tw:.2f},{th}" stroke="{color}" stroke-opacity="{0.28 if tone == "emas" else 0.12}" stroke-width="1"/></svg>')
+              f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {t} {t}" width="{t}" height="{t}" fill="none">'
+              f'<circle cx="{t / 2}" cy="{t / 2}" r="7" stroke="{color}" stroke-opacity="{0.28 if tone == "emas" else 0.12}" stroke-width="1"/>'
+              f'<circle cx="0" cy="0" r="1.6" fill="{color}" fill-opacity="{0.28 if tone == "emas" else 0.12}"/>'
+              f'<circle cx="{t}" cy="{t}" r="1.6" fill="{color}" fill-opacity="{0.28 if tone == "emas" else 0.12}"/></svg>')
         k = 22 / MH
         write(f"pola/ornamen-pembatas-{tone}.svg",
               f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 24" width="360" height="24">'
@@ -128,25 +139,23 @@ def patterns():
 # ---------- loader & avatar ----------
 def loader():
     write("loader/loader-emas.svg",
-          f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 -40 {MW + 80} {MH + 80}" width="96" height="100" role="img" aria-label="Memuat">'
-          '<defs><linearGradient id="kilau" gradientUnits="userSpaceOnUse" x1="-700" y1="0" x2="0" y2="0">'
-          '<stop offset="0" stop-color="#C8A25A"/><stop offset=".5" stop-color="#F3E3B5"/><stop offset="1" stop-color="#C8A25A"/>'
-          '<animate attributeName="x1" values="-700;700" dur="1.6s" repeatCount="indefinite"/>'
-          '<animate attributeName="x2" values="0;1400" dur="1.6s" repeatCount="indefinite"/></linearGradient></defs>'
+          f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="-6 -6 {MW + 12} {MH + 12}" width="100" height="100" role="img" aria-label="Memuat">'
+          '<defs><linearGradient id="kilau" gradientUnits="userSpaceOnUse" x1="-100" y1="0" x2="0" y2="0">'
+          '<stop offset="0" stop-color="#C89C4A"/><stop offset=".5" stop-color="#F6E6B8"/><stop offset="1" stop-color="#C89C4A"/>'
+          '<animate attributeName="x1" values="-100;100" dur="1.6s" repeatCount="indefinite"/>'
+          '<animate attributeName="x2" values="0;200" dur="1.6s" repeatCount="indefinite"/></linearGradient></defs>'
           f'<path fill="url(#kilau)" fill-rule="evenodd" d="{MD}">'
           '<animate attributeName="opacity" values=".55;1;.55" dur="1.6s" repeatCount="indefinite"/></path></svg>')
-    for tone, bg, fg in (("gelap", ARANG, EMAS), ("terang", "#E9E1D0", "#9A7633")):
-        k = 44 / MH
+    for tone, bg, fg in (("gelap", ARANG, EMAS), ("terang", "#E9E1D0", "#94702B")):
+        k = 64 / MH
         write(f"placeholder/avatar-{tone}.svg",
               f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Foto belum tersedia">'
               f'<circle cx="60" cy="60" r="60" fill="{bg}"/>'
-              f'<path transform="translate({60 - MW * k / 2:.2f} {60 - 22 + 1}) scale({k:.6f})" fill="{fg}" fill-rule="evenodd" d="{MD}"/></svg>')
+              f'<path transform="translate({60 - MW * k / 2:.2f} {60 - MH * k / 2:.2f}) scale({k:.6f})" fill="{fg}" fill-rule="evenodd" d="{SINGA}"/></svg>')
 
 
 # ---------- font WOFF2 ----------
 FONTS = [
-    ("Cinzel", "Cinzel/Cinzel-SemiBold.ttf", 600, "normal", "cinzel-600"),
-    ("Cinzel", "Cinzel/Cinzel-Bold.ttf", 700, "normal", "cinzel-700"),
     ("Cormorant Garamond", "CormorantGaramond/CormorantGaramond-Medium.ttf", 500, "normal", "cormorant-garamond-500"),
     ("Cormorant Garamond", "CormorantGaramond/CormorantGaramond-SemiBold.ttf", 600, "normal", "cormorant-garamond-600"),
     ("Cormorant Garamond", "CormorantGaramond/CormorantGaramond-MediumItalic.ttf", 500, "italic", "cormorant-garamond-500-italic"),
@@ -156,6 +165,7 @@ FONTS = [
     ("Plus Jakarta Sans", "PlusJakartaSans/PlusJakartaSans-Medium.ttf", 500, "normal", "plus-jakarta-sans-500"),
     ("Plus Jakarta Sans", "PlusJakartaSans/PlusJakartaSans-SemiBold.ttf", 600, "normal", "plus-jakarta-sans-600"),
     ("Plus Jakarta Sans", "PlusJakartaSans/PlusJakartaSans-Bold.ttf", 700, "normal", "plus-jakarta-sans-700"),
+    ("Plus Jakarta Sans", "PlusJakartaSans/PlusJakartaSans-ExtraBold.ttf", 800, "normal", "plus-jakarta-sans-800"),
 ]
 # Latin + Latin Extended (cukup untuk bahasa Indonesia & Inggris, tanda kutip, simbol mata uang)
 UNICODES = "U+0000-024F,U+0259,U+1E00-1EFF,U+2000-206F,U+20A0-20CF,U+2100-214F,U+2190-21FF,U+2212,U+2215,U+FEFF,U+FFFD"
@@ -172,9 +182,9 @@ def fonts():
                      "--flavor=woff2", f"--output-file={dst}", "--no-hinting", "--desubroutinize"])
         faces.append(f"@font-face {{\n  font-family: '{fam}';\n  font-style: {style};\n  font-weight: {weight};\n  font-display: swap;\n"
                      f"  src: url('../fonts/{name}.woff2') format('woff2');\n}}")
-    for lic in ("Cinzel", "CormorantGaramond", "PlusJakartaSans"):
+    for lic in ("CormorantGaramond", "PlusJakartaSans"):
         shutil.copy(os.path.join(BRAND, "fonts", lic, "OFL.txt"), os.path.join(out, f"OFL-{lic}.txt"))
-    write("css/fonts.css", "/* Font brand Alfa Omega, di-host sendiri (WOFF2, subset Latin). Lisensi: SIL OFL 1.1, lihat fonts/OFL-*.txt */\n\n" + "\n\n".join(faces))
+    write("css/fonts.css", "/* Font brand GBI Kapernaum Sorong, di-host sendiri (WOFF2, subset Latin). Lisensi: SIL OFL 1.1, lihat fonts/OFL-*.txt */\n\n" + "\n\n".join(faces))
 
 
 # ---------- halaman contoh ----------

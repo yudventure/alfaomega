@@ -2,7 +2,7 @@
 // Daftar halamannya ada di src/App.jsx (RUTE).
 import { useEffect, useSyncExternalStore } from 'react';
 
-const PERISTIWA = 'alfaomega:navigasi';
+const PERISTIWA = 'situs:navigasi';
 
 function langganan(ubah) {
   window.addEventListener('popstate', ubah);

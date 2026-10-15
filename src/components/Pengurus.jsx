@@ -1,5 +1,5 @@
 import { pengurus } from '../data/isi.js';
-import Monogram from './Monogram.jsx';
+import Lambang from './Lambang.jsx';
 import Reveal from './Reveal.jsx';
 import { Kepala } from './Dasar.jsx';
 import { aset } from '../aset.js';
@@ -17,8 +17,8 @@ export default function Pengurus() {
                 {p.foto ? (
                   <img src={aset(p.foto)} alt={p.nama} width="800" height="1000" loading="lazy" className="gambar-muncul absolute inset-0 h-full w-full object-cover" />
                 ) : (
-                  <div className="absolute inset-0 grid place-items-center bg-[radial-gradient(ellipse_at_50%_35%,rgba(200,162,90,.28),transparent_65%)]">
-                    <Monogram className="w-[34%] text-emas/70" />
+                  <div className="absolute inset-0 grid place-items-center bg-[radial-gradient(ellipse_at_50%_35%,rgba(200,156,74,.28),transparent_65%)]">
+                    <Lambang className="w-[44%] text-emas/70" />
                   </div>
                 )}
               </div>

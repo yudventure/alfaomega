@@ -1,10 +1,10 @@
 import { jemaat } from '../data/isi.js';
-import Monogram from './Monogram.jsx';
+import Lambang from './Lambang.jsx';
 import Reveal from './Reveal.jsx';
 import { Teks } from './Dasar.jsx';
 import { aset } from '../aset.js';
 
-const judulTile = 'font-logo text-[1.1rem] font-bold tracking-[.04em]';
+const judulTile = 'font-logo text-[1rem] font-extrabold uppercase tracking-[.06em]';
 
 // Grid bento "Kehidupan Jemaat"
 export default function Jemaat() {
@@ -18,7 +18,7 @@ export default function Jemaat() {
           <Reveal as="article" gaya="skala" className="relative grid min-h-[240px] content-start justify-items-center gap-2 overflow-hidden rounded-kartu bg-pasir p-7 pb-[7.5rem] text-center">
             <h3 className={`relative z-10 ${judulTile}`}>{jemaat.sekolahMinggu.judul}</h3>
             <p className="relative z-10 max-w-[34ch] text-[.95rem] text-batu-tua">{jemaat.sekolahMinggu.teks}</p>
-            <Monogram garis strokeWidth={12} className="absolute -bottom-[48%] -left-[12%] z-0 w-[58%] rotate-[14deg] text-krem" />
+            <Lambang bagian="singa" className="absolute -bottom-[36%] -left-[10%] z-0 w-[54%] rotate-[10deg] text-krem" />
           </Reveal>
 
           {/* Pemuda */}
@@ -53,7 +53,7 @@ export default function Jemaat() {
             className="grid min-h-[340px] content-center justify-items-center gap-2 overflow-hidden rounded-kartu bg-hitam bg-cover bg-center p-7 text-center text-gading sm:col-span-2"
             style={{ backgroundImage: `radial-gradient(ellipse at center, rgba(18,18,18,.78) 0%, rgba(18,18,18,.5) 75%), url(${aset(jemaat.gambarLebar)})` }}
           >
-            <h3 className="font-logo text-[1.5rem] font-bold tracking-[.04em]">{jemaat.misi.judul}</h3>
+            <h3 className="font-logo text-[1.35rem] font-extrabold uppercase tracking-[.05em]">{jemaat.misi.judul}</h3>
             <p className="max-w-[42ch] text-[.95rem] text-gading/85">{jemaat.misi.teks}</p>
           </Reveal>
         </div>

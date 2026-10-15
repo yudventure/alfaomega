@@ -1,8 +1,8 @@
 {
-  "name": "alfaomega-web",
+  "name": "kapernaum-web",
   "version": "1.0.0",
   "private": true,
-  "description": "Website Gereja Alfa Omega (React + Tailwind CSS), siap deploy di Hostinger Node.js",
+  "description": "Website GBI Kapernaum Sorong (React + Tailwind CSS), siap deploy di Hostinger Node.js",
   "type": "module",
   "engines": {
     "node": ">=20.19"

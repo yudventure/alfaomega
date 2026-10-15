@@ -53,12 +53,12 @@ export default function Langkah() {
           <div aria-hidden="true" className="pointer-events-none absolute bottom-0 left-4 top-0 w-[2px] bg-[linear-gradient(180deg,transparent,#E3D9C4_5%,#E3D9C4_92%,transparent)] md:left-[35px]" />
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute bottom-0 left-4 top-0 w-[2px] origin-top bg-[linear-gradient(180deg,#E6CF95,#C8A25A_35%,#9A7633)] md:left-[35px]"
+            className="pointer-events-none absolute bottom-0 left-4 top-0 w-[2px] origin-top bg-[linear-gradient(180deg,#E8CB86,#C89C4A_35%,#94702B)] md:left-[35px]"
             style={{ transform: 'scaleY(var(--kemajuan))' }}
           />
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute left-[17px] top-0 h-3 w-3 rounded-full bg-emas shadow-[0_0_0_6px_rgba(200,162,90,.22),0_0_22px_rgba(200,162,90,.75)] md:left-[36px]"
+            className="pointer-events-none absolute left-[17px] top-0 h-3 w-3 rounded-full bg-emas shadow-[0_0_0_6px_rgba(200,156,74,.22),0_0_22px_rgba(200,156,74,.75)] md:left-[36px]"
             style={{ transform: 'translate3d(-50%, calc(var(--jarak) - 50%), 0)', opacity: aktif < 0 ? 0 : 1, transition: 'opacity .4s' }}
           />
 
@@ -74,7 +74,7 @@ export default function Langkah() {
                       status === 'nanti'
                         ? 'border-garis bg-gading text-emas-tua'
                         : status === 'aktif'
-                          ? 'scale-110 border-emas bg-emas text-hitam shadow-[0_0_0_7px_rgba(200,162,90,.2),0_12px_30px_-10px_rgba(154,118,51,.7)]'
+                          ? 'scale-110 border-emas bg-emas text-hitam shadow-[0_0_0_7px_rgba(200,156,74,.2),0_12px_30px_-10px_rgba(148,112,43,.7)]'
                           : 'border-emas bg-emas-muda text-hitam'
                     }`}
                   >

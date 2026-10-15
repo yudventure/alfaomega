@@ -1,21 +1,22 @@
 import { gereja, siapaKami } from '../data/isi.js';
-import Monogram from './Monogram.jsx';
+import Lambang from './Lambang.jsx';
 import Reveal from './Reveal.jsx';
 import { Tautan, Teks } from './Dasar.jsx';
 import { aset } from '../aset.js';
 
-// Halaman Siapa Kami: asal nama Alfa Omega (kartu ayat + teks + foto)
+// Halaman Siapa Kami: arti nama Kapernaum & lambang singa (kartu ayat + teks + foto)
 export default function SiapaKami() {
   return (
     <section className="bagian" id="tentang">
       <div className="isi grid gap-5 md:grid-cols-[1fr_1.9fr]">
         {/* kartu ayat (padanan kartu "angka" di referensi) */}
-        <Reveal gaya="kiri" className="relative flex min-h-[360px] flex-col justify-between overflow-hidden rounded-kartu bg-[linear-gradient(145deg,#B7955A_0%,#8E6F38_55%,#6E5428_100%)] p-7 text-gading">
-          <p className="label text-gading/85">Alfa &amp; Omega</p>
-          <Monogram garis strokeWidth={10} className="absolute -right-[8%] -top-[6%] w-[58%] -rotate-12 text-gading/55" />
+        <Reveal gaya="kiri" className="relative flex min-h-[360px] flex-col justify-between overflow-hidden rounded-kartu bg-[linear-gradient(145deg,#2A2418_0%,#161412_60%,#121212_100%)] p-7 text-gading">
+          <p className="label text-emas-muda">Lambang Kami</p>
+          <Lambang garis className="absolute -right-[16%] -top-[10%] w-[78%] text-emas/30" />
           <div className="relative mt-16 grid gap-2">
-            <div className="font-judul text-[clamp(2.6rem,5vw,3.6rem)] font-semibold leading-none tracking-[.04em]" aria-label="Alfa dan Omega">
-              Α <span className="mx-[.1em] text-emas-muda">·</span> Ω
+            <Lambang piringan="#121212" className="mb-3 h-16 w-16 text-emas" />
+            <div className="font-judul text-[clamp(2.2rem,4vw,3rem)] font-semibold leading-none">
+              Singa dari <em className="text-emas-muda">Yehuda</em>
             </div>
             <p className="max-w-[30ch] font-judul text-[1.15rem] italic font-medium leading-[1.4]">{gereja.ayat}</p>
             <p className="label text-[.68rem] tracking-[.28em] text-emas-muda">{gereja.ayatRujukan}</p>

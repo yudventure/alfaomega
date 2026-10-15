@@ -1,5 +1,5 @@
 import { sambutan } from '../data/isi.js';
-import Monogram from './Monogram.jsx';
+import Lambang from './Lambang.jsx';
 import Reveal from './Reveal.jsx';
 import VideoYouTube from './VideoYouTube.jsx';
 import { Tautan, Teks } from './Dasar.jsx';
@@ -28,11 +28,9 @@ export default function Sambutan() {
           </div>
           <div className="grid gap-6">
             <div className="flex items-center gap-4 border-t border-garis pt-5">
-              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-hitam text-emas" aria-hidden="true">
-                <Monogram className="h-6 w-auto" />
-              </span>
+              <Lambang piringan="#121212" className="h-12 w-12 shrink-0 text-emas" />
               <div>
-                <p className="font-logo text-[1rem] font-bold leading-snug tracking-[.03em]">{sambutan.nama}</p>
+                <p className="font-logo text-[.92rem] font-extrabold uppercase leading-snug tracking-[.06em]">{sambutan.nama}</p>
                 <p className="text-[.9rem] text-batu-tua">{sambutan.jabatan}</p>
               </div>
             </div>
