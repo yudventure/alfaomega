@@ -4,6 +4,7 @@
 import * as bawaan from '../src/data/konten.js';
 import { HALAMAN, halamanUntuk } from '../src/cms/halaman.js';
 import { denganVersi } from '../src/cms/aset.js';
+import { tautanArah } from '../src/peta.js';
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const jsonAman = (obj) => JSON.stringify(obj).replace(/[<\u2028\u2029]/g, (c) => `\\u${c.charCodeAt(0).toString(16).padStart(4, '0')}`);
@@ -42,6 +43,7 @@ function jsonLd(isi, asal, versi) {
     ...(telepon.length >= 8 ? { telephone: telepon } : {}),
     ...(email ? { email } : {}),
     ...(sosial.length ? { sameAs: sosial } : {}),
+    ...(String(isi.kunjungi?.tujuanPeta ?? '').trim() ? { hasMap: tautanArah(isi) } : {}),
   };
 }
 

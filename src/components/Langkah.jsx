@@ -80,19 +80,17 @@ export default function Langkah() {
                   >
                     {i + 1}
                   </span>
-                  <Reveal
-                    as="article"
-                    gaya="kanan"
-                    className={`kartu grid overflow-hidden shadow-kartu md:min-h-[320px] md:grid-cols-[1.05fr_1fr] ${status === 'aktif' ? 'md:border-emas/70' : ''}`}
-                  >
-                    <div className={`flex flex-col justify-center gap-3 p-[clamp(1.5rem,3vw,2.6rem)] ${i % 2 ? 'md:order-last' : ''}`}>
-                      <p className="label">Langkah {String(i + 1).padStart(2, '0')}</p>
-                      <Teks as="h3" html={l.judul} className="font-judul text-[clamp(1.6rem,2.6vw,2.2rem)] font-semibold leading-[1.2]" />
-                      <p className="max-w-[44ch] text-batu-tua">{l.teks}</p>
-                    </div>
-                    <figure className="relative order-first min-h-[210px] overflow-hidden md:order-none md:min-h-[320px]">
-                      <img src={aset(l.gambar)} alt={teksPolos(l.judul)} width="1200" height="900" loading="lazy" className="gambar-muncul absolute inset-0 h-full w-full object-cover" />
-                    </figure>
+                  <Reveal gaya="kanan" className="rounded-kartu shadow-kartu">
+                    <article className={`kartu klip-kartu grid overflow-hidden md:min-h-[320px] md:grid-cols-[1.05fr_1fr] ${status === 'aktif' ? 'md:border-emas/70' : ''}`}>
+                      <div className={`flex flex-col justify-center gap-3 p-[clamp(1.5rem,3vw,2.6rem)] ${i % 2 ? 'md:order-last' : ''}`}>
+                        <p className="label">Langkah {String(i + 1).padStart(2, '0')}</p>
+                        <Teks as="h3" html={l.judul} className="font-judul text-[clamp(1.6rem,2.6vw,2.2rem)] font-semibold leading-[1.2]" />
+                        <p className="max-w-[44ch] text-batu-tua">{l.teks}</p>
+                      </div>
+                      <figure className="relative order-first min-h-[210px] overflow-hidden md:order-none md:min-h-[320px]">
+                        <img src={aset(l.gambar)} alt={teksPolos(l.judul)} width="1200" height="900" loading="lazy" className="gambar-muncul absolute inset-0 h-full w-full object-cover" />
+                      </figure>
+                    </article>
                   </Reveal>
                 </li>
               );

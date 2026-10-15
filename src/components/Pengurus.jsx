@@ -12,7 +12,7 @@ export default function Pengurus() {
         <Reveal><Kepala judul={pengurus.judul} teks={pengurus.teks} /></Reveal>
         <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,260px),1fr))] gap-5">
           {pengurus.daftar.map((p, i) => (
-            <Reveal as="article" key={p.nama + p.jabatan} tunda={(i % 4) * 100} className="kartu overflow-hidden">
+            <Reveal as="article" key={p.nama + p.jabatan} tunda={(i % 4) * 100} className="kartu klip-kartu overflow-hidden">
               <div className="relative aspect-[4/5] overflow-hidden bg-hitam">
                 {p.foto ? (
                   <img src={aset(p.foto)} alt={p.nama} width="800" height="1000" loading="lazy" className="gambar-muncul absolute inset-0 h-full w-full object-cover" />

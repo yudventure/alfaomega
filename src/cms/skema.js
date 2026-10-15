@@ -137,6 +137,7 @@ export const KATEGORI = [
         kunci: 'kunjungi', judul: 'Kunjungi kami',
         bidang: [judul(), paragraf('teks', 'Keterangan'),
           daftar('info', 'Info kontak', 'Info', [teks('label', 'Label'), daftarTeks('isi', 'Isi', 'Baris', 4), ikon()], 6),
+          teks('tujuanPeta', 'Tujuan di Google Maps', 'Nama tempat persis seperti di Google Maps, alamat lengkap, atau koordinat (mis. -6.2000, 106.8166). Semua tombol Petunjuk Arah langsung membuka rute ke sini.'),
           tombol('tombolArah', 'Tombol petunjuk arah', false), tombol('tombolPesan', 'Tombol kirim pesan', false),
           gambar('gambar', 'Foto gedung', '4:3'), teks('keteranganGambar', 'Keterangan foto')],
       },

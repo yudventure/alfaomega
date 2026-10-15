@@ -1,8 +1,9 @@
-import { kunjungi } from '../data/isi.js';
+import { gereja, kunjungi } from '../data/isi.js';
 import Ikon from './Ikon.jsx';
 import Reveal from './Reveal.jsx';
 import { Teks, Tombol } from './Dasar.jsx';
 import { aset } from '../aset.js';
+import { tautanArah } from '../peta.js';
 
 export default function Kunjungi() {
   return (
@@ -23,12 +24,12 @@ export default function Kunjungi() {
             ))}
           </ul>
           <div className="flex flex-wrap gap-3">
-            <Tombol varian="hitam" href={kunjungi.tombolArah.href} ikon="lokasi" target="_blank" rel="noopener">{kunjungi.tombolArah.label}</Tombol>
+            <Tombol varian="hitam" href={tautanArah({ gereja, kunjungi })} ikon="lokasi" target="_blank" rel="noopener">{kunjungi.tombolArah.label}</Tombol>
             <Tombol varian="garis-hitam" href={kunjungi.tombolPesan.href} ikon="pesan" target="_blank" rel="noopener">{kunjungi.tombolPesan.label}</Tombol>
           </div>
         </Reveal>
 
-        <Reveal as="figure" gaya="kanan" tunda={120} className="kartu relative min-h-[320px] overflow-hidden">
+        <Reveal as="figure" gaya="kanan" tunda={120} className="kartu klip-kartu relative min-h-[320px] overflow-hidden">
           <img src={aset(kunjungi.gambar)} alt={kunjungi.keteranganGambar} width="1200" height="900" loading="lazy" className="gambar-muncul absolute inset-0 h-full w-full object-cover" />
           <figcaption className="absolute bottom-4 left-4 rounded-full bg-krem px-4 py-2 font-teks text-[.72rem] font-semibold uppercase leading-none tracking-[.2em] text-emas-teks">
             {kunjungi.keteranganGambar}

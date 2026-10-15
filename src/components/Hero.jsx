@@ -21,22 +21,25 @@ export default function Hero() {
         id="awal"
         className="relative isolate mx-auto flex min-h-[min(88vh,820px)] max-w-[1440px] flex-col justify-end overflow-hidden rounded-besar bg-hitam text-gading shadow-kartu max-sm:min-h-[80vh]"
       >
-        {/* foto bergerak lebih lambat dari halaman (paralaks); dibuat lebih tinggi di atas supaya tidak ada celah */}
-        <picture className="paralaks-foto absolute inset-x-0 -top-[12%] bottom-0 -z-10 overflow-hidden bg-hitam">
-          <source media="(max-width: 700px)" srcSet={aset(hero.gambarPonsel)} />
-          <img
-            ref={fotoRef}
-            src={aset(hero.gambar)}
-            alt=""
-            onLoad={() => setTermuat(true)}
-            onError={() => setTermuat(true)}
-            className={`foto-masuk h-full w-full object-cover ${termuat ? '' : 'foto-menunggu'}`}
-            width="2400"
-            height="1350"
-            fetchPriority="high"
-          />
-        </picture>
-        <div className="hero-lapisan absolute inset-0 -z-10" aria-hidden="true" />
+        {/* foto + lapisan gelap dalam bingkai yang dipotong membulat (klip-besar), supaya sudut tetap bulat
+            walau fotonya bergerak; foto bergerak lebih lambat dari halaman (paralaks) dan dibuat lebih tinggi agar tidak ada celah */}
+        <div className="klip-besar absolute inset-0 -z-10 overflow-hidden rounded-[inherit] bg-hitam">
+          <picture className="paralaks-foto absolute inset-x-0 -top-[12%] bottom-0 bg-hitam">
+            <source media="(max-width: 700px)" srcSet={aset(hero.gambarPonsel)} />
+            <img
+              ref={fotoRef}
+              src={aset(hero.gambar)}
+              alt=""
+              onLoad={() => setTermuat(true)}
+              onError={() => setTermuat(true)}
+              className={`foto-masuk h-full w-full object-cover ${termuat ? '' : 'foto-menunggu'}`}
+              width="2400"
+              height="1350"
+              fetchPriority="high"
+            />
+          </picture>
+          <div className="hero-lapisan absolute inset-0" aria-hidden="true" />
+        </div>
 
         <div className="paralaks-isi relative grid items-end gap-x-16 gap-y-10 px-[clamp(1.25rem,4vw,3.5rem)] pb-[clamp(2rem,4vw,3.5rem)] pt-16 md:grid-cols-[1.3fr_1fr] md:pt-24">
           <div className="grid gap-4">

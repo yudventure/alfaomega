@@ -119,7 +119,10 @@ export const kunjungi = {
     { label: 'WhatsApp sekretariat', isi: ['Nomor WhatsApp'], ikon: 'telepon' },
     { label: 'Email', isi: ['Alamat email gereja'], ikon: 'email' },
   ],
-  tombolArah: { label: 'Petunjuk Arah', href: '#' }, // GANTI: tautan Google Maps
+  // GANTI: tujuan rute Google Maps untuk semua tombol Petunjuk Arah: nama tempat persis seperti di Google Maps,
+  // alamat lengkap, atau koordinat (mis. '-6.200000, 106.816666'). Kosong = memakai nama gereja + alamat di atas.
+  tujuanPeta: '',
+  tombolArah: { label: 'Petunjuk Arah', href: '#' }, // link khusus (opsional); dipakai bila tujuanPeta kosong
   tombolPesan: { label: 'Kirim Pesan', href: '#' }, // GANTI: tautan WhatsApp, mis. https://wa.me/62...
   gambar: '/img/kunjungi.jpg', // GANTI: foto gedung gereja atau peta
   keteranganGambar: 'Lokasi gedung gereja',

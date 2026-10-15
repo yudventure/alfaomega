@@ -51,6 +51,12 @@ dalam struktur pelayanan gereja; **Ketua/Gembala Sidang** dan **Developer** dapa
 1. Buka `https://domain-anda/admin`.
 2. Masukkan **kode setup** (`CMS_KODE_SETUP`; bila tidak diatur, kode dibuat otomatis di `DATA_DIR/kode-setup.txt` dan dicetak di log server), lalu buat akun developer.
 3. Di **Pengguna & Peran**, tambahkan akun untuk ketua, sekretariat, bendahara, multimedia, dan komisi.
+4. Di **Kontak & Lokasi**, isi **Tujuan di Google Maps** (nama tempat persis seperti di Google Maps, alamat lengkap, atau koordinat).
+   Semua tombol **Petunjuk Arah** (bagian Kunjungi Kami dan footer) langsung membuka rute ke tujuan itu di Google Maps
+   (di ponsel terbuka di aplikasi Maps). Selama kosong, rute memakai nama gereja + alamat.
+
+Pengurus bisa masuk lewat tombol **Login Admin** di bagian paling bawah footer. Logo media sosial di footer dipilih otomatis
+dari nama platform atau link profil (Instagram, YouTube, Facebook, TikTok, WhatsApp, X, Threads, Spotify, Telegram).
 
 | Peran | Kategori yang dapat diubah |
 |---|---|

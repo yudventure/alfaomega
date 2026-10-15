@@ -15,12 +15,15 @@ export default function KepalaHalaman({ remah, label, judul, teks, children }) {
         id="awal"
         className="relative isolate mx-auto flex min-h-[min(64vh,580px)] max-w-[1440px] flex-col justify-end overflow-hidden rounded-besar bg-hitam text-gading shadow-kartu"
       >
-        <div
-          className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_82%_18%,rgba(200,162,90,.32),transparent_55%),radial-gradient(ellipse_at_0%_100%,rgba(154,118,51,.22),transparent_50%)]"
-          aria-hidden="true"
-        />
-        <div className="paralaks-ornamen absolute -right-[6%] top-[12%] -z-10 w-[min(70%,560px)] md:-right-[2%] md:w-[min(44%,560px)]">
-          <Monogram garis strokeWidth={5} className="masuk-ornamen w-full text-emas/25" />
+        {/* latar + ornamen dalam bingkai yang dipotong membulat, supaya sudut tetap bulat walau ornamennya bergerak */}
+        <div className="klip-besar absolute inset-0 -z-10 overflow-hidden rounded-[inherit]" aria-hidden="true">
+          <div
+            className="absolute inset-0 bg-[radial-gradient(ellipse_at_82%_18%,rgba(200,162,90,.32),transparent_55%),radial-gradient(ellipse_at_0%_100%,rgba(154,118,51,.22),transparent_50%)]"
+            aria-hidden="true"
+          />
+          <div className="paralaks-ornamen absolute -right-[6%] top-[12%] w-[min(70%,560px)] md:-right-[2%] md:w-[min(44%,560px)]">
+            <Monogram garis strokeWidth={5} className="masuk-ornamen w-full text-emas/25" />
+          </div>
         </div>
 
         <div className="paralaks-isi relative grid gap-4 px-[clamp(1.25rem,4vw,3.5rem)] pb-[clamp(2rem,4vw,3.5rem)] pt-20 md:pt-28">
