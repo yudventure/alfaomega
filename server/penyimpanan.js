@@ -1,11 +1,12 @@
 // Penyimpanan data CMS berupa berkas JSON di DATA_DIR (tanpa database terpisah).
 // DATA_DIR sebaiknya di luar folder aplikasi supaya tidak terhapus saat deploy ulang.
 import fs from 'node:fs';
-import os from 'node:os';
 import path from 'node:path';
 import crypto from 'node:crypto';
 
-export const DATA_DIR = path.resolve(process.env.DATA_DIR || path.join(os.homedir(), 'alfaomega-data'));
+import { DATA_DIR } from './konfigurasi.js';
+
+export { DATA_DIR };
 export const DIR_MEDIA = path.join(DATA_DIR, 'media');
 const DIR_RIWAYAT = path.join(DATA_DIR, 'riwayat');
 const MAKS_RIWAYAT = 60;

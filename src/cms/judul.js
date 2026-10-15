@@ -13,6 +13,9 @@ export function keMarkup(html = '') {
     .replace(/&amp;/g, '&');
 }
 
+// Judul HTML -> teks biasa (untuk alt gambar, meta description, dsb.)
+export const teksPolos = (html = '') => keMarkup(html).replace(/\*/g, '').replace(/\s*\n\s*/g, ' ').trim();
+
 export function keHtml(markup = '') {
   return String(markup)
     .replace(/&/g, '&amp;')

@@ -8,6 +8,7 @@ import { api } from './api.js';
 import { siapkanGambar } from './alat.js';
 import PilihMedia from './PilihMedia.jsx';
 import { Bidang, Tombol, kelasInput, useCms } from './ui.jsx';
+import { aset } from '../aset.js';
 
 const TAUTAN_INTERNAL = ['/', '/siapa-kami', '/#sambutan', '/#langkah', '/#jadwal', '/#khotbah', '/#jemaat', '/#persembahan', '/#kunjungi'];
 const tautanSah = (s) => !s || /^(https?:\/\/|mailto:|tel:|\/(?!\/)|#|wa\.me|www\.)/i.test(s.trim());
@@ -117,7 +118,7 @@ function BidangVideo({ f, nilai, ubah }) {
   );
 }
 
-const RASIO = { '16:9': 'aspect-video', '4:3': 'aspect-[4/3]', '2:3': 'aspect-[2/3]', '4:5': 'aspect-[4/5]', '1:1': 'aspect-square' };
+const RASIO = { '1.91:1': 'aspect-[1200/630]', '16:9': 'aspect-video', '4:3': 'aspect-[4/3]', '2:3': 'aspect-[2/3]', '4:5': 'aspect-[4/5]', '1:1': 'aspect-square' };
 
 function BidangGambar({ f, nilai, ubah }) {
   const { beriTahu } = useCms();
@@ -146,7 +147,7 @@ function BidangGambar({ f, nilai, ubah }) {
       {(id) => (
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-[minmax(0,220px)_minmax(0,1fr)] sm:items-start">
           <div className={`${RASIO[f.rasio] ?? 'aspect-video'} max-h-[260px] overflow-hidden rounded-xl border border-garis bg-pasir/60`}>
-            {nilai ? <img src={nilai} alt="" className="h-full w-full object-cover" /> : (
+            {nilai ? <img src={aset(nilai)} alt="" className="h-full w-full object-cover" /> : (
               <div className="grid grid-cols-1 h-full place-items-center text-[.8rem] text-batu"><Ikon nama="galeri" className="h-7 w-7 text-batu/70" /></div>
             )}
           </div>

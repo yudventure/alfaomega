@@ -8,7 +8,9 @@ import { Bidang, Kartu, KepalaHalaman, Lencana, Memuat, Modal, Pesan, Tombol, ke
 function FormPengguna({ awal, onTutup, onSimpan }) {
   const { pengguna: saya } = useCms();
   const developer = punyaPeran(saya, 'developer');
-  const [isian, setIsian] = useState({ nama: awal?.nama ?? '', email: awal?.email ?? '', peran: awal?.peran ?? [], sandi: '' });
+  const [isian, setIsian] = useState({ nama: awal?.nama ?? '', email: awal?.email ?? '', peran: awal?.peran ?? [], sandi: '', kirimEmail: true });
+  const [emailSiap, setEmailSiap] = useState(false);
+  useEffect(() => { if (!awal) api('/lupa-sandi').then((r) => setEmailSiap(r.tersedia)).catch(() => {}); }, [awal]);
   const [galat, setGalat] = useState('');
   const [memuat, setMemuat] = useState(false);
   const ubahPeran = (id) => setIsian((s) => ({ ...s, peran: s.peran.includes(id) ? s.peran.filter((x) => x !== id) : [...s.peran, id] }));
@@ -18,7 +20,7 @@ function FormPengguna({ awal, onTutup, onSimpan }) {
     setMemuat(true);
     setGalat('');
     try {
-      const data = { nama: isian.nama, email: isian.email, peran: isian.peran, ...(isian.sandi ? { sandi: isian.sandi } : {}) };
+      const data = { nama: isian.nama, email: isian.email, peran: isian.peran, ...(isian.sandi ? { sandi: isian.sandi } : {}), ...(!awal ? { kirimEmail: emailSiap && isian.kirimEmail } : {}) };
       const hasil = awal
         ? await api(`/pengguna/${awal.id}`, { metode: 'PUT', data })
         : await api('/pengguna', { metode: 'POST', data });
@@ -56,6 +58,20 @@ function FormPengguna({ awal, onTutup, onSimpan }) {
         <Bidang label={awal ? 'Atur ulang kata sandi (opsional)' : 'Kata sandi awal'} bantuan={awal ? 'Isi hanya bila ingin mengganti. Pengguna akan keluar dari semua perangkat.' : 'Minimal 8 karakter. Minta pengguna menggantinya lewat menu Akun Saya.'}>
           {(id) => <input id={id} type="text" className={`${kelasInput} font-mono`} value={isian.sandi} onChange={(e) => setIsian({ ...isian, sandi: e.target.value })} autoComplete="new-password" required={!awal} />}
         </Bidang>
+        {!awal && (
+          <div className={`flex gap-3 rounded-xl border border-garis bg-white p-3 ${emailSiap ? '' : 'opacity-60'}`}>
+            <input
+              id="kirim-email" type="checkbox" className="mt-1 h-4 w-4 accent-[#9A7633]" aria-describedby="kirim-email-ket"
+              checked={emailSiap && isian.kirimEmail} disabled={!emailSiap} onChange={(e) => setIsian({ ...isian, kirimEmail: e.target.checked })}
+            />
+            <span>
+              <label htmlFor="kirim-email" className={`block text-[.9rem] font-semibold ${emailSiap ? 'cursor-pointer' : ''}`}>Kirim email pemberitahuan</label>
+              <span id="kirim-email-ket" className="block text-[.8rem] leading-snug text-batu-tua">
+                {emailSiap ? 'Pengguna menerima email berisi tautan panel CMS dan cara membuat kata sandi sendiri. Kata sandi awal tidak ikut dikirim.' : 'Email belum diatur (developer: menu Sistem & Cadangan).'}
+              </span>
+            </span>
+          </div>
+        )}
         <fieldset className="grid grid-cols-1 gap-3">
           <legend className="mb-2 text-[.85rem] font-semibold text-arang">Peran</legend>
           <p className="label text-[.65rem]">Akses penuh</p>
@@ -147,7 +163,7 @@ export default function Pengguna() {
           onSimpan={(hasil) => {
             setDaftar((d) => (form === 'baru' ? [...d, hasil] : d.map((x) => (x.id === hasil.id ? hasil : x))));
             setForm(null);
-            beriTahu(form === 'baru' ? `Akun ${hasil.nama} dibuat. Berikan email dan kata sandinya kepada yang bersangkutan.` : `Akun ${hasil.nama} diperbarui.`);
+            beriTahu(form === 'baru' ? `Akun ${hasil.nama} dibuat.${hasil.emailDikirim ? ' Email pemberitahuan sedang dikirim.' : ''} Berikan kata sandi awalnya kepada yang bersangkutan.` : `Akun ${hasil.nama} diperbarui.`);
           }}
         />
       )}

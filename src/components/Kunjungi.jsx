@@ -2,6 +2,7 @@ import { kunjungi } from '../data/isi.js';
 import Ikon from './Ikon.jsx';
 import Reveal from './Reveal.jsx';
 import { Teks, Tombol } from './Dasar.jsx';
+import { aset } from '../aset.js';
 
 export default function Kunjungi() {
   return (
@@ -28,7 +29,7 @@ export default function Kunjungi() {
         </Reveal>
 
         <Reveal as="figure" className="kartu relative min-h-[320px] overflow-hidden">
-          <img src={kunjungi.gambar} alt="" width="1200" height="900" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+          <img src={aset(kunjungi.gambar)} alt={kunjungi.keteranganGambar} width="1200" height="900" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
           <figcaption className="absolute bottom-4 left-4 rounded-full bg-krem px-4 py-2 font-teks text-[.72rem] font-semibold uppercase leading-none tracking-[.2em] text-emas-teks">
             {kunjungi.keteranganGambar}
           </figcaption>

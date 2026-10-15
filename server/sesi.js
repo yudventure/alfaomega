@@ -24,6 +24,7 @@ export async function cocokSandi(sandi, simpanan) {
 }
 
 const tanda = (s) => crypto.createHmac('sha256', RAHASIA).update(s).digest('base64url');
+export const tandaTangan = tanda;
 
 // Token memuat id pengguna dan "versi" akunnya; versi naik saat sandi diganti
 // sehingga semua sesi lama otomatis tidak berlaku.
@@ -84,3 +85,15 @@ export function catatGagal(ip) {
 }
 
 export const hapusGagal = (ip) => gagal.delete(ip);
+
+// Pembatas laju sederhana: maksimal `maks` kejadian per `jendelaMs` untuk satu kunci (mis. IP)
+const laju = new Map();
+export function bolehLaju(kunci, maks, jendelaMs) {
+  const kini = Date.now();
+  if (laju.size > 5000) for (const [k, v] of laju) if (!v.some((t) => t > kini - jendelaMs)) laju.delete(k);
+  const daftar = (laju.get(kunci) ?? []).filter((t) => t > kini - jendelaMs);
+  if (daftar.length >= maks) { laju.set(kunci, daftar); return false; }
+  daftar.push(kini);
+  laju.set(kunci, daftar);
+  return true;
+}

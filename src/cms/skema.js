@@ -182,6 +182,21 @@ export const KATEGORI = [
     bagian: [{ kunci: 'footer.sosial', judul: 'Akun media sosial', jenis: 'daftar', labelButir: 'Akun', maks: 8, butir: [teks('label', 'Nama platform'), tautan('href', 'Link profil')] }],
   },
   {
+    id: 'seo', kelompok: 'multimedia', ikon: 'cari', judul: 'SEO & Berbagi Link', situs: '/',
+    ket: 'Deskripsi di hasil pencarian Google, gambar saat link dibagikan, dan kode verifikasi Search Console.',
+    peran: ['multimedia', 'sekretariat'],
+    bagian: [{
+      kunci: 'seo', judul: 'SEO',
+      bidang: [
+        paragraf('deskripsi', 'Deskripsi beranda', 'Sekitar 120–160 karakter. Tampil di bawah judul pada hasil pencarian Google dan saat link dibagikan.'),
+        paragraf('deskripsiSiapaKami', 'Deskripsi halaman Siapa Kami'),
+        gambar('gambarBerbagi', 'Gambar saat link dibagikan', '1.91:1', '1200×630 piksel. Tampil di WhatsApp, Facebook, X, dan lainnya.'),
+        teks('verifikasiGoogle', 'Kode verifikasi Google Search Console', 'Tempel nilai content dari meta tag google-site-verification (atau seluruh tag-nya).'),
+        teks('verifikasiBing', 'Kode verifikasi Bing Webmaster (opsional)'),
+      ],
+    }],
+  },
+  {
     id: 'langkah', kelompok: 'pembinaan', ikon: 'alkitab', judul: 'Langkah Bertumbuh', situs: '/#langkah',
     ket: 'Langkah dari pertama kali datang sampai ikut melayani.',
     peran: ['pembinaan'],

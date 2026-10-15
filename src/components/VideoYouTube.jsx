@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Monogram from './Monogram.jsx';
 import { idYouTube } from '../cms/youtube.js';
+import { aset } from '../aset.js';
 
 function TombolPutar({ className = '' }) {
   return (
@@ -49,7 +50,7 @@ export default function VideoYouTube({ sumber, judul, poster, keterangan, classN
     <div className={bingkai}>
       <button type="button" onClick={() => setPutar(true)} className="group absolute inset-0 cursor-pointer" aria-label={`Putar video: ${judul}`}>
         <img
-          src={poster || `https://i.ytimg.com/vi/${id}/hqdefault.jpg`}
+          src={aset(poster) || `https://i.ytimg.com/vi/${id}/hqdefault.jpg`}
           alt=""
           width="1280"
           height="720"

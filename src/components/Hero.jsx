@@ -1,6 +1,7 @@
 import { hero } from '../data/isi.js';
 import Nav from './Nav.jsx';
 import { Teks, Tombol } from './Dasar.jsx';
+import { aset } from '../aset.js';
 
 export default function Hero() {
   return (
@@ -10,8 +11,8 @@ export default function Hero() {
         className="relative isolate mx-auto flex min-h-[min(88vh,820px)] max-w-[1440px] flex-col justify-end overflow-hidden rounded-besar text-gading shadow-kartu sm:min-h-[min(88vh,820px)] max-sm:min-h-[92vh]"
       >
         <picture className="absolute inset-0 -z-10 bg-hitam">
-          <source media="(max-width: 700px)" srcSet={hero.gambarPonsel} />
-          <img src={hero.gambar} alt="" className="h-full w-full object-cover" width="2400" height="1350" fetchPriority="high" />
+          <source media="(max-width: 700px)" srcSet={aset(hero.gambarPonsel)} />
+          <img src={aset(hero.gambar)} alt="" className="h-full w-full object-cover" width="2400" height="1350" fetchPriority="high" />
         </picture>
         <div className="hero-lapisan absolute inset-0 -z-10" aria-hidden="true" />
 

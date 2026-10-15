@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from 'react';
 import * as bawaan from '../data/konten.js';
 import { api } from './api.js';
 import { Kosong, Memuat, Modal, kelasInput } from './ui.jsx';
+import { aset } from '../aset.js';
 
 // semua gambar /img/... yang dipakai isi bawaan
 function gambarBawaan() {
@@ -33,7 +34,7 @@ export default function PilihMedia({ onPilih, onTutup }) {
       className="group grid grid-cols-1 gap-1.5 rounded-xl p-1.5 text-left hover:bg-pasir focus-visible:bg-pasir"
     >
       <span className="aspect-[4/3] overflow-hidden rounded-lg bg-pasir">
-        <img src={alamat} alt="" loading="lazy" className="h-full w-full object-cover transition-transform group-hover:scale-[1.03]" />
+        <img src={aset(alamat)} alt="" loading="lazy" className="h-full w-full object-cover transition-transform group-hover:scale-[1.03]" />
       </span>
       <span className="truncate px-0.5 text-[.75rem] text-batu-tua">{nama}</span>
     </button>

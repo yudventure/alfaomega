@@ -34,12 +34,11 @@ npm start        # server produksi (Express) menyajikan dist/, port dari $PORT a
    - **Build command**: `npm run build`
    - **Output directory**: `dist`
    - **Entry file / start command**: `server.js` (`npm start`)
-   - **Variabel lingkungan** (Environment variables), disarankan:
-     - `CMS_KODE_SETUP` = kode bebas pilihan Anda, dipakai sekali untuk membuat akun CMS pertama
-     - `DATA_DIR` = folder data CMS **di luar** folder aplikasi, mis. `/home/uXXXXXXX/alfaomega-data` (lihat File Manager untuk path home Anda)
-     - `SESSION_SECRET` (opsional) = teks acak panjang; bila kosong dibuat otomatis di folder data
-     - `PORT` disediakan Hostinger; bila tidak ada, server memakai 3000
+   - **Variabel lingkungan**: lihat bagian *Pengaturan lingkungan* di bawah. Minimal isi `CMS_KODE_SETUP` dan `DATA_DIR`.
 3. Deploy. Setiap `git push` ke branch tersebut akan men-deploy ulang.
+4. Setelah deploy, buka **`https://domain-anda/sehat`**: nilai `commit` harus sama dengan commit terakhir di GitHub.
+   Kalau masih commit lama, deploy belum jalan/gagal (lihat log deploy di hPanel).
+5. Bila memakai **CDN Hostinger**, klik *Flush cache* sekali setelah deploy pertama versi ini.
 
 `server.js` juga menjalankan `npm run build` sendiri bila `dist/` belum ada, jadi aman kalau hosting hanya menjalankan `npm install` lalu `npm start`.
 
@@ -57,9 +56,9 @@ dalam struktur pelayanan gereja; **Ketua/Gembala Sidang** dan **Developer** dapa
 |---|---|
 | **Developer** | Semua isi + menu & navigasi, pengguna, cadangan & sistem |
 | **Ketua / Gembala Sidang** | Semua isi + kelola pengguna (tidak dapat memberi peran Developer) |
-| Sekretariat | Halaman depan, jadwal ibadah, profil gereja (Siapa Kami), gembala & pengurus, kontak & lokasi, foto kehidupan jemaat |
+| Sekretariat | Halaman depan, jadwal ibadah, profil gereja (Siapa Kami), gembala & pengurus, kontak & lokasi, foto kehidupan jemaat, SEO & berbagi link |
 | Bendahara | Persembahan: tombol online, **rekening** (dengan tombol salin) dan **QRIS** |
-| Multimedia | Sambutan gembala (video YouTube), halaman depan, khotbah, foto kehidupan jemaat, media sosial |
+| Multimedia | Sambutan gembala (video YouTube), halaman depan, khotbah, foto kehidupan jemaat, media sosial, SEO & berbagi link |
 | Pembinaan & Pengajaran | Langkah bertumbuh |
 | Komisi Sekolah Minggu / Pemuda / Koordinator Komsel / Pelayanan Doa / Misi & Diakonia | Kartu masing-masing di bagian Kehidupan Jemaat |
 
@@ -76,6 +75,66 @@ dan unduh cadangan secara berkala dari menu **Sistem & Cadangan**.
 (judul hanya boleh `<em>`/`<br>`, tautan `javascript:` ditolak, unggahan dicek benar-benar JPG/PNG/WebP); hak akses dicek ulang di server untuk setiap perubahan.
 
 **Pengembangan lokal:** jalankan `npm start` (server + API di port 3000) dan `npm run dev` bersamaan; Vite meneruskan `/api` dan `/media` ke port 3000.
+
+### Pengaturan lingkungan (`.env`)
+
+Semua variabel didefinisikan di satu tempat, `server/konfigurasi.js`, dan dirangkum di **[`.env.example`](.env.example)**.
+Setiap kali variabel ditambah/diubah di kode, jalankan `npm run env:contoh` agar `.env.example` ikut diperbarui.
+
+| Variabel | Untuk apa | Bisa diubah dari CMS |
+|---|---|---|
+| `SITE_URL` | Alamat utama (sitemap, tautan kanonik, gambar berbagi, tautan email). Kosong = alamat yang sedang diakses | ✓ |
+| `DATA_DIR` | Folder data CMS, **di luar** folder aplikasi | |
+| `CMS_KODE_SETUP` | Kode membuat akun developer pertama | |
+| `SESSION_SECRET` | Kunci sesi masuk (opsional, dibuat otomatis) | |
+| `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS` | Server email untuk OTP & pemberitahuan | ✓ |
+| `MAIL_FROM`, `MAIL_BALAS` | Pengirim dan alamat balasan email | ✓ |
+| `PORT` | Port server (biasanya dari Hostinger) | |
+
+Nilai dibaca dengan urutan prioritas:
+1. **Panel hosting** (hPanel → Node.js → Environment variables), tidak bisa ditimpa dari CMS.
+2. **`DATA_DIR/.env`**: ditulis ulang **otomatis setiap kali** developer menyimpan perubahan di **CMS → Sistem & Cadangan → Pengaturan lingkungan**
+   (versi sebelumnya disimpan sebagai `.env.sebelumnya`, izin berkas 600) dan langsung berlaku tanpa restart.
+3. **`.env` di folder aplikasi**: dibuat manual (salin dari `.env.example`, mis. lewat File Manager).
+
+Berkas `.env` asli tidak pernah masuk Git (`.gitignore`), karena bisa berisi kata sandi.
+
+### Email otomatis (OTP lupa kata sandi)
+
+Di halaman masuk CMS ada **"Lupa kata sandi?"**: pengguna memasukkan email, menerima **kode OTP 6 angka** (berlaku 10 menit),
+lalu membuat kata sandi baru dan langsung masuk. Setelah itu dikirim juga email pemberitahuan bahwa kata sandi diubah.
+Pengamanan: maks. 5 kode per jam per email (jeda 60 detik), maks. 5 kali salah per kode, kode hanya bisa dipakai sekali,
+semua sesi lama otomatis keluar, dan respons selalu sama sehingga tidak bisa dipakai menebak email mana yang terdaftar.
+
+Saat menambah pengguna, ketua/developer juga bisa mengirim **email pemberitahuan akun** (tanpa kata sandi).
+
+Mengaktifkan email (developer, **CMS → Sistem & Cadangan**):
+1. Buat akun email di hPanel → **Emails**, mis. `noreply@domain-anda`.
+2. Isi `SMTP_HOST=smtp.hostinger.com`, `SMTP_PORT=465`, `SMTP_USER=noreply@domain-anda`, `SMTP_PASS=` kata sandi email itu,
+   dan `MAIL_FROM=Gereja Alfa Omega <noreply@domain-anda>`. (Gmail: `smtp.gmail.com`, port 465, pakai *App Password*.)
+3. Klik **Kirim email uji**.
+
+### SEO & berbagi link
+
+- **`/sitemap.xml`** dan **`/robots.txt`** dibuat otomatis memakai `SITE_URL` (kalau kosong: alamat yang sedang diakses),
+  jadi tetap benar di domain uji sekarang dan langsung ikut berganti saat domain gereja dipasang. `lastmod` mengikuti perubahan terakhir di CMS.
+- Server menyisipkan per halaman: judul, deskripsi, tautan kanonik, Open Graph & Twitter Card (gambar saat link dibagikan di WhatsApp/Facebook),
+  serta data terstruktur **schema.org/Church** (nama, alamat, kontak, media sosial; data contoh yang belum diganti tidak ikut).
+- Deskripsi, gambar berbagi (1200×630), dan kode verifikasi **Google Search Console**/Bing diatur di **CMS → SEO & Berbagi Link**.
+- Setelah domain final aktif: isi `SITE_URL`, verifikasi situs di Google Search Console, lalu kirim `https://domain-anda/sitemap.xml`.
+- Halaman yang tidak ada menjawab status 404; `/alamat/` dialihkan (301) ke `/alamat`; panel `/admin` tidak diindeks.
+
+### Gambar & cache
+
+Alamat foto bawaan diberi penanda versi otomatis (`/img/langkah-1.jpg?v=…`, dari sidik isi folder `public/img`).
+Setiap kali foto diganti, alamatnya berubah sehingga browser dan CDN langsung mengambil foto baru, sementara foto yang sama
+tetap di-cache lama (cepat). Foto unggahan CMS selalu bernama baru. Halaman HTML tidak di-cache, jadi isi CMS langsung tampil.
+
+### Produksi
+
+Kompresi gzip/brotli; header keamanan (Content-Security-Policy dengan nonce, HSTS di HTTPS, X-Frame-Options, Referrer-Policy,
+Permissions-Policy); foto hero dimuat lebih awal (preload); penahan galat agar halaman tidak kosong bila satu bagian gagal;
+**`/sehat`** untuk cek versi yang berjalan; server berhenti dengan rapi saat hosting me-restart.
 
 ### Keamanan dependensi
 

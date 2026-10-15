@@ -17,6 +17,10 @@ export const LABEL_AKSI = {
   'hapus-media': 'menghapus media',
   'pulihkan-versi': 'memulihkan versi isi',
   'pulihkan-cadangan': 'memulihkan cadangan',
+  'minta-otp': 'meminta kode OTP lupa kata sandi',
+  'reset-sandi': 'mengatur ulang kata sandi lewat OTP',
+  'ubah-env': 'mengubah pengaturan lingkungan',
+  'email-uji': 'mengirim email uji ke',
 };
 
 export default function Riwayat() {

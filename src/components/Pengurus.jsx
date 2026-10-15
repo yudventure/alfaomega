@@ -2,6 +2,7 @@ import { pengurus } from '../data/isi.js';
 import Monogram from './Monogram.jsx';
 import Reveal from './Reveal.jsx';
 import { Kepala } from './Dasar.jsx';
+import { aset } from '../aset.js';
 
 export default function Pengurus() {
   if (!pengurus.daftar.length) return null;
@@ -14,7 +15,7 @@ export default function Pengurus() {
             <Reveal as="article" key={p.nama + p.jabatan} className="kartu overflow-hidden">
               <div className="relative aspect-[4/5] overflow-hidden bg-hitam">
                 {p.foto ? (
-                  <img src={p.foto} alt={p.nama} width="800" height="1000" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+                  <img src={aset(p.foto)} alt={p.nama} width="800" height="1000" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
                 ) : (
                   <div className="absolute inset-0 grid place-items-center bg-[radial-gradient(ellipse_at_50%_35%,rgba(200,162,90,.28),transparent_65%)]">
                     <Monogram className="w-[34%] text-emas/70" />

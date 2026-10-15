@@ -8,5 +8,5 @@ export const isi = gabung({ ...bawaan }, dariCms && typeof dariCms === 'object' 
 
 export const {
   gereja, menu, hero, sambutan, langkah, jadwal, khotbah, jemaat, persembahan, kunjungi,
-  halamanSiapaKami, siapaKami, nilai, pengurus, ajakan, footer,
+  halamanSiapaKami, siapaKami, nilai, pengurus, ajakan, footer, seo,
 } = isi;

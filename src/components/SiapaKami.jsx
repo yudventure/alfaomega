@@ -2,6 +2,7 @@ import { gereja, siapaKami } from '../data/isi.js';
 import Monogram from './Monogram.jsx';
 import Reveal from './Reveal.jsx';
 import { Tautan, Teks } from './Dasar.jsx';
+import { aset } from '../aset.js';
 
 // Halaman Siapa Kami: asal nama Alfa Omega (kartu ayat + teks + foto)
 export default function SiapaKami() {
@@ -28,7 +29,7 @@ export default function SiapaKami() {
             <Tautan href={siapaKami.tautan.href} className="mt-1 justify-self-start">{siapaKami.tautan.label}</Tautan>
           </div>
           <figure className="foto-setengah relative mx-4 mb-4 min-h-[240px] overflow-hidden md:my-4 md:ml-0 md:min-h-[300px]">
-            <img src={siapaKami.gambar} alt="" width="1200" height="900" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+            <img src={aset(siapaKami.gambar)} alt={`Kebersamaan jemaat ${gereja.nama}`} width="1200" height="900" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
           </figure>
         </Reveal>
       </div>

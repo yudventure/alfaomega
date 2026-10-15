@@ -1,6 +1,8 @@
 import { langkah } from '../data/isi.js';
 import Reveal from './Reveal.jsx';
 import { Teks } from './Dasar.jsx';
+import { aset } from '../aset.js';
+import { teksPolos } from '../cms/judul.js';
 
 // Kartu bernomor yang bertumpuk saat digulir (position: sticky di layar lebar)
 export default function Langkah() {
@@ -25,7 +27,7 @@ export default function Langkah() {
                 <p className="max-w-[44ch] text-batu-tua">{l.teks}</p>
               </div>
               <figure className="relative order-first min-h-[220px] md:order-none md:min-h-[260px]">
-                <img src={l.gambar} alt="" width="1200" height="900" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+                <img src={aset(l.gambar)} alt={teksPolos(l.judul)} width="1200" height="900" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
               </figure>
             </article>
           ))}

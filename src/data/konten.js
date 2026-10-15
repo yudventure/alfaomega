@@ -173,6 +173,17 @@ export const ajakan = {
   tombolKedua: { label: 'Petunjuk Arah', href: '/#kunjungi' },
 };
 
+// ---------- SEO & BERBAGI LINK ----------
+
+// Tampilan di hasil pencarian Google dan saat link dibagikan (WhatsApp, Facebook, dll.)
+export const seo = {
+  deskripsi: 'Gereja Alfa Omega: Yang Awal dan Yang Akhir. Jadwal ibadah, komsel, khotbah, dan kehidupan jemaat. Mari datang dan beribadah bersama kami.',
+  deskripsiSiapaKami: 'Mengenal Gereja Alfa Omega: arti nama kami, nilai-nilai yang kami hidupi, serta gembala dan pengurus yang melayani jemaat.',
+  gambarBerbagi: '/og/og-beranda.jpg', // 1200×630
+  verifikasiGoogle: '', // kode dari Google Search Console (meta tag google-site-verification)
+  verifikasiBing: '',
+};
+
 // ---------- FOOTER (semua halaman) ----------
 
 export const footer = {

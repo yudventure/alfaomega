@@ -1,5 +1,7 @@
 import { Suspense, lazy, useLayoutEffect, useRef } from 'react';
-import { gereja } from './data/isi.js';
+import { gereja, isi } from './data/isi.js';
+import { halamanUntuk } from './cms/halaman.js';
+import PenahanGalat from './components/PenahanGalat.jsx';
 import { useJalur, useTautanInternal } from './rute.js';
 import Beranda from './halaman/Beranda.jsx';
 import SiapaKami from './halaman/SiapaKami.jsx';
@@ -9,10 +11,10 @@ import Footer from './components/Footer.jsx';
 // panel CMS dimuat terpisah, hanya saat membuka /admin
 const Admin = lazy(() => import('./admin/Admin.jsx'));
 
-// Daftar halaman website. Tambah halaman baru di sini.
+// Daftar halaman website. Tambah halaman baru di sini dan di src/cms/halaman.js (judul, sitemap, SEO).
 const RUTE = {
-  '/': { Halaman: Beranda, judul: gereja.nama },
-  '/siapa-kami': { Halaman: SiapaKami, judul: `Siapa Kami · ${gereja.nama}` },
+  '/': { Halaman: Beranda, judul: halamanUntuk('/').judul(isi) },
+  '/siapa-kami': { Halaman: SiapaKami, judul: halamanUntuk('/siapa-kami').judul(isi) },
 };
 const HALAMAN_404 = { Halaman: TidakDitemukan, judul: `Halaman Tidak Ditemukan · ${gereja.nama}` };
 const halamanAdmin = (jalur) => jalur === '/admin' || jalur.startsWith('/admin/');
@@ -52,7 +54,9 @@ export default function App() {
       <a href="#utama" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-2 focus:z-50 focus:rounded-full focus:bg-hitam focus:px-4 focus:py-2 focus:text-gading">
         Langsung ke isi
       </a>
-      <Halaman />
+      <PenahanGalat>
+        <Halaman />
+      </PenahanGalat>
       <Footer />
     </>
   );

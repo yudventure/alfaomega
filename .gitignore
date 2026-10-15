@@ -3,3 +3,7 @@ __pycache__/
 node_modules/
 dist/
 .DS_Store
+# pengaturan lingkungan (bisa berisi kata sandi); contohnya di .env.example
+.env
+.env.*
+!.env.example

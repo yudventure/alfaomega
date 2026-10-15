@@ -2,6 +2,7 @@ import { jemaat } from '../data/isi.js';
 import Monogram from './Monogram.jsx';
 import Reveal from './Reveal.jsx';
 import { Teks } from './Dasar.jsx';
+import { aset } from '../aset.js';
 
 const judulTile = 'font-logo text-[1.1rem] font-bold tracking-[.04em]';
 
@@ -31,7 +32,7 @@ export default function Jemaat() {
           <Reveal
             as="article"
             className="flex min-h-[420px] flex-col justify-between gap-6 overflow-hidden rounded-kartu bg-hitam bg-cover bg-center p-9 text-gading sm:col-span-2 md:col-span-1 md:col-start-3 md:row-start-1 md:row-span-2"
-            style={{ backgroundImage: `linear-gradient(180deg, rgba(18,18,18,.82) 0%, rgba(18,18,18,.15) 42%, rgba(18,18,18,.15) 58%, rgba(18,18,18,.85) 100%), url(${jemaat.gambarTinggi})` }}
+            style={{ backgroundImage: `linear-gradient(180deg, rgba(18,18,18,.82) 0%, rgba(18,18,18,.15) 42%, rgba(18,18,18,.15) 58%, rgba(18,18,18,.85) 100%), url(${aset(jemaat.gambarTinggi)})` }}
           >
             <div className="grid gap-2">
               <h3 className={judulTile}>{jemaat.komsel.judul}</h3>
@@ -47,7 +48,7 @@ export default function Jemaat() {
           <Reveal
             as="article"
             className="grid min-h-[340px] content-center justify-items-center gap-2 overflow-hidden rounded-kartu bg-hitam bg-cover bg-center p-7 text-center text-gading sm:col-span-2"
-            style={{ backgroundImage: `radial-gradient(ellipse at center, rgba(18,18,18,.78) 0%, rgba(18,18,18,.5) 75%), url(${jemaat.gambarLebar})` }}
+            style={{ backgroundImage: `radial-gradient(ellipse at center, rgba(18,18,18,.78) 0%, rgba(18,18,18,.5) 75%), url(${aset(jemaat.gambarLebar)})` }}
           >
             <h3 className="font-logo text-[1.5rem] font-bold tracking-[.04em]">{jemaat.misi.judul}</h3>
             <p className="max-w-[42ch] text-[.95rem] text-gading/85">{jemaat.misi.teks}</p>

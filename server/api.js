@@ -4,11 +4,14 @@ import express from 'express';
 import * as bawaan from '../src/data/konten.js';
 import { gabung, ambil, pasang } from '../src/cms/gabung.js';
 import {
-  KATEGORI, kategoriById, kategoriUntuk, bolehKategori, bolehKelolaPengguna, bolehSistem, aksesPenuh, punyaPeran, ID_PERAN,
+  KATEGORI, kategoriById, kategoriUntuk, bolehKategori, bolehKelolaPengguna, bolehSistem, aksesPenuh, punyaPeran, ID_PERAN, namaPeran,
 } from '../src/cms/skema.js';
 import { bersihkan, bersihTeks } from './bersihkan.js';
 import * as data from './penyimpanan.js';
 import * as sesi from './sesi.js';
+import { emailSiap, kirimSurel, templatSurel } from './surel.js';
+import { infoEnv, simpanEnvCms, teksEnvContoh } from './konfigurasi.js';
+import { asalSitus, infoBuild } from './situs.js';
 
 const ISI_BAWAAN = { ...bawaan };
 const isiLengkap = (tersimpan = data.bacaIsi().isi) => gabung(ISI_BAWAAN, tersimpan);
@@ -20,6 +23,14 @@ class Galat extends Error {
 
 const publik = (p) => (p ? { id: p.id, nama: p.nama, email: p.email, peran: p.peran, dibuat: p.dibuat, terakhirMasuk: p.terakhirMasuk ?? null } : null);
 const jumlahDeveloper = (daftar) => daftar.filter((p) => p.peran.includes('developer')).length;
+const namaGereja = () => isiLengkap().gereja?.nama || 'Gereja Alfa Omega';
+const emailSah = (e) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
+
+// Email dikirim di latar supaya respons tetap cepat (dan tidak membocorkan apakah email terdaftar)
+function kirimLatar(opsi, ket) {
+  kirimSurel(opsi).catch((e) => console.error(`Email ${ket} ke ${opsi.ke} gagal dikirim: ${e.message}`));
+}
+const OTP_MENIT = 10;
 
 function bacaSandiBaru(sandi) {
   if (typeof sandi !== 'string' || sandi.length < 8) throw new Galat(400, 'Kata sandi minimal 8 karakter.');
@@ -126,6 +137,72 @@ export function buatApi() {
     res.json({ ok: true });
   });
 
+  // ---------- lupa kata sandi: kode OTP lewat email ----------
+  const otp = new Map(); // email -> { hash, sampai, coba, kirim: [waktu] }
+  const hashOtp = (email, kode) => sesi.tandaTangan(`otp:${email}:${kode}`);
+
+  r.get('/lupa-sandi', (req, res) => res.json({ tersedia: emailSiap(), menit: OTP_MENIT }));
+
+  r.post('/lupa-sandi', json, (req, res) => {
+    if (!emailSiap()) throw new Galat(503, 'Pengiriman email belum diatur di server. Minta ketua atau developer mengatur ulang kata sandi Anda dari menu Pengguna & Peran.');
+    if (!sesi.bolehLaju(`lupa:${req.ip}`, 10, 60 * 60 * 1000)) throw new Galat(429, 'Terlalu banyak permintaan. Coba lagi dalam satu jam.');
+    const email = bersihTeks(req.body?.email, 120).toLowerCase();
+    if (!emailSah(email)) throw new Galat(400, 'Alamat email tidak valid.');
+    const p = data.penggunaByEmail(email);
+    if (p) {
+      const kiniMs = Date.now();
+      const lama = otp.get(email);
+      const kirim = (lama?.kirim ?? []).filter((t) => t > kiniMs - 60 * 60 * 1000);
+      // maks. 5 kode per jam dan jeda 60 detik per email; selebihnya diam-diam dilewati
+      if (kirim.length < 5 && kiniMs - (kirim.at(-1) ?? 0) >= 60 * 1000) {
+        const kode = String(crypto.randomInt(0, 1_000_000)).padStart(6, '0');
+        otp.set(email, { hash: hashOtp(email, kode), sampai: kiniMs + OTP_MENIT * 60 * 1000, coba: 0, kirim: [...kirim, kiniMs] });
+        const surat = templatSurel({
+          namaGereja: namaGereja(),
+          judul: 'Kode untuk mengatur ulang kata sandi',
+          paragraf: [`Shalom ${p.nama},`, `Masukkan kode berikut di halaman masuk CMS untuk membuat kata sandi baru. Kode berlaku ${OTP_MENIT} menit.`],
+          kode,
+          catatan: 'Jika Anda tidak meminta kode ini, abaikan email ini; kata sandi Anda tidak berubah. Jangan berikan kode ini kepada siapa pun.',
+        });
+        kirimLatar({ ke: p.email, subjek: `${kode} adalah kode OTP CMS ${namaGereja()}`, teks: surat.teks, html: surat.html }, 'OTP');
+        data.catat({ oleh: p.nama, olehId: p.id, aksi: 'minta-otp' });
+      }
+    }
+    res.json({ pesan: `Jika email tersebut terdaftar, kode OTP sudah dikirim dan berlaku ${OTP_MENIT} menit. Periksa juga folder spam.` });
+  });
+
+  r.post('/reset-sandi', json, async (req, res) => {
+    const tunggu = sesi.menitTerkunci(req.ip);
+    if (tunggu) throw new Galat(429, `Terlalu banyak percobaan. Coba lagi dalam ${tunggu} menit.`);
+    const email = bersihTeks(req.body?.email, 120).toLowerCase();
+    const kode = String(req.body?.kode ?? '').replace(/\D/g, '');
+    const rec = otp.get(email);
+    if (!rec?.hash || rec.sampai < Date.now()) throw new Galat(400, 'Kode OTP tidak valid atau sudah kedaluwarsa. Minta kode baru.');
+    if (rec.coba >= 5) { rec.hash = null; throw new Galat(429, 'Terlalu banyak percobaan kode yang salah. Minta kode baru.'); }
+    const benar = kode.length === 6 && crypto.timingSafeEqual(Buffer.from(hashOtp(email, kode)), Buffer.from(rec.hash));
+    if (!benar) {
+      rec.coba += 1;
+      sesi.catatGagal(req.ip);
+      throw new Galat(400, `Kode OTP salah. Sisa percobaan: ${Math.max(0, 5 - rec.coba)}.`);
+    }
+    const sandi = await sesi.hashSandi(bacaSandiBaru(req.body?.sandiBaru));
+    const p = data.penggunaByEmail(email);
+    if (!p || !rec.hash) throw new Galat(400, 'Kode OTP tidak valid atau sudah kedaluwarsa. Minta kode baru.');
+    rec.hash = null;
+    const baru = data.ubahPengguna(p.id, { sandi, versi: p.versi + 1, terakhirMasuk: kini() });
+    sesi.hapusGagal(req.ip);
+    sesi.pasangSesi(req, res, baru);
+    data.catat({ oleh: p.nama, olehId: p.id, aksi: 'reset-sandi', ket: 'Mengatur ulang kata sandi lewat OTP email' });
+    const surat = templatSurel({
+      namaGereja: namaGereja(),
+      judul: 'Kata sandi Anda baru saja diubah',
+      paragraf: [`Shalom ${p.nama},`, `Kata sandi akun CMS Anda diatur ulang memakai kode OTP pada ${new Date().toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' })} WIB. Semua perangkat lain otomatis keluar.`],
+      catatan: 'Bila bukan Anda yang melakukannya, segera hubungi ketua atau developer gereja.',
+    });
+    kirimLatar({ ke: p.email, subjek: `Kata sandi CMS ${namaGereja()} diubah`, teks: surat.teks, html: surat.html }, 'pemberitahuan sandi');
+    res.json({ pengguna: publik(baru) });
+  });
+
   // ---------- isi website ----------
   r.get('/isi', wajibMasuk, (req, res) => {
     const { meta } = data.bacaIsi();
@@ -173,7 +250,21 @@ export function buatApi() {
     const p = { id: crypto.randomUUID(), ...isian, sandi, versi: 1, dibuat: kini(), terakhirMasuk: null };
     data.simpanPengguna([...daftar, p]);
     catat(req, 'tambah-pengguna', { ket: `${p.nama} (${p.peran.join(', ')})` });
-    res.json(publik(p));
+    const kirimEmail = Boolean(req.body?.kirimEmail) && emailSiap();
+    if (kirimEmail) {
+      const surat = templatSurel({
+        namaGereja: namaGereja(),
+        judul: 'Akun CMS Anda sudah dibuat',
+        paragraf: [
+          `Shalom ${p.nama},`,
+          `${req.pengguna.nama} menambahkan Anda sebagai ${p.peran.map(namaPeran).join(', ')} di panel pengelola website ${namaGereja()}.`,
+          'Masuk dengan alamat email ini. Kata sandi awal diberikan langsung oleh pengurus yang menambahkan Anda, atau buat kata sandi sendiri lewat "Lupa kata sandi?" di halaman masuk.',
+        ],
+        tombol: { label: 'Buka panel CMS', href: `${asalSitus(req)}/admin` },
+      });
+      kirimLatar({ ke: p.email, subjek: `Akun CMS ${namaGereja()} untuk Anda`, teks: surat.teks, html: surat.html }, 'akun baru');
+    }
+    res.json({ ...publik(p), emailDikirim: kirimEmail });
   });
 
   r.put('/pengguna/:id', wajib(bolehKelolaPengguna), json, async (req, res) => {
@@ -285,8 +376,43 @@ export function buatApi() {
     res.json({
       dataDir: data.DATA_DIR, node: process.version, pengguna: data.daftarPengguna().length, media: data.daftarMedia().length,
       ukuranData: data.ukuranFolder(), versi: data.daftarRiwayat().length,
-      env: { DATA_DIR: Boolean(process.env.DATA_DIR), SESSION_SECRET: Boolean(process.env.SESSION_SECRET), CMS_KODE_SETUP: Boolean(process.env.CMS_KODE_SETUP) },
+      env: infoEnv(), emailSiap: emailSiap(), build: infoBuild(), alamat: asalSitus(req),
     });
+  });
+
+  // Ubah pengaturan lingkungan: ditulis ulang ke DATA_DIR/.env setiap kali disimpan dan langsung berlaku
+  r.put('/sistem/env', wajib(bolehSistem), json, (req, res) => {
+    let diubah;
+    try {
+      diubah = simpanEnvCms(req.body?.nilai);
+    } catch (e) {
+      if (e.status === 400) throw new Galat(400, e.message);
+      throw Object.assign(new Error(`Berkas .env tidak dapat ditulis: ${e.message}`), { kode: 'DATA' });
+    }
+    if (diubah.length) catat(req, 'ubah-env', { ket: diubah.join(', ') });
+    res.json({ diubah, env: infoEnv(), emailSiap: emailSiap() });
+  });
+
+  r.get('/sistem/env-contoh', wajib(bolehSistem), (req, res) => {
+    res.attachment('.env.example').type('text/plain').send(teksEnvContoh());
+  });
+
+  r.post('/sistem/email-uji', wajib(bolehSistem), json, async (req, res) => {
+    const ke = bersihTeks(req.body?.ke, 120) || req.pengguna.email;
+    if (!emailSah(ke)) throw new Galat(400, 'Alamat email tujuan tidak valid.');
+    if (!emailSiap()) throw new Galat(503, 'Isi SMTP_HOST, SMTP_USER, dan SMTP_PASS terlebih dahulu.');
+    const surat = templatSurel({
+      namaGereja: namaGereja(),
+      judul: 'Email uji berhasil',
+      paragraf: [`Pengaturan email website ${namaGereja()} sudah benar.`, `Dikirim dari ${asalSitus(req)} oleh ${req.pengguna.nama}.`],
+    });
+    try {
+      await kirimSurel({ ke, subjek: `Email uji CMS ${namaGereja()}`, teks: surat.teks, html: surat.html });
+    } catch (e) {
+      throw new Galat(502, `Email gagal dikirim: ${e.message}`);
+    }
+    catat(req, 'email-uji', { ket: ke });
+    res.json({ pesan: `Email uji terkirim ke ${ke}. Periksa kotak masuk (dan folder spam).` });
   });
 
   r.get('/cadangan', wajib(bolehSistem), (req, res) => {

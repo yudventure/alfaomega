@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { persembahan } from '../data/isi.js';
 import Reveal from './Reveal.jsx';
 import { Teks, Tombol } from './Dasar.jsx';
+import { aset } from '../aset.js';
 
 function SalinNomor({ nomor }) {
   const [disalin, setDisalin] = useState(false);
@@ -44,7 +45,7 @@ export default function Persembahan() {
             ))}
             {persembahan.qris && (
               <figure className="flex w-full max-w-[420px] items-center gap-4 rounded-2xl bg-white p-3 text-hitam">
-                <img src={persembahan.qris} alt="QRIS persembahan Gereja Alfa Omega" className="h-28 w-28 shrink-0 object-contain" loading="lazy" />
+                <img src={aset(persembahan.qris)} alt="QRIS persembahan Gereja Alfa Omega" className="h-28 w-28 shrink-0 object-contain" loading="lazy" />
                 <figcaption className="text-[.85rem] leading-snug">Pindai QRIS dengan aplikasi bank atau dompet digital Anda.</figcaption>
               </figure>
             )}
