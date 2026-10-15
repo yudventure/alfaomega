@@ -6,7 +6,7 @@ import { Teks } from './Dasar.jsx';
 // `remah` = nama halaman untuk jejak "Beranda / ...". `children` = tombol opsional di bawah teks.
 export default function KepalaHalaman({ remah, label, judul, teks, children }) {
   return (
-    <div className="pt-[14px]">
+    <div className="pt-[88px] md:pt-[92px]">
       <Nav />
       <header
         id="awal"
@@ -18,7 +18,7 @@ export default function KepalaHalaman({ remah, label, judul, teks, children }) {
         />
         <Monogram garis strokeWidth={5} className="absolute -right-[6%] top-[12%] -z-10 w-[min(70%,560px)] text-emas/25 md:-right-[2%] md:w-[min(44%,560px)]" />
 
-        <div className="relative grid gap-4 px-[clamp(1.25rem,4vw,3.5rem)] pb-[clamp(2rem,4vw,3.5rem)] pt-36 md:pt-44">
+        <div className="relative grid gap-4 px-[clamp(1.25rem,4vw,3.5rem)] pb-[clamp(2rem,4vw,3.5rem)] pt-20 md:pt-28">
           {remah ? (
             <nav aria-label="Jejak halaman" className="label text-emas-muda">
               <a href="/" className="text-gading/75 no-underline hover:text-white">Beranda</a>

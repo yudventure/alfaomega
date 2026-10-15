@@ -5,11 +5,11 @@ import { aset } from '../aset.js';
 
 export default function Hero() {
   return (
-    <div className="pt-[14px]">
+    <div className="pt-[88px] md:pt-[92px]">
       <Nav />
       <header
         id="awal"
-        className="relative isolate mx-auto flex min-h-[min(88vh,820px)] max-w-[1440px] flex-col justify-end overflow-hidden rounded-besar text-gading shadow-kartu sm:min-h-[min(88vh,820px)] max-sm:min-h-[92vh]"
+        className="relative isolate mx-auto flex min-h-[min(88vh,820px)] max-w-[1440px] flex-col justify-end overflow-hidden rounded-besar text-gading shadow-kartu sm:min-h-[min(88vh,820px)] max-sm:min-h-[80vh]"
       >
         <picture className="absolute inset-0 -z-10 bg-hitam">
           <source media="(max-width: 700px)" srcSet={aset(hero.gambarPonsel)} />
@@ -17,7 +17,7 @@ export default function Hero() {
         </picture>
         <div className="hero-lapisan absolute inset-0 -z-10" aria-hidden="true" />
 
-        <div className="relative grid items-end gap-x-16 gap-y-10 px-[clamp(1.25rem,4vw,3.5rem)] pb-[clamp(2rem,4vw,3.5rem)] pt-36 md:grid-cols-[1.3fr_1fr] md:pt-[clamp(7rem,16vw,11rem)]">
+        <div className="relative grid items-end gap-x-16 gap-y-10 px-[clamp(1.25rem,4vw,3.5rem)] pb-[clamp(2rem,4vw,3.5rem)] pt-16 md:grid-cols-[1.3fr_1fr] md:pt-24">
           <div className="grid gap-4">
             <p className="label text-emas-muda">{hero.label}</p>
             <Teks

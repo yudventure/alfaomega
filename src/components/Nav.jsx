@@ -3,8 +3,8 @@ import { gereja, menu } from '../data/isi.js';
 import Ikon from './Ikon.jsx';
 import { useJalur } from '../rute.js';
 
-// Menu utama. Di posisi paling atas: transparan di atas foto hero (logo & teks terang).
-// Begitu halaman digulir: menempel di atas layar dengan latar krem (logo & teks gelap).
+// Menu utama. Di posisi paling atas: berada di atas kartu foto hero, tanpa latar, selebar kartu hero.
+// Begitu halaman digulir: menempel di atas layar sebagai kapsul berlatar krem dengan bayangan.
 export default function Nav() {
   const [buka, setBuka] = useState(false);
   const [tergulir, setTergulir] = useState(false);
@@ -13,7 +13,7 @@ export default function Nav() {
 
   useEffect(() => {
     let rafId = 0;
-    const cek = () => { rafId = 0; setTergulir(window.scrollY > 24); };
+    const cek = () => { rafId = 0; setTergulir(window.scrollY > 16); };
     const saatGulir = () => { if (!rafId) rafId = requestAnimationFrame(cek); };
     cek();
     window.addEventListener('scroll', saatGulir, { passive: true });
@@ -30,23 +30,19 @@ export default function Nav() {
     return () => document.removeEventListener('keydown', tutup);
   }, [buka]);
 
-  const tautan = padat
-    ? 'block rounded-2xl px-4 py-3.5 font-semibold text-[.8125rem] uppercase tracking-[.08em] text-batu-tua no-underline hover:bg-gading hover:text-hitam aria-[current=page]:text-emas-teks md:inline md:rounded-none md:p-0 md:py-2 md:hover:bg-transparent'
-    : 'block rounded-2xl px-4 py-3.5 font-semibold text-[.8125rem] uppercase tracking-[.08em] text-batu-tua no-underline hover:bg-gading hover:text-hitam aria-[current=page]:text-emas-teks md:inline md:rounded-none md:p-0 md:py-2 md:text-gading/90 md:hover:bg-transparent md:hover:text-white md:aria-[current=page]:text-emas-muda md:[text-shadow:0_1px_10px_rgba(0,0,0,.45)]';
+  const tautan = 'block rounded-2xl px-4 py-3.5 font-semibold text-[.8125rem] uppercase tracking-[.08em] text-batu-tua no-underline hover:bg-gading hover:text-hitam aria-[current=page]:text-emas-teks md:inline md:rounded-none md:p-0 md:py-2 md:hover:bg-transparent';
 
   return (
     <nav
       aria-label="Menu utama"
-      className={`fixed left-1/2 z-40 flex w-[min(calc(100%-68px),1180px)] -translate-x-1/2 items-center gap-3 rounded-full py-2 pl-[18px] pr-2 transition-[top,background-color,box-shadow] duration-300 ease-out motion-reduce:transition-none md:gap-6 md:py-[9px] md:pl-[26px] md:pr-[10px] ${
+      className={`fixed left-1/2 z-40 flex -translate-x-1/2 items-center gap-3 rounded-full py-2 text-hitam transition-[top,width,padding,background-color,box-shadow] duration-300 ease-out motion-reduce:transition-none md:gap-6 md:py-[9px] ${
         padat
-          ? 'top-3 bg-krem/92 text-hitam shadow-[0_10px_30px_-14px_rgba(0,0,0,.35)] backdrop-blur-xl'
-          : 'top-8 bg-transparent text-gading shadow-none'
+          ? 'top-3 w-[min(calc(100%-32px),1180px)] bg-krem/92 pl-[18px] pr-2 shadow-[0_10px_30px_-14px_rgba(0,0,0,.35)] backdrop-blur-xl md:pl-[26px] md:pr-[10px]'
+          : 'top-[14px] w-[min(calc(100%-32px),1440px)] bg-transparent px-[clamp(1.25rem,4vw,3.5rem)] shadow-none'
       }`}
     >
-      <a href="/" aria-label={`${gereja.nama}, ke beranda`} className="relative block shrink-0">
-        {/* dua versi logo ditumpuk supaya pergantiannya halus, tanpa berkedip */}
-        <img src="/logo/logo-header-terang.svg" alt="" width="166" height="40" className={`h-9 w-auto transition-opacity duration-300 ${padat ? 'opacity-100' : 'opacity-0'}`} />
-        <img src="/logo/logo-header-gelap.svg" alt="" width="166" height="40" className={`absolute inset-0 h-9 w-auto transition-opacity duration-300 ${padat ? 'opacity-0' : 'opacity-100'}`} />
+      <a href="/" aria-label={`${gereja.nama}, ke beranda`} className="shrink-0">
+        <img src="/logo/logo-header-terang.svg" alt="" width="166" height="40" className="h-9 w-auto" />
       </a>
 
       <ul
@@ -65,7 +61,7 @@ export default function Nav() {
 
       <button
         type="button"
-        className={`ml-auto grid h-11 w-11 place-items-center rounded-full transition-colors duration-300 md:hidden ${padat ? 'bg-hitam text-gading' : 'bg-white/15 text-white ring-1 ring-white/30 backdrop-blur-md'}`}
+        className="ml-auto grid h-11 w-11 place-items-center rounded-full bg-hitam text-gading md:hidden"
         aria-expanded={buka}
         aria-controls="menu"
         aria-label={buka ? 'Tutup menu' : 'Buka menu'}
