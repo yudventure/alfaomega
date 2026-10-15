@@ -7,6 +7,7 @@ import { Teks } from './Dasar.jsx';
 export default function KepalaHalaman({ remah, label, judul, teks, children }) {
   return (
     <div className="pt-[14px]">
+      <Nav />
       <header
         id="awal"
         className="relative isolate mx-auto flex min-h-[min(64vh,580px)] max-w-[1440px] flex-col justify-end overflow-hidden rounded-besar bg-hitam text-gading shadow-kartu"
@@ -16,8 +17,6 @@ export default function KepalaHalaman({ remah, label, judul, teks, children }) {
           aria-hidden="true"
         />
         <Monogram garis strokeWidth={5} className="absolute -right-[6%] top-[12%] -z-10 w-[min(70%,560px)] text-emas/25 md:-right-[2%] md:w-[min(44%,560px)]" />
-
-        <Nav />
 
         <div className="relative grid gap-4 px-[clamp(1.25rem,4vw,3.5rem)] pb-[clamp(2rem,4vw,3.5rem)] pt-36 md:pt-44">
           {remah ? (

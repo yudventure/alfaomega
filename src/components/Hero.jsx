@@ -6,6 +6,7 @@ import { aset } from '../aset.js';
 export default function Hero() {
   return (
     <div className="pt-[14px]">
+      <Nav />
       <header
         id="awal"
         className="relative isolate mx-auto flex min-h-[min(88vh,820px)] max-w-[1440px] flex-col justify-end overflow-hidden rounded-besar text-gading shadow-kartu sm:min-h-[min(88vh,820px)] max-sm:min-h-[92vh]"
@@ -15,8 +16,6 @@ export default function Hero() {
           <img src={aset(hero.gambar)} alt="" className="h-full w-full object-cover" width="2400" height="1350" fetchPriority="high" />
         </picture>
         <div className="hero-lapisan absolute inset-0 -z-10" aria-hidden="true" />
-
-        <Nav />
 
         <div className="relative grid items-end gap-x-16 gap-y-10 px-[clamp(1.25rem,4vw,3.5rem)] pb-[clamp(2rem,4vw,3.5rem)] pt-36 md:grid-cols-[1.3fr_1fr] md:pt-[clamp(7rem,16vw,11rem)]">
           <div className="grid gap-4">
